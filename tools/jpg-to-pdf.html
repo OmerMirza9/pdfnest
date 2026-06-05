@@ -160,7 +160,9 @@
             // convert anything else to PNG via canvas
             var c = document.createElement("canvas");
             c.width = img.naturalWidth; c.height = img.naturalHeight;
-            c.getContext("2d").drawImage(img, 0, 0);
+            var cctx = c.getContext("2d");
+            cctx.imageSmoothingEnabled = true; cctx.imageSmoothingQuality = "high";
+            cctx.drawImage(img, 0, 0);
             var blob = await new Promise(function (r) { c.toBlob(r, "image/png"); });
             var b = new Uint8Array(await blob.arrayBuffer());
             resolve({ bytes: b, type: "png", width: c.width, height: c.height });

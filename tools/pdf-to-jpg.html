@@ -42,9 +42,9 @@
         <div class="field">
           <label for="quality">Quality</label>
           <select id="quality">
-            <option value="1.5">Standard (smaller files)</option>
-            <option value="2" selected>High (recommended)</option>
-            <option value="3">Very high (large files)</option>
+            <option value="2">Standard — 144 DPI</option>
+            <option value="3" selected>High — 216 DPI (recommended)</option>
+            <option value="4">Maximum — 288 DPI (sharpest, largest)</option>
           </select>
         </div>
         <div class="field">
@@ -164,9 +164,10 @@
         var canvas = document.createElement("canvas");
         canvas.width = Math.floor(viewport.width); canvas.height = Math.floor(viewport.height);
         var ctx = canvas.getContext("2d");
+        ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
         if (ext === "jpg") { ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
         await page.render({ canvasContext: ctx, viewport: viewport }).promise;
-        var blob = await new Promise(function (r) { canvas.toBlob(r, mime, 0.92); });
+        var blob = await new Promise(function (r) { canvas.toBlob(r, mime, 0.96); });
         rendered.push(blob);
         addThumb(canvas.toDataURL(mime, 0.7), blob, p);
         PN.progress(prog, bar, 5 + (p / n) * 90);

@@ -123,8 +123,8 @@
   var currentBytes = null, originalSize = 0;
 
   var LEVELS = {
-    light:       { scale: 2.0, quality: 0.82 },
-    recommended: { scale: 1.5, quality: 0.68 },
+    light:       { scale: 2.5, quality: 0.92 },
+    recommended: { scale: 1.5, quality: 0.7 },
     strong:      { scale: 1.0, quality: 0.5 }
   };
 
@@ -161,6 +161,7 @@
         var canvas = document.createElement("canvas");
         canvas.width = Math.floor(vp.width); canvas.height = Math.floor(vp.height);
         var ctx = canvas.getContext("2d");
+        ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
         ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
         await page.render({ canvasContext: ctx, viewport: vp }).promise;
         var blob = await new Promise(function (r) { canvas.toBlob(r, "image/jpeg", lvl.quality); });
