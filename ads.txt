@@ -1,0 +1,5 @@
+# PDFNest ads.txt — authorizes Google to sell ads on getpdfnest.com.
+# AFTER AdSense approval, replace pub-0000000000000000 below with YOUR
+# publisher ID (the digits after "pub-" shown in your AdSense account),
+# then re-deploy. Until then this line is a harmless placeholder.
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

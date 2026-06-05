@@ -10,6 +10,38 @@
   var inTools = /\/tools\//.test(location.pathname);
   var ROOT = inTools ? "../" : "./";
 
+  // ---------------------------------------------------------------------
+  // MONETIZATION & ANALYTICS — paste your IDs here once, applies to EVERY
+  // page automatically. Leave blank to disable. See SETUP-MONETIZATION.md.
+  // ---------------------------------------------------------------------
+  var CONFIG = {
+    ADSENSE_PUB_ID: "",  // from Google AdSense, e.g. "ca-pub-1234567890123456"
+    GA4_ID: ""           // from Google Analytics, e.g. "G-XXXXXXXXXX"
+  };
+
+  function injectThirdParty() {
+    var head = document.head || document.getElementsByTagName("head")[0];
+    // Google AdSense loader (enables Auto Ads + serves as site verification)
+    if (CONFIG.ADSENSE_PUB_ID) {
+      var ad = document.createElement("script");
+      ad.async = true;
+      ad.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + CONFIG.ADSENSE_PUB_ID;
+      ad.crossOrigin = "anonymous";
+      head.appendChild(ad);
+    }
+    // Google Analytics 4
+    if (CONFIG.GA4_ID) {
+      var ga = document.createElement("script");
+      ga.async = true;
+      ga.src = "https://www.googletagmanager.com/gtag/js?id=" + CONFIG.GA4_ID;
+      head.appendChild(ga);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date());
+      window.gtag("config", CONFIG.GA4_ID);
+    }
+  }
+
   // -- Tool registry (shared everywhere) ---------------------------------
   var TOOLS = [
     { slug: "merge-pdf",     name: "Merge PDF",     color: "var(--c-merge)",    short: "Combine PDFs into one", tag: "M" },
@@ -84,6 +116,7 @@
 
   // -- Inject ------------------------------------------------------------
   function inject() {
+    injectThirdParty();
     var h = document.getElementById("site-header");
     var f = document.getElementById("site-footer");
     if (h) h.outerHTML = header; else document.body.insertAdjacentHTML("afterbegin", header);
