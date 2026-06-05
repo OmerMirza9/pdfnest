@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add Page Numbers to PDF Free Online | PDFNest</title>
+<meta name="description" content="Add page numbers to a PDF free online. Choose position, starting number and format like 'Page 1 of 10'. Secure, in-browser — no uploads, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/page-numbers.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Add Page Numbers to PDF Free | PDFNest">
+<meta property="og:description" content="Add page numbers to your PDF, free and private, in your browser.">
+<meta property="og:url" content="https://getpdfnest.com/tools/page-numbers.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<section class="tool-hero">
+  <div class="container">
+    <span class="badge" style="background:#e8f8ee;color:var(--c-pages)">● Page Numbers</span>
+    <h1>Add page numbers to PDF</h1>
+    <p>Insert clean page numbers in the corner or center you choose, in just a few seconds.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Numbering options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="pos">Position</label>
+          <select id="pos">
+            <option value="bc" selected>Bottom center</option>
+            <option value="br">Bottom right</option>
+            <option value="bl">Bottom left</option>
+            <option value="tc">Top center</option>
+            <option value="tr">Top right</option>
+            <option value="tl">Top left</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fmt">Format</label>
+          <select id="fmt">
+            <option value="n" selected>1, 2, 3 …</option>
+            <option value="page">Page 1</option>
+            <option value="ofn">Page 1 of N</option>
+            <option value="slash">1 / N</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="start">Start at</label>
+          <input type="number" id="start" value="1" min="0">
+        </div>
+        <div class="field">
+          <label for="size">Font size</label>
+          <input type="number" id="size" value="11" min="6" max="48">
+        </div>
+      </div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Add page numbers</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to add page numbers</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Upload your PDF</h3><p>Drop your document into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Choose the style</h3><p>Pick the position, format, starting number and size.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Get your numbered PDF instantly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Professional page numbers in seconds</h2>
+    <p>Page numbers make long documents easy to reference and look more polished — essential for contracts, reports, manuscripts and study notes. PDFNest lets you add them in the position and format that suits your document, including counters like “Page 3 of 24”.</p>
+    <p>You can even change the starting number, which is handy when your PDF is one section of a larger document. The numbers are drawn directly onto the pages and your file is processed entirely in your browser.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Page Numbers — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>Can I start from a number other than 1?</summary><p>Yes. Set the “Start at” value to any number you like.</p></details>
+      <details><summary>Where can the numbers go?</summary><p>Any of six positions: bottom or top, and left, center or right.</p></details>
+      <details><summary>Can I show the total page count?</summary><p>Yes. Choose the “Page 1 of N” or “1 / N” format.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="watermark-pdf.html"><span class="dot" style="background:var(--c-water)">W</span>Watermark PDF</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+      <a href="rotate-pdf.html"><span class="dot" style="background:var(--c-rotate)">R</span>Rotate PDF</a>
+      <a href="split-pdf.html"><span class="dot" style="background:var(--c-split)">S</span>Split PDF</a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Can I start from a number other than 1?","acceptedAnswer":{"@type":"Answer","text":"Yes. Set the Start at value to any number you like."}},
+{"@type":"Question","name":"Where can the numbers go?","acceptedAnswer":{"@type":"Answer","text":"Any of six positions: bottom or top, and left, center or right."}},
+{"@type":"Question","name":"Can I show the total page count?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose the Page 1 of N or 1 / N format."}}
+]}
+</script>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="../assets/js/pdf-tools.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar");
+  var currentBytes = null;
+
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "application/pdf", multiple: false, color: "var(--c-pages)",
+    onChange: async function (files) {
+      result.classList.remove("show");
+      if (!files.length) { opts.classList.add("hidden"); go.disabled = true; currentBytes = null; return; }
+      try { currentBytes = await PN.readBytes(files[0]); opts.classList.remove("hidden"); go.disabled = false; PN.status(statusEl, ""); }
+      catch (e) { PN.status(statusEl, "Could not read that PDF.", true); }
+    }
+  });
+
+  go.addEventListener("click", async function () {
+    if (!currentBytes) return;
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Adding numbers…"); PN.progress(prog, bar, 15);
+    try {
+      var pos = document.getElementById("pos").value,
+          fmt = document.getElementById("fmt").value,
+          start = parseInt(document.getElementById("start").value, 10) || 0,
+          size = parseInt(document.getElementById("size").value, 10) || 11;
+      var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+      var font = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+      var pages = doc.getPages(), total = pages.length, margin = 28;
+      pages.forEach(function (page, i) {
+        var num = start + i;
+        var label = fmt === "page" ? "Page " + num
+                  : fmt === "ofn" ? "Page " + num + " of " + (start + total - 1)
+                  : fmt === "slash" ? num + " / " + (start + total - 1)
+                  : "" + num;
+        var w = page.getWidth(), h = page.getHeight();
+        var tw = font.widthOfTextAtSize(label, size);
+        var x = pos[1] === "l" ? margin : pos[1] === "r" ? w - margin - tw : (w - tw) / 2;
+        var y = pos[0] === "t" ? h - margin - size * 0.4 : margin;
+        page.drawText(label, { x: x, y: y, size: size, font: font, color: PDFLib.rgb(0.2, 0.2, 0.25) });
+        PN.progress(prog, bar, 15 + ((i + 1) / total) * 80);
+      });
+      var bytes = await doc.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Page numbers added</h3><p>' + total + ' pages numbered • ' + PN.formatBytes(bytes.length) + '</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(bytes, "numbered-pdfnest.pdf", "application/pdf"); };
+      setTimeout(function(){ PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

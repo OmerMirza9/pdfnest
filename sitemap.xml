@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://getpdfnest.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://getpdfnest.com/tools/merge-pdf.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/tools/split-pdf.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/tools/compress-pdf.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/tools/rotate-pdf.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/tools/jpg-to-pdf.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/tools/pdf-to-jpg.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/tools/watermark-pdf.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/tools/page-numbers.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getpdfnest.com/about.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://getpdfnest.com/contact.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://getpdfnest.com/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://getpdfnest.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

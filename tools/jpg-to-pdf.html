@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JPG to PDF — Convert Images to PDF Free Online | PDFNest</title>
+<meta name="description" content="Convert JPG, PNG and other images into a single PDF free online. Reorder images, choose page size and margins. Secure, in-browser — no uploads, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/jpg-to-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JPG to PDF — Images to PDF Free | PDFNest">
+<meta property="og:description" content="Turn JPG and PNG images into a PDF, free and private, in your browser.">
+<meta property="og:url" content="https://getpdfnest.com/tools/jpg-to-pdf.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<section class="tool-hero">
+  <div class="container">
+    <span class="badge" style="background:#fdeaf3;color:var(--c-jpg2pdf)">● JPG to PDF</span>
+    <h1>JPG to PDF</h1>
+    <p>Turn your photos and images into one tidy PDF. Add JPG or PNG files, set the order, and download.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+      <h3>Drop images here</h3><p>or click to choose JPG / PNG files</p>
+      <small>Add as many as you like and drag to reorder</small>
+    </div>
+    <input type="file" id="input" accept="image/*" multiple class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>PDF options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="pageSize">Page size</label>
+          <select id="pageSize">
+            <option value="fit" selected>Fit to image</option>
+            <option value="a4">A4</option>
+            <option value="letter">US Letter</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="orient">Orientation</label>
+          <select id="orient">
+            <option value="auto" selected>Auto</option>
+            <option value="portrait">Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="margin">Margin (pt)</label>
+          <input type="number" id="margin" value="0" min="0" max="120">
+        </div>
+      </div>
+      <div class="hint">“Fit to image” makes each page exactly the size of its image. Orientation only applies to A4 / Letter.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Convert to PDF</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to convert JPG to PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add images</h3><p>Drop your JPG or PNG files into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Arrange &amp; set size</h3><p>Drag to reorder and pick a page size if you want.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download PDF</h3><p>Click convert and save your new PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Photos and scans into one clean PDF</h2>
+    <p>Turning images into a PDF is perfect for sharing receipts, ID scans, photo collections or whiteboard snapshots as a single, easy-to-send file. PDFNest lets you combine any number of JPG and PNG images, choose the order, and fit them to a standard A4 or Letter page — or keep each page exactly the size of its image.</p>
+    <p>Your images are converted on your device and never uploaded, so even personal documents stay private.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>JPG to PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>Which image formats are supported?</summary><p>JPG and PNG work directly. Most other common formats are converted automatically before being added.</p></details>
+      <details><summary>Can I put several images in one PDF?</summary><p>Yes. Add as many as you like — each image becomes one page, in the order you arrange.</p></details>
+      <details><summary>Will my images lose quality?</summary><p>JPG and PNG images are embedded at full resolution, so there's no extra quality loss.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="pdf-to-jpg.html"><span class="dot" style="background:var(--c-pdf2jpg)">P</span>PDF to JPG</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+      <a href="page-numbers.html"><span class="dot" style="background:var(--c-pages)">#</span>Page Numbers</a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Which image formats are supported?","acceptedAnswer":{"@type":"Answer","text":"JPG and PNG work directly. Most other common formats are converted automatically before being added."}},
+{"@type":"Question","name":"Can I put several images in one PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add as many as you like; each image becomes one page in the order you arrange."}},
+{"@type":"Question","name":"Will my images lose quality?","acceptedAnswer":{"@type":"Answer","text":"JPG and PNG images are embedded at full resolution, so there's no extra quality loss."}}
+]}
+</script>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="../assets/js/pdf-tools.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar");
+
+  var SIZES = { a4: [595.28, 841.89], letter: [612, 792] };
+
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "image/*", multiple: true, color: "var(--c-jpg2pdf)",
+    onChange: function (files) {
+      go.disabled = files.length < 1; result.classList.remove("show");
+      opts.classList.toggle("hidden", files.length < 1);
+    }
+  });
+
+  // Returns { bytes, type:'jpg'|'png', width, height }
+  function loadImage(file) {
+    return new Promise(function (resolve, reject) {
+      var isJpg = /jpe?g/i.test(file.type) || /\.jpe?g$/i.test(file.name);
+      var isPng = /png/i.test(file.type) || /\.png$/i.test(file.name);
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = async function () {
+        try {
+          if (isJpg || isPng) {
+            var bytes = await PN.readBytes(file);
+            resolve({ bytes: bytes, type: isJpg ? "jpg" : "png", width: img.naturalWidth, height: img.naturalHeight });
+          } else {
+            // convert anything else to PNG via canvas
+            var c = document.createElement("canvas");
+            c.width = img.naturalWidth; c.height = img.naturalHeight;
+            c.getContext("2d").drawImage(img, 0, 0);
+            var blob = await new Promise(function (r) { c.toBlob(r, "image/png"); });
+            var b = new Uint8Array(await blob.arrayBuffer());
+            resolve({ bytes: b, type: "png", width: c.width, height: c.height });
+          }
+          URL.revokeObjectURL(url);
+        } catch (e) { reject(e); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error("bad image")); };
+      img.src = url;
+    });
+  }
+
+  go.addEventListener("click", async function () {
+    var files = fm.files; if (!files.length) return;
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Building PDF…"); PN.progress(prog, bar, 5);
+    try {
+      var pageSize = document.getElementById("pageSize").value,
+          orient = document.getElementById("orient").value,
+          margin = parseInt(document.getElementById("margin").value,10) || 0;
+      var doc = await PDFLib.PDFDocument.create();
+      for (var i = 0; i < files.length; i++) {
+        var im = await loadImage(files[i]);
+        var embedded = im.type === "jpg" ? await doc.embedJpg(im.bytes) : await doc.embedPng(im.bytes);
+        var pw, ph;
+        if (pageSize === "fit") {
+          pw = im.width + margin * 2; ph = im.height + margin * 2;
+        } else {
+          var s = SIZES[pageSize];
+          var landscape = orient === "landscape" || (orient === "auto" && im.width > im.height);
+          pw = landscape ? s[1] : s[0];
+          ph = landscape ? s[0] : s[1];
+        }
+        var page = doc.addPage([pw, ph]);
+        var availW = pw - margin * 2, availH = ph - margin * 2;
+        var scale = Math.min(availW / im.width, availH / im.height);
+        var dw = im.width * scale, dh = im.height * scale;
+        page.drawImage(embedded, { x: (pw - dw) / 2, y: (ph - dh) / 2, width: dw, height: dh });
+        PN.progress(prog, bar, 5 + ((i + 1) / files.length) * 90);
+      }
+      var bytes = await doc.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Your PDF is ready</h3><p>' + files.length + ' image' + (files.length>1?'s':'') + ' • ' + PN.formatBytes(bytes.length) + '</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(bytes, "images-pdfnest.pdf", "application/pdf"); };
+      setTimeout(function(){ PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "One of the images could not be processed.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

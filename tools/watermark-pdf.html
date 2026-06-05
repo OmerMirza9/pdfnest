@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watermark PDF — Add Text Watermark Free Online | PDFNest</title>
+<meta name="description" content="Add a text watermark to every page of a PDF free online. Control text, size, color, opacity and angle. Secure, in-browser — no uploads, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/watermark-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Watermark PDF Free | PDFNest">
+<meta property="og:description" content="Add a text watermark to your PDF, free and private, in your browser.">
+<meta property="og:url" content="https://getpdfnest.com/tools/watermark-pdf.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<section class="tool-hero">
+  <div class="container">
+    <span class="badge" style="background:#eaf1fa;color:var(--c-water)">● Watermark PDF</span>
+    <h1>Add a watermark to PDF</h1>
+    <p>Stamp text like “CONFIDENTIAL” or your name across every page, with full control over the look.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Watermark options</h3>
+      <div class="field">
+        <label for="text">Watermark text</label>
+        <input type="text" id="text" value="CONFIDENTIAL" maxlength="60">
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="size">Font size</label>
+          <input type="number" id="size" value="50" min="8" max="200">
+        </div>
+        <div class="field">
+          <label for="opacity">Opacity (%)</label>
+          <input type="number" id="opacity" value="25" min="5" max="100">
+        </div>
+        <div class="field">
+          <label for="angle">Angle (°)</label>
+          <input type="number" id="angle" value="45" min="-90" max="90">
+        </div>
+        <div class="field">
+          <label for="color">Color</label>
+          <input type="color" id="color" value="#ff0000" style="height:44px;padding:4px">
+        </div>
+      </div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Add watermark</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to watermark a PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Upload your PDF</h3><p>Drop your document into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Design the stamp</h3><p>Type your text and adjust size, color, opacity and angle.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Every page gets the watermark — download your file.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Mark and protect your documents</h2>
+    <p>A watermark is a simple way to label a document's status (“DRAFT”, “CONFIDENTIAL”, “PAID”) or to discourage unauthorised reuse by stamping your name or company across the pages. PDFNest applies your text to every page with the size, colour, transparency and diagonal angle you set.</p>
+    <p>Because it runs in your browser, even sensitive contracts and internal reports stay completely private — nothing is uploaded.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Watermark PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>Can I make the watermark faint?</summary><p>Yes. Lower the opacity value for a subtle background stamp, or raise it for a bold one.</p></details>
+      <details><summary>Does it apply to every page?</summary><p>Yes, the watermark is added to all pages of the document.</p></details>
+      <details><summary>Can I choose the colour and angle?</summary><p>Yes. Pick any colour and set the angle, for example 45° for a classic diagonal watermark.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="page-numbers.html"><span class="dot" style="background:var(--c-pages)">#</span>Page Numbers</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+      <a href="rotate-pdf.html"><span class="dot" style="background:var(--c-rotate)">R</span>Rotate PDF</a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Can I make the watermark faint?","acceptedAnswer":{"@type":"Answer","text":"Yes. Lower the opacity value for a subtle background stamp, or raise it for a bold one."}},
+{"@type":"Question","name":"Does it apply to every page?","acceptedAnswer":{"@type":"Answer","text":"Yes, the watermark is added to all pages of the document."}},
+{"@type":"Question","name":"Can I choose the colour and angle?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pick any colour and set the angle, for example 45 degrees for a diagonal watermark."}}
+]}
+</script>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="../assets/js/pdf-tools.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar");
+  var currentBytes = null;
+
+  function hexToRgb(hex) {
+    var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return m ? { r: parseInt(m[1],16)/255, g: parseInt(m[2],16)/255, b: parseInt(m[3],16)/255 } : { r:1,g:0,b:0 };
+  }
+
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "application/pdf", multiple: false, color: "var(--c-water)",
+    onChange: async function (files) {
+      result.classList.remove("show");
+      if (!files.length) { opts.classList.add("hidden"); go.disabled = true; currentBytes = null; return; }
+      try { currentBytes = await PN.readBytes(files[0]); opts.classList.remove("hidden"); go.disabled = false; PN.status(statusEl, ""); }
+      catch (e) { PN.status(statusEl, "Could not read that PDF.", true); }
+    }
+  });
+
+  go.addEventListener("click", async function () {
+    if (!currentBytes) return;
+    var text = document.getElementById("text").value.trim() || "WATERMARK";
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Stamping…"); PN.progress(prog, bar, 15);
+    try {
+      var size = parseInt(document.getElementById("size").value,10) || 50;
+      var opacity = (parseInt(document.getElementById("opacity").value,10) || 25) / 100;
+      var angle = parseInt(document.getElementById("angle").value,10) || 0;
+      var col = hexToRgb(document.getElementById("color").value);
+      var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+      var font = await doc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+      var pages = doc.getPages(), total = pages.length;
+      var rad = angle * Math.PI / 180;
+      pages.forEach(function (page, i) {
+        var w = page.getWidth(), h = page.getHeight();
+        var tw = font.widthOfTextAtSize(text, size);
+        // center the rotated text roughly on the page
+        var cx = w / 2 - (tw / 2) * Math.cos(rad);
+        var cy = h / 2 - (tw / 2) * Math.sin(rad) - (size * 0.35) * Math.cos(rad);
+        page.drawText(text, {
+          x: cx, y: cy, size: size, font: font,
+          color: PDFLib.rgb(col.r, col.g, col.b),
+          rotate: PDFLib.degrees(angle), opacity: opacity
+        });
+        PN.progress(prog, bar, 15 + ((i + 1) / total) * 80);
+      });
+      var bytes = await doc.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Watermark added</h3><p>' + total + ' pages stamped • ' + PN.formatBytes(bytes.length) + '</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(bytes, "watermarked-pdfnest.pdf", "application/pdf"); };
+      setTimeout(function(){ PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

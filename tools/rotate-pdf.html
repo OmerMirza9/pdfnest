@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotate PDF — Turn PDF Pages Free Online | PDFNest</title>
+<meta name="description" content="Rotate PDF pages 90, 180 or 270 degrees and save the change permanently. Rotate all pages or selected pages. Free, secure, in-browser — no uploads.">
+<link rel="canonical" href="https://getpdfnest.com/tools/rotate-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rotate PDF Free | PDFNest">
+<meta property="og:description" content="Rotate PDF pages and save permanently, free and private, in your browser.">
+<meta property="og:url" content="https://getpdfnest.com/tools/rotate-pdf.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<section class="tool-hero">
+  <div class="container">
+    <span class="badge" style="background:#fef3e2;color:var(--c-rotate)">● Rotate PDF</span>
+    <h1>Rotate PDF</h1>
+    <p>Turn sideways or upside-down pages the right way up, and save the rotation into the file.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Rotation options</h3>
+      <div class="field">
+        <label>Rotate by</label>
+        <div class="radio-row">
+          <label class="radio-card active"><input type="radio" name="angle" value="90" checked>90° right ↻</label>
+          <label class="radio-card"><input type="radio" name="angle" value="180">180° flip</label>
+          <label class="radio-card"><input type="radio" name="angle" value="270">90° left ↺</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="pages">Apply to pages</label>
+        <input type="text" id="pages" placeholder="Leave empty for all pages — e.g. 1-3, 5">
+        <div class="hint">Document has <strong id="pageCount">0</strong> pages.</div>
+      </div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Rotate PDF</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to rotate a PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Upload your PDF</h3><p>Drop your file into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick the direction</h3><p>Choose 90° right, 180°, or 90° left — for all pages or specific ones.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Save it</h3><p>Download a PDF with the rotation baked in, so it opens correctly everywhere.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Fix sideways scans for good</h2>
+    <p>Scanned documents and phone photos often come out rotated. Viewing them is annoying, and printing them is worse. PDFNest's rotate tool applies a real, permanent rotation to the pages you choose, so the corrected orientation is saved into the file itself — not just in your viewer.</p>
+    <p>Rotate the whole document at once, or target only the pages that are wrong using a range like <code>1-3, 5</code>. Everything happens privately in your browser.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Rotate PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>Is the rotation saved permanently?</summary><p>Yes. The rotation is written into the PDF, so it stays correct in every app and on print.</p></details>
+      <details><summary>Can I rotate only some pages?</summary><p>Yes. Enter the page numbers in the “Apply to pages” box. Leave it empty to rotate all pages.</p></details>
+      <details><summary>Does rotating reduce quality?</summary><p>No. Rotation does not re-compress your pages, so quality is unchanged.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+      <a href="split-pdf.html"><span class="dot" style="background:var(--c-split)">S</span>Split PDF</a>
+      <a href="watermark-pdf.html"><span class="dot" style="background:var(--c-water)">W</span>Watermark PDF</a>
+      <a href="page-numbers.html"><span class="dot" style="background:var(--c-pages)">#</span>Page Numbers</a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is the rotation saved permanently?","acceptedAnswer":{"@type":"Answer","text":"Yes. The rotation is written into the PDF so it stays correct in every app and on print."}},
+{"@type":"Question","name":"Can I rotate only some pages?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enter the page numbers in the Apply to pages box. Leave it empty to rotate all pages."}},
+{"@type":"Question","name":"Does rotating reduce quality?","acceptedAnswer":{"@type":"Answer","text":"No. Rotation does not re-compress your pages, so quality is unchanged."}}
+]}
+</script>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="../assets/js/pdf-tools.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      pageCountEl = document.getElementById("pageCount");
+  var currentBytes = null, totalPages = 0;
+
+  document.querySelectorAll('input[name=angle]').forEach(function (r) {
+    r.addEventListener("change", function () {
+      document.querySelectorAll('input[name=angle]').forEach(function (x) {
+        x.closest(".radio-card").classList.toggle("active", x.checked);
+      });
+    });
+  });
+
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "application/pdf", multiple: false, color: "var(--c-rotate)",
+    onChange: async function (files) {
+      result.classList.remove("show");
+      if (!files.length) { opts.classList.add("hidden"); go.disabled = true; currentBytes = null; return; }
+      PN.status(statusEl, "Reading…");
+      try {
+        currentBytes = await PN.readBytes(files[0]);
+        var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+        totalPages = doc.getPageCount(); pageCountEl.textContent = totalPages;
+        opts.classList.remove("hidden"); go.disabled = false; PN.status(statusEl, "");
+      } catch (e) { PN.status(statusEl, "Could not read that PDF.", true); go.disabled = true; }
+    }
+  });
+
+  go.addEventListener("click", async function () {
+    if (!currentBytes) return;
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Rotating…"); PN.progress(prog, bar, 20);
+    try {
+      var angle = parseInt(document.querySelector('input[name=angle]:checked').value, 10);
+      var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+      var raw = document.getElementById("pages").value.trim();
+      var idx = raw ? PN.parseRanges(raw, totalPages) : doc.getPageIndices();
+      var set = {}; idx.forEach(function (i) { set[i] = true; });
+      doc.getPages().forEach(function (p, i) {
+        if (set[i]) {
+          var cur = p.getRotation().angle || 0;
+          p.setRotation(PDFLib.degrees((cur + angle) % 360));
+        }
+      });
+      var bytes = await doc.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Rotated PDF ready</h3><p>' + idx.length + ' page' + (idx.length>1?'s':'') + ' rotated • ' + PN.formatBytes(bytes.length) + '</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(bytes, "rotated-pdfnest.pdf", "application/pdf"); };
+      setTimeout(function(){ PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong rotating that PDF.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
