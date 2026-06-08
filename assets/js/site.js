@@ -58,7 +58,9 @@
     { slug: "pdf-to-html",     name: "PDF to HTML",     color: "var(--c-pdf2html)", short: "Convert a PDF to HTML",     tag: "PH" },
     { slug: "html-to-pdf",     name: "HTML to PDF",     color: "var(--c-html2pdf)", short: "Convert HTML to a PDF",     tag: "HP" },
     { slug: "markdown-to-pdf", name: "Markdown to PDF", color: "var(--c-md2pdf)",   short: "Markdown into a PDF",       tag: "MD" },
-    { slug: "html-editor",     name: "HTML Editor",     color: "var(--c-htmledit)", short: "Live HTML editor & preview",tag: "ED" }
+    { slug: "html-editor",     name: "HTML Editor",     color: "var(--c-htmledit)", short: "Live HTML editor & preview",tag: "ED" },
+    { slug: "protect-pdf",     name: "Protect PDF",     color: "var(--c-protect)",  short: "Add a password to a PDF",   tag: "LK" },
+    { slug: "unlock-pdf",      name: "Unlock PDF",      color: "var(--c-unlock)",   short: "Remove a PDF password",     tag: "UL" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;
