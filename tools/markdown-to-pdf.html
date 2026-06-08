@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://getpdfnest.com/tools/markdown-to-pdf.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" href="../assets/css/style.css?v=20260609">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260610">
 </head>
 <body>
 <noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
@@ -54,7 +54,8 @@
       </div>
     </div>
 
-    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go">Generate PDF</button></div>
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go">Download PDF</button></div>
+    <p class="center" style="margin-top:8px;color:var(--muted);font-size:.85rem">A print dialog opens — pick <strong>Save as PDF</strong> as the destination.</p>
     <div class="status" id="status"></div>
     <p class="center" style="margin-top:14px"><span class="privacy-note">🔒 Everything runs in your browser</span></p>
   </div>
@@ -112,9 +113,8 @@
 <div id="site-footer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="../assets/js/pdf-tools.js?v=20260609"></script>
-<script src="../assets/js/site.js?v=20260609"></script>
+<script src="../assets/js/pdf-tools.js?v=20260610"></script>
+<script src="../assets/js/site.js?v=20260610"></script>
 <script>
 (function () {
   var code=document.getElementById("code"), preview=document.getElementById("preview"),
@@ -141,16 +141,13 @@
 
   go.addEventListener("click", function(){
     if(!code.value.trim()){ PN.status(statusEl,"Add some Markdown first.",true); return; }
-    if(!window.html2pdf||!window.marked){ PN.status(statusEl,"Engine still loading — try again in a moment.",true); return; }
-    go.disabled=true; PN.status(statusEl,"Generating PDF…");
-    PN.renderHtmlToPdf(toHtml(), {
-      width: 760,
+    if(!window.marked){ PN.status(statusEl,"Engine still loading — try again in a moment.",true); return; }
+    PN.status(statusEl,"Opening the print dialog — choose “Save as PDF”.");
+    PN.printHtmlAsPdf(toHtml(), {
       margin: parseFloat(document.getElementById("margin").value)||0,
       format: document.getElementById("size").value,
-      orientation: "portrait",
-      filename: "markdown-pdfnest.pdf"
-    }).then(function(){ PN.status(statusEl,"PDF downloaded."); go.disabled=false; })
-      .catch(function(e){ console.error(e); PN.status(statusEl,"Could not generate the PDF.",true); go.disabled=false; });
+      orientation: "portrait"
+    });
   });
 })();
 </script>

@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://getpdfnest.com/tools/html-editor.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" href="../assets/css/style.css?v=20260609">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260610">
 </head>
 <body>
 <noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
@@ -47,6 +47,7 @@
       <button class="btn btn--accent" id="pdf">Export to PDF</button>
       <input type="file" id="file" accept=".html,text/html" class="hidden">
     </div>
+    <p class="center" style="margin-top:4px;color:var(--muted);font-size:.85rem">“Export to PDF” opens a print dialog — pick <strong>Save as PDF</strong> as the destination.</p>
     <div class="status" id="status"></div>
     <p class="center" style="margin-top:14px"><span class="privacy-note">🔒 Your code never leaves your device</span></p>
   </div>
@@ -103,9 +104,8 @@
 
 <div id="site-footer"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="../assets/js/pdf-tools.js?v=20260609"></script>
-<script src="../assets/js/site.js?v=20260609"></script>
+<script src="../assets/js/pdf-tools.js?v=20260610"></script>
+<script src="../assets/js/site.js?v=20260610"></script>
 <script>
 (function () {
   var code=document.getElementById("code"), preview=document.getElementById("preview"),
@@ -132,11 +132,8 @@
 
   document.getElementById("pdf").addEventListener("click", function(){
     if(!code.value.trim()){ PN.status(statusEl,"Nothing to export yet.",true); return; }
-    if(!window.html2pdf){ PN.status(statusEl,"PDF engine still loading — try again in a moment.",true); return; }
-    PN.status(statusEl,"Exporting to PDF…");
-    PN.renderHtmlToPdf(code.value, { width:794, margin:10, format:"a4", orientation:"portrait", filename:"page-pdfnest.pdf" })
-      .then(function(){ PN.status(statusEl,"PDF exported."); })
-      .catch(function(e){ console.error(e); PN.status(statusEl,"Could not export PDF.",true); });
+    PN.status(statusEl,"Opening the print dialog — choose “Save as PDF” as the destination.");
+    PN.printHtmlAsPdf(code.value, { margin:10, format:"a4", orientation:"portrait" });
   });
 })();
 </script>

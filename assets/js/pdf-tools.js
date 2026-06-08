@@ -212,5 +212,42 @@
     return html2pdf().set(config).from(wrap).save().then(cleanup, function (e) { cleanup(); throw e; });
   };
 
+  /* -- HTML -> PDF via the browser's native print engine (rock solid) ---
+     Opens the print dialog with the content rendered at full fidelity.
+     The user chooses "Save as PDF". Never produces a blank page.        */
+  PN.printHtmlAsPdf = function (html, opts) {
+    opts = opts || {};
+    var marginMm = (opts.margin != null ? opts.margin : 12);
+    var fmt = (String(opts.format || "a4").toLowerCase() === "letter") ? "Letter" : "A4";
+    var orient = opts.orientation === "landscape" ? " landscape" : "";
+    var pageCss = "<style>@page{size:" + fmt + orient + ";margin:" + marginMm + "mm}" +
+      "html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}</style>";
+    var isFull = /<html[\s>]/i.test(html);
+    var fullDoc;
+    if (isFull) {
+      if (/<head[\s>]/i.test(html)) fullDoc = html.replace(/<head([^>]*)>/i, "<head$1>" + pageCss);
+      else fullDoc = html.replace(/<html([^>]*)>/i, "<html$1><head>" + pageCss + "</head>");
+    } else {
+      fullDoc = "<!DOCTYPE html><html><head><meta charset='utf-8'>" + pageCss + "</head><body>" + html + "</body></html>";
+    }
+    var iframe = document.createElement("iframe");
+    iframe.style.cssText = "position:fixed;left:-10000px;top:0;width:820px;height:1160px;border:0;";
+    document.body.appendChild(iframe);
+    return new Promise(function (resolve) {
+      var win = iframe.contentWindow, started = false, cleaned = false;
+      function cleanup() { if (cleaned) return; cleaned = true; setTimeout(function () { if (iframe.parentNode) iframe.parentNode.removeChild(iframe); }, 800); }
+      function doPrint() {
+        if (started) return; started = true;
+        setTimeout(function () {
+          try { win.focus(); win.onafterprint = cleanup; win.print(); resolve(true); setTimeout(cleanup, 120000); }
+          catch (e) { cleanup(); resolve(false); }
+        }, 450);
+      }
+      iframe.onload = doPrint;
+      var doc = win.document; doc.open(); doc.write(fullDoc); doc.close();
+      if (doc.readyState === "complete") doPrint();
+    });
+  };
+
   window.PN = PN;
 })();
