@@ -6,9 +6,9 @@
 (function () {
   "use strict";
 
-  // Resolve path prefix so the same markup works from / and /tools/
-  var inTools = /\/tools\//.test(location.pathname);
-  var ROOT = inTools ? "../" : "./";
+  // Absolute root paths so the injected header/footer work at any depth
+  // (/, /tools/x.html, /blog/, /blog/slug/). Site is served from the domain root.
+  var ROOT = "/";
 
   // ---------------------------------------------------------------------
   // MONETIZATION & ANALYTICS — paste your IDs here once, applies to EVERY
@@ -91,6 +91,7 @@
         '<li><a href="' + toolUrl("merge-pdf") + '">Merge</a></li>' +
         '<li><a href="' + toolUrl("split-pdf") + '">Split</a></li>' +
         '<li><a href="' + toolUrl("compress-pdf") + '">Compress</a></li>' +
+        '<li><a href="' + ROOT + 'blog/">Blog</a></li>' +
         '<li><a href="' + ROOT + 'about.html">About</a></li>' +
       '</ul>' +
     '</nav></div></header>';
@@ -111,6 +112,7 @@
         '<div><h4>Tools</h4><ul>' + footCol(colA) + '</ul></div>' +
         '<div><h4>More tools</h4><ul>' + footCol(colB) + '</ul></div>' +
         '<div><h4>Company</h4><ul>' +
+          '<li><a href="' + ROOT + 'blog/">Blog</a></li>' +
           '<li><a href="' + ROOT + 'about.html">About</a></li>' +
           '<li><a href="' + ROOT + 'contact.html">Contact</a></li>' +
           '<li><a href="' + ROOT + 'privacy.html">Privacy Policy</a></li>' +
