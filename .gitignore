@@ -12,3 +12,4 @@ npm-debug.log*
 # Local env / secrets
 .env
 .env.*
+.indexnow-key
