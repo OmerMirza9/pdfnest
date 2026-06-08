@@ -65,7 +65,7 @@
   <div class="container prose">
     <h2>From document to web page</h2>
     <p>Converting a PDF to HTML is handy when you want to put a document's content online, reuse it in a website or email, or feed it into another editor. PDFNest reads the text of your PDF and wraps it in a tidy, semantic HTML page — one section per page — that you can preview instantly and download.</p>
-    <p>Because the conversion is based on the PDF's text layer, it works best on digital PDFs. Scanned pages (images) contain no text to convert and would need OCR first.</p>
+    <p>For digital PDFs, the text is extracted into clean, editable HTML. If a page has no selectable text (a scan or image), PDFNest automatically embeds a picture of that page instead — so your converted file is never blank.</p>
   </div>
 </section>
 
@@ -125,33 +125,60 @@
     }
   });
 
+  function pageToParagraphs(tc){
+    var lastY=null, line="", out="";
+    tc.items.forEach(function(it){
+      var y=it.transform[5];
+      if(lastY!==null && Math.abs(y-lastY)>4){ if(line.trim()) out+="  <p>"+esc(line.trim())+"</p>\n"; line=""; }
+      line+=it.str+" "; lastY=y;
+    });
+    if(line.trim()) out+="  <p>"+esc(line.trim())+"</p>\n";
+    return out;
+  }
+  async function pageToImage(page){
+    var vp=page.getViewport({scale:2});
+    var canvas=document.createElement("canvas");
+    canvas.width=Math.floor(vp.width); canvas.height=Math.floor(vp.height);
+    var ctx=canvas.getContext("2d");
+    ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+    await page.render({canvasContext:ctx, viewport:vp}).promise;
+    return canvas.toDataURL("image/jpeg",0.85);
+  }
+
   go.addEventListener("click", async function(){
     if(!currentBytes||!window.pdfjsLib) return;
     go.disabled=true; out.classList.add("hidden"); PN.status(statusEl,"Converting…"); PN.progress(prog,bar,5);
     try {
       var pdf=await pdfjsLib.getDocument({data:currentBytes.slice(0)}).promise; var n=pdf.numPages;
-      var body="";
+      var body="", textPages=0, imagePages=0;
       for(var p=1;p<=n;p++){
-        var page=await pdf.getPage(p); var tc=await page.getTextContent();
-        body+='<section class="page" id="page-'+p+'">\n';
-        var lastY=null, line="";
-        function flush(){ if(line.trim()) body+="  <p>"+esc(line.trim())+"</p>\n"; line=""; }
-        tc.items.forEach(function(it){
-          var y=it.transform[5];
-          if(lastY!==null && Math.abs(y-lastY)>4){ flush(); }
-          line+=it.str+(it.hasEOL?" ":" ");
-          lastY=y;
-        });
-        flush();
-        body+="</section>\n";
+        var page=await pdf.getPage(p);
+        var tc=await page.getTextContent();
+        var paras=pageToParagraphs(tc);
+        var textLen=paras.replace(/<[^>]+>/g,"").replace(/\s/g,"").length;
+        if(textLen>=5){
+          body+='<section class="page" id="page-'+p+'">\n'+paras+'</section>\n';
+          textPages++;
+        } else {
+          // No selectable text on this page (scanned/image) -> embed a rendered image
+          var img=await pageToImage(page);
+          body+='<section class="page" id="page-'+p+'"><img alt="Page '+p+'" src="'+img+'"></section>\n';
+          imagePages++;
+        }
         PN.progress(prog,bar,5+(p/n)*88);
       }
       htmlCode='<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n'+
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>Converted document</title>\n'+
-        '<style>body{font-family:Georgia,serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.6;color:#222}'+
-        '.page{padding:24px 0;border-bottom:1px solid #eee}p{margin:0 0 .8em}</style>\n</head>\n<body>\n'+body+'</body>\n</html>';
+        '<style>body{font-family:Georgia,serif;max-width:820px;margin:40px auto;padding:0 20px;line-height:1.6;color:#222}'+
+        '.page{padding:24px 0;border-bottom:1px solid #eee}.page img{width:100%;height:auto;display:block}p{margin:0 0 .8em}</style>\n</head>\n<body>\n'+body+'</body>\n</html>';
       preview.srcdoc=htmlCode;
-      PN.progress(prog,bar,100); PN.status(statusEl,n+" page"+(n>1?"s":"")+" converted."); out.classList.remove("hidden");
+      PN.progress(prog,bar,100);
+      var msg;
+      if(imagePages>0 && textPages===0) msg="This PDF has no selectable text (looks scanned), so its "+n+" page"+(n>1?"s were":" was")+" embedded as images.";
+      else if(imagePages>0) msg=textPages+" text page"+(textPages>1?"s":"")+" + "+imagePages+" image page"+(imagePages>1?"s":"")+" converted.";
+      else msg=n+" page"+(n>1?"s":"")+" converted.";
+      PN.status(statusEl,msg);
+      out.classList.remove("hidden");
       out.scrollIntoView({behavior:"smooth",block:"nearest"});
       setTimeout(function(){ PN.progress(prog,bar,null); },800);
     } catch(e){ console.error(e); PN.status(statusEl,"Something went wrong converting that PDF.",true); PN.progress(prog,bar,null); }
