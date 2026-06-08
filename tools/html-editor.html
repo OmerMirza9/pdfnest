@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://getpdfnest.com/tools/html-editor.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" href="../assets/css/style.css?v=20260608">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260609">
 </head>
 <body>
 <noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
@@ -28,15 +28,15 @@
 </section>
 
 <section class="container">
-  <div class="workspace" style="max-width:1040px">
+  <div class="workspace" style="max-width:1200px">
     <div class="editor-split">
       <div class="editor-pane">
         <h3><span class="tag">Code</span> HTML &amp; CSS</h3>
-        <textarea id="code" class="code-area" style="min-height:420px" spellcheck="false"></textarea>
+        <textarea id="code" class="code-area" style="min-height:600px" spellcheck="false"></textarea>
       </div>
       <div class="editor-pane">
         <h3><span class="tag">Preview</span> Live result</h3>
-        <iframe id="preview" class="editor-preview" style="min-height:420px" title="HTML preview"></iframe>
+        <iframe id="preview" class="editor-preview" style="min-height:600px" title="HTML preview"></iframe>
       </div>
     </div>
     <div class="toolbar">
@@ -104,8 +104,8 @@
 <div id="site-footer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="../assets/js/pdf-tools.js?v=20260608"></script>
-<script src="../assets/js/site.js?v=20260608"></script>
+<script src="../assets/js/pdf-tools.js?v=20260609"></script>
+<script src="../assets/js/site.js?v=20260609"></script>
 <script>
 (function () {
   var code=document.getElementById("code"), preview=document.getElementById("preview"),
@@ -134,17 +134,9 @@
     if(!code.value.trim()){ PN.status(statusEl,"Nothing to export yet.",true); return; }
     if(!window.html2pdf){ PN.status(statusEl,"PDF engine still loading — try again in a moment.",true); return; }
     PN.status(statusEl,"Exporting to PDF…");
-    var wrap=document.createElement("div");
-    wrap.style.cssText="position:fixed;left:-99999px;top:0;width:794px;background:#fff";
-    wrap.innerHTML=code.value;
-    document.body.appendChild(wrap);
-    var opt={ margin:10, filename:"page-pdfnest.pdf", image:{type:"jpeg",quality:0.98},
-      html2canvas:{scale:2,useCORS:true,backgroundColor:"#ffffff"},
-      jsPDF:{unit:"mm",format:"a4",orientation:"portrait"}, pagebreak:{mode:["avoid-all","css","legacy"]} };
-    html2pdf().set(opt).from(wrap).save().then(function(){
-      PN.status(statusEl,"PDF exported."); document.body.removeChild(wrap);
-    }).catch(function(e){ console.error(e); PN.status(statusEl,"Could not export PDF.",true);
-      if(wrap.parentNode) document.body.removeChild(wrap); });
+    PN.renderHtmlToPdf(code.value, { width:794, margin:10, format:"a4", orientation:"portrait", filename:"page-pdfnest.pdf" })
+      .then(function(){ PN.status(statusEl,"PDF exported."); })
+      .catch(function(e){ console.error(e); PN.status(statusEl,"Could not export PDF.",true); });
   });
 })();
 </script>

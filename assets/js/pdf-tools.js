@@ -183,5 +183,34 @@
     panel.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
+  /* -- HTML -> PDF (preserves <style>, paginates, off-screen render) ---- */
+  PN.renderHtmlToPdf = function (html, opts) {
+    opts = opts || {};
+    if (!window.html2pdf) return Promise.reject(new Error("PDF engine not loaded"));
+    var width = opts.width || 760;
+    // Parse as a full document so <style>/<link> in <head> are preserved.
+    var parsed = new DOMParser().parseFromString(html, "text/html");
+    var wrap = document.createElement("div");
+    wrap.style.cssText = "position:absolute;left:-9999px;top:0;width:" + width + "px;background:#ffffff;color:#000;";
+    if (parsed.head) {
+      Array.prototype.forEach.call(parsed.head.querySelectorAll('style,link[rel="stylesheet"]'),
+        function (n) { wrap.appendChild(n.cloneNode(true)); });
+    }
+    var bodyNode = (parsed.body && parsed.body.childNodes.length) ? parsed.body : parsed.documentElement;
+    Array.prototype.forEach.call(bodyNode.childNodes, function (n) { wrap.appendChild(n.cloneNode(true)); });
+    document.body.appendChild(wrap);
+
+    var config = {
+      margin: opts.margin != null ? opts.margin : 10,
+      filename: opts.filename || "document-pdfnest.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0, windowWidth: width },
+      jsPDF: { unit: "mm", format: opts.format || "a4", orientation: opts.orientation || "portrait" },
+      pagebreak: { mode: ["css", "legacy"] }
+    };
+    function cleanup() { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); }
+    return html2pdf().set(config).from(wrap).save().then(cleanup, function (e) { cleanup(); throw e; });
+  };
+
   window.PN = PN;
 })();
