@@ -51,7 +51,14 @@
     { slug: "jpg-to-pdf",    name: "JPG to PDF",    color: "var(--c-jpg2pdf)",  short: "Images into a PDF",      tag: "J" },
     { slug: "pdf-to-jpg",    name: "PDF to JPG",    color: "var(--c-pdf2jpg)",  short: "Pages into images",      tag: "P" },
     { slug: "watermark-pdf", name: "Watermark PDF", color: "var(--c-water)",    short: "Stamp text on pages",    tag: "W" },
-    { slug: "page-numbers",  name: "Page Numbers",  color: "var(--c-pages)",    short: "Add page numbers",       tag: "#" }
+    { slug: "page-numbers",  name: "Page Numbers",  color: "var(--c-pages)",    short: "Add page numbers",       tag: "#" },
+    { slug: "pdf-to-text",     name: "PDF to Text",     color: "var(--c-pdf2txt)",  short: "Extract text from a PDF",   tag: "TX" },
+    { slug: "pdf-to-png",      name: "PDF to PNG",      color: "var(--c-pdf2png)",  short: "Pages to PNG images",       tag: "PN" },
+    { slug: "remove-pdf-pages",name: "Remove Pages",    color: "var(--c-rmpages)",  short: "Delete pages from a PDF",   tag: "✕"  },
+    { slug: "pdf-to-html",     name: "PDF to HTML",     color: "var(--c-pdf2html)", short: "Convert a PDF to HTML",     tag: "PH" },
+    { slug: "html-to-pdf",     name: "HTML to PDF",     color: "var(--c-html2pdf)", short: "Convert HTML to a PDF",     tag: "HP" },
+    { slug: "markdown-to-pdf", name: "Markdown to PDF", color: "var(--c-md2pdf)",   short: "Markdown into a PDF",       tag: "MD" },
+    { slug: "html-editor",     name: "HTML Editor",     color: "var(--c-htmledit)", short: "Live HTML editor & preview",tag: "ED" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;
@@ -87,7 +94,7 @@
     '</nav></div></header>';
 
   // -- Footer ------------------------------------------------------------
-  var colA = TOOLS.slice(0, 4), colB = TOOLS.slice(4);
+  var colA = TOOLS.slice(0, 8), colB = TOOLS.slice(8);
   function footCol(list) {
     return list.map(function (t) { return '<li><a href="' + toolUrl(t.slug) + '">' + t.name + '</a></li>'; }).join("");
   }

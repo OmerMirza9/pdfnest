@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF to PNG — Convert PDF Pages to PNG Images Free | PDFNest</title>
+<meta name="description" content="Convert each page of a PDF into a high-quality, lossless PNG image free online. Download individually or as a ZIP. Secure, in-browser — no uploads.">
+<link rel="canonical" href="https://getpdfnest.com/tools/pdf-to-png.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PDF to PNG Free | PDFNest">
+<meta property="og:description" content="Convert PDF pages to lossless PNG images, free and private, in your browser.">
+<meta property="og:url" content="https://getpdfnest.com/tools/pdf-to-png.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<section class="tool-hero">
+  <div class="container">
+    <span class="badge" style="background:#e6f6f1;color:var(--c-pdf2png)">● PDF to PNG</span>
+    <h1>PDF to PNG</h1>
+    <p>Turn every page of your PDF into a crisp, lossless PNG image — perfect for sharp text and graphics.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Image options</h3>
+      <div class="field"><label for="quality">Resolution</label>
+        <select id="quality">
+          <option value="2">Standard — 144 DPI</option>
+          <option value="3" selected>High — 216 DPI (recommended)</option>
+          <option value="4">Maximum — 288 DPI (sharpest, largest)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Convert to PNG</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div id="resultWrap" class="hidden">
+      <div class="center" style="margin-top:18px"><button class="btn btn--primary" id="zipBtn">Download all as ZIP</button></div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to convert PDF to PNG</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Upload your PDF</h3><p>Drop the PDF you want to turn into PNG images.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick resolution</h3><p>Higher DPI gives sharper images and larger files.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Save each PNG, or grab them all in one ZIP.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Lossless images for sharp text and logos</h2>
+    <p>PNG is a lossless format, which makes it the best choice when your PDF pages contain crisp text, diagrams, screenshots or logos that you don't want softened by compression. PDFNest renders each page at the resolution you choose and lets you download the images one by one or together as a ZIP — all privately in your browser.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>PDF to PNG — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>PNG or JPG — which is better?</summary><p>PNG is lossless and ideal for text and graphics. JPG makes smaller files and suits photos. Need JPG? Use our PDF to JPG tool.</p></details>
+      <details><summary>Can I download all pages at once?</summary><p>Yes — use "Download all as ZIP" to get every PNG in one file.</p></details>
+      <details><summary>Is anything uploaded?</summary><p>No. The conversion runs entirely in your browser.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="pdf-to-jpg.html"><span class="dot" style="background:var(--c-pdf2jpg)">P</span>PDF to JPG</a>
+      <a href="jpg-to-pdf.html"><span class="dot" style="background:var(--c-jpg2pdf)">J</span>JPG to PDF</a>
+      <a href="pdf-to-text.html"><span class="dot" style="background:var(--c-pdf2txt)">TX</span>PDF to Text</a>
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"PNG or JPG, which is better?","acceptedAnswer":{"@type":"Answer","text":"PNG is lossless and ideal for text and graphics. JPG makes smaller files and suits photos."}},
+{"@type":"Question","name":"Can I download all pages at once?","acceptedAnswer":{"@type":"Answer","text":"Yes, use Download all as ZIP to get every PNG in one file."}},
+{"@type":"Question","name":"Is anything uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The conversion runs entirely in your browser."}}
+]}
+</script>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="../assets/js/pdf-tools.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var go=document.getElementById("go"), statusEl=document.getElementById("status"), opts=document.getElementById("opts"),
+      resultWrap=document.getElementById("resultWrap"), thumbs=document.getElementById("thumbs"), zipBtn=document.getElementById("zipBtn"),
+      prog=document.getElementById("prog"), bar=document.getElementById("bar");
+  var currentBytes=null, rendered=[];
+
+  var fm = PN.fileManager({
+    zone:document.getElementById("zone"), input:document.getElementById("input"), list:document.getElementById("list"),
+    accept:"application/pdf", multiple:false, color:"var(--c-pdf2png)",
+    onChange: async function(files){
+      resultWrap.classList.add("hidden"); thumbs.innerHTML="";
+      if(!files.length){ opts.classList.add("hidden"); go.disabled=true; currentBytes=null; return; }
+      try { currentBytes=await PN.readBytes(files[0]); opts.classList.remove("hidden"); go.disabled=false; PN.status(statusEl,""); }
+      catch(e){ PN.status(statusEl,"Could not read that PDF.",true); }
+    }
+  });
+
+  go.addEventListener("click", async function(){
+    if(!currentBytes||!window.pdfjsLib) return;
+    go.disabled=true; resultWrap.classList.add("hidden"); thumbs.innerHTML=""; rendered=[];
+    var scale=parseFloat(document.getElementById("quality").value);
+    PN.status(statusEl,"Rendering pages…"); PN.progress(prog,bar,5);
+    try {
+      var pdf=await pdfjsLib.getDocument({data:currentBytes.slice(0)}).promise; var n=pdf.numPages;
+      for(var p=1;p<=n;p++){
+        var page=await pdf.getPage(p); var vp=page.getViewport({scale:scale});
+        var canvas=document.createElement("canvas"); canvas.width=Math.floor(vp.width); canvas.height=Math.floor(vp.height);
+        var ctx=canvas.getContext("2d"); ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality="high";
+        await page.render({canvasContext:ctx, viewport:vp}).promise;
+        var blob=await new Promise(function(r){ canvas.toBlob(r,"image/png"); });
+        rendered.push(blob); addThumb(canvas.toDataURL("image/png"), blob, p);
+        PN.progress(prog,bar,5+(p/n)*90);
+      }
+      PN.progress(prog,bar,100); PN.status(statusEl,"Done — "+n+" PNG"+(n>1?"s":"")+" ready."); resultWrap.classList.remove("hidden");
+      resultWrap.scrollIntoView({behavior:"smooth",block:"nearest"});
+      setTimeout(function(){ PN.progress(prog,bar,null); },800);
+    } catch(e){ console.error(e); PN.status(statusEl,"Something went wrong converting that PDF.",true); PN.progress(prog,bar,null); }
+    finally { go.disabled=false; }
+  });
+
+  function addThumb(src, blob, p){
+    var div=document.createElement("div"); div.className="thumb";
+    div.innerHTML='<img alt="Page '+p+'" src="'+src+'"><a class="thumb__dl" href="#">Page '+p+' ↓</a>';
+    div.querySelector(".thumb__dl").addEventListener("click", function(e){ e.preventDefault(); PN.downloadBlob(blob,"page-"+String(p).padStart(3,"0")+"-pdfnest.png"); });
+    thumbs.appendChild(div);
+  }
+  zipBtn.addEventListener("click", async function(){
+    if(!rendered.length) return; zipBtn.disabled=true; var old=zipBtn.textContent; zipBtn.textContent="Zipping…";
+    try { var zip=new JSZip(); rendered.forEach(function(b,i){ zip.file("page-"+String(i+1).padStart(3,"0")+".png", b); });
+      var blob=await zip.generateAsync({type:"blob"}); PN.downloadBlob(blob,"pdf-to-png-pdfnest.zip");
+    } finally { zipBtn.disabled=false; zipBtn.textContent=old; }
+  });
+})();
+</script>
+</body>
+</html>
