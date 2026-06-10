@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="PDFNest — free and private PDF tools">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3f1fe"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#6c5ce7"/>
+  <g transform="translate(96,86)">
+    <rect width="116" height="116" rx="28" fill="#6c5ce7"/>
+    <text x="58" y="76" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">PDF</text>
+  </g>
+  <text x="236" y="168" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800" fill="#1a1a2e">PDF<tspan fill="#6c5ce7">Nest</tspan></text>
+  <text x="96" y="320" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="800" fill="#1a1a2e">Every PDF tool you need —</text>
+  <text x="96" y="394" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="800" fill="#6c5ce7">free &amp; private.</text>
+  <text x="96" y="456" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#41415a">Merge · Split · Compress · Convert · Protect — 100% in your browser.</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#5849c2">
+    <rect x="96" y="512" width="208" height="58" rx="29" fill="#efedfe"/><text x="200" y="549" text-anchor="middle">No uploads</text>
+    <rect x="324" y="512" width="196" height="58" rx="29" fill="#efedfe"/><text x="422" y="549" text-anchor="middle">No sign-up</text>
+    <rect x="540" y="512" width="236" height="58" rx="29" fill="#efedfe"/><text x="658" y="549" text-anchor="middle">No watermarks</text>
+  </g>
+</svg>
