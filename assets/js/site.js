@@ -60,7 +60,8 @@
     { slug: "markdown-to-pdf", name: "Markdown to PDF", color: "var(--c-md2pdf)",   short: "Markdown into a PDF",       tag: "MD" },
     { slug: "html-editor",     name: "HTML Editor",     color: "var(--c-htmledit)", short: "Live HTML editor & preview",tag: "ED" },
     { slug: "protect-pdf",     name: "Protect PDF",     color: "var(--c-protect)",  short: "Add a password to a PDF",   tag: "LK" },
-    { slug: "unlock-pdf",      name: "Unlock PDF",      color: "var(--c-unlock)",   short: "Remove a PDF password",     tag: "UL" }
+    { slug: "unlock-pdf",      name: "Unlock PDF",      color: "var(--c-unlock)",   short: "Remove a PDF password",     tag: "UL" },
+    { slug: "pdf-to-image",    name: "PDF to Image",    color: "var(--c-pdf2jpg)",  short: "PDF pages to JPG/PNG",      tag: "IMG" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;
