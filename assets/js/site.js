@@ -15,8 +15,9 @@
   // page automatically. Leave blank to disable. See SETUP-MONETIZATION.md.
   // ---------------------------------------------------------------------
   var CONFIG = {
-    ADSENSE_PUB_ID: "",  // from Google AdSense, e.g. "ca-pub-1234567890123456"
-    GA4_ID: ""           // from Google Analytics, e.g. "G-XXXXXXXXXX"
+    ADSENSE_PUB_ID: "",                 // from Google AdSense, e.g. "ca-pub-1234567890123456"
+    GA4_ID: "",                         // from Google Analytics, e.g. "G-XXXXXXXXXX"
+    GADS_ID: "AW-16669053935"           // from Google Ads, e.g. "AW-XXXXXXXXXX"
   };
 
   function injectThirdParty() {
@@ -29,16 +30,20 @@
       ad.crossOrigin = "anonymous";
       head.appendChild(ad);
     }
-    // Google Analytics 4
-    if (CONFIG.GA4_ID) {
-      var ga = document.createElement("script");
-      ga.async = true;
-      ga.src = "https://www.googletagmanager.com/gtag/js?id=" + CONFIG.GA4_ID;
-      head.appendChild(ga);
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function () { window.dataLayer.push(arguments); };
-      window.gtag("js", new Date());
-      window.gtag("config", CONFIG.GA4_ID);
+    // Google tag (gtag.js) — shared loader for Google Analytics 4 and/or Google Ads.
+    // Loads the gtag.js library once, then registers each configured ID.
+    if (CONFIG.GA4_ID || CONFIG.GADS_ID) {
+      if (!window.gtag) {
+        var gt = document.createElement("script");
+        gt.async = true;
+        gt.src = "https://www.googletagmanager.com/gtag/js?id=" + (CONFIG.GA4_ID || CONFIG.GADS_ID);
+        head.appendChild(gt);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+      }
+      if (CONFIG.GA4_ID) window.gtag("config", CONFIG.GA4_ID);
+      if (CONFIG.GADS_ID) window.gtag("config", CONFIG.GADS_ID);
     }
   }
 
