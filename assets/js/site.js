@@ -15,7 +15,7 @@
   // page automatically. Leave blank to disable. See SETUP-MONETIZATION.md.
   // ---------------------------------------------------------------------
   var CONFIG = {
-    ADSENSE_PUB_ID: "",                 // from Google AdSense, e.g. "ca-pub-1234567890123456"
+    ADSENSE_PUB_ID: "ca-pub-4015370906333",  // from Google AdSense (VERIFY exact digits against AdSense)
     GA4_ID: "",                         // from Google Analytics, e.g. "G-XXXXXXXXXX"
     GADS_ID: "AW-16669053935"           // from Google Ads, e.g. "AW-XXXXXXXXXX"
   };
