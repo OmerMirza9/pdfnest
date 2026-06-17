@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image to Text (OCR) — Extract Text From Images &amp; Scanned PDFs Free</title>
+<meta name="description" content="Free OCR: convert images (JPG, PNG) and scanned PDFs to editable text right in your browser. No upload, no sign-up — your files never leave your device. Supports multiple languages.">
+<link rel="canonical" href="https://getpdfnest.com/tools/image-to-text.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image to Text (OCR) — Extract Text From Images &amp; Scanned PDFs">
+<meta property="og:description" content="Free in-browser OCR for images and scanned PDFs. No upload, no sign-up.">
+<meta property="og:url" content="https://getpdfnest.com/tools/image-to-text.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260615">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Image to Text (OCR)","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/image-to-text.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["OCR images to text","OCR scanned PDFs to text","Multiple languages","No watermark","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to extract text from an image or scanned PDF","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your image or scanned PDF","text":"Open the Image to Text tool and drop in a JPG, PNG or scanned PDF. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Choose the language","text":"Select the language of the text so the OCR engine recognises the characters accurately."},
+{"@type":"HowToStep","name":"Recognise and download","text":"Click Extract text, then copy the result or download it as a .txt file."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Image to Text","item":"https://getpdfnest.com/tools/image-to-text.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I convert an image to text for free?","acceptedAnswer":{"@type":"Answer","text":"Open the PDFNest Image to Text tool, add a JPG or PNG, choose the language and click Extract text. The OCR runs in your browser, so nothing is uploaded, and you can copy the text or download it as a .txt file."}},
+{"@type":"Question","name":"Can I extract text from a scanned PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. This tool uses OCR (Optical Character Recognition), so it reads scanned or photographed PDF pages where the text is an image. Each page is recognised and turned into editable text."}},
+{"@type":"Question","name":"Is the OCR done on a server?","acceptedAnswer":{"@type":"Answer","text":"No. The recognition runs entirely in your web browser using WebAssembly, so your images and PDFs never leave your device."}},
+{"@type":"Question","name":"Which languages are supported?","acceptedAnswer":{"@type":"Answer","text":"English plus common languages such as Spanish, French, German, Italian and Portuguese. Choose the language that matches your document for the best accuracy."}},
+{"@type":"Question","name":"Why is OCR not 100% accurate?","acceptedAnswer":{"@type":"Answer","text":"OCR reads pixels, so results depend on image quality. Sharp, high-contrast, straight scans give the best accuracy; blurry photos, handwriting and unusual fonts are harder."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Image to Text (OCR)</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#e6f9f4;color:var(--c-pdf2txt)">● Image to Text (OCR)</span>
+    <h1>Image to Text (OCR)</h1>
+    <p class="answer"><strong>To turn an image or scanned PDF into text, drop your file in below, choose its language and click Extract text — the OCR runs in your browser, so nothing is uploaded, and you get editable text to copy or download.</strong></p>
+    <p>Convert JPG, PNG and <strong>scanned PDFs</strong> into real, selectable text. Recognition happens locally on your device — your files never leave your computer.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7V5a1 1 0 0 1 1-1h2M20 7V5a1 1 0 0 0-1-1h-2M4 17v2a1 1 0 0 0 1 1h2M20 17v2a1 1 0 0 1-1 1h-2M8 9.5h8M8 13h6"/></svg></div>
+      <h3>Drop an image or scanned PDF</h3><p>or click to choose a file</p>
+      <small>JPG, PNG or PDF — add several if you like</small>
+    </div>
+    <input type="file" id="input" accept="image/*,application/pdf" multiple class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>OCR options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="lang">Document language</label>
+          <select id="lang">
+            <option value="eng" selected>English</option>
+            <option value="spa">Spanish (Español)</option>
+            <option value="fra">French (Français)</option>
+            <option value="deu">German (Deutsch)</option>
+            <option value="ita">Italian (Italiano)</option>
+            <option value="por">Portuguese (Português)</option>
+          </select>
+        </div>
+      </div>
+      <div class="hint">Pick the language that matches the text for the best accuracy. The first run downloads the language data (a few MB), then it's cached. Sharp, high-contrast scans give the best results.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Extract text</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+
+    <div id="resultWrap" class="hidden" style="margin-top:18px">
+      <textarea id="outText" readonly style="width:100%;min-height:280px;padding:14px;border:1px solid var(--line);border-radius:10px;font:14px/1.55 ui-monospace,Menlo,Consolas,monospace;resize:vertical;background:#fff"></textarea>
+      <div class="center" style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn--accent" id="dlBtn">Download .txt</button>
+        <button class="btn btn--ghost" id="copyBtn">Copy text</button>
+      </div>
+    </div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to convert an image or scanned PDF to text</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Upload your file</h3><p>Drop in a JPG, PNG or scanned PDF — it stays on your device.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick the language</h3><p>Choose the language of the text so OCR reads it accurately.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Copy or download</h3><p>Click Extract text, then copy it or save it as a .txt file.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Turn pictures of text into editable text</h2>
+    <p>A photo of a receipt, a scanned contract, a screenshot of a paragraph — to your computer these are just <em>images</em>. The words inside them aren't text you can select or search; they're pixels. <strong>OCR</strong> (Optical Character Recognition) looks at those pixels and works out the letters, turning the picture back into real, editable text.</p>
+    <p>PDFNest runs a full OCR engine (Tesseract, compiled to WebAssembly) <strong>inside your browser</strong>. That's unusual — most OCR sites upload your document to a server. Here, your file is read locally, so even an ID, a bank statement or a confidential contract never leaves your device.</p>
+    <h3>Getting the most accurate results</h3>
+    <ul>
+      <li><strong>Use a sharp, high-contrast scan.</strong> Clean black-on-white text reads far better than a dim phone photo.</li>
+      <li><strong>Straighten the page.</strong> Skewed or rotated text lowers accuracy — crop and align first if you can.</li>
+      <li><strong>Match the language.</strong> Selecting the correct language helps the engine recognise accented characters and word shapes.</li>
+      <li><strong>Printed beats handwritten.</strong> OCR is built for printed type; handwriting is much less reliable.</li>
+    </ul>
+    <p>Already have a PDF that contains real (selectable) text? You don't need OCR — the faster <a href="/tools/pdf-to-text.html">PDF to Text tool</a> extracts it directly. Use this OCR tool when the PDF is a <em>scan</em> and copy-paste gives you nothing.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Image to Text — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I convert an image to text for free?</summary><p>Add a JPG or PNG above, choose the language and click Extract text. OCR runs in your browser — copy the result or download it as a .txt file. Nothing is uploaded.</p></details>
+      <details><summary>Can I extract text from a scanned PDF?</summary><p>Yes — the tool OCRs each page of a scanned PDF and turns it into editable text.</p></details>
+      <details><summary>Is the OCR done on a server?</summary><p>No. It runs entirely in your browser with WebAssembly, so your files never leave your device.</p></details>
+      <details><summary>Which languages are supported?</summary><p>English plus Spanish, French, German, Italian and Portuguese. Pick the one that matches your document.</p></details>
+      <details><summary>Why isn't OCR 100% accurate?</summary><p>OCR reads pixels, so quality matters. Sharp, straight, high-contrast scans are most accurate; blurry photos and handwriting are harder.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="pdf-to-text.html"><span class="dot" style="background:var(--c-pdf2txt)">TX</span>PDF to Text</a>
+      <a href="pdf-to-image.html"><span class="dot" style="background:var(--c-pdf2jpg)">IMG</span>PDF to Image</a>
+      <a href="image-to-pdf.html"><span class="dot" style="background:var(--c-jpg2pdf)">IP</span>Image to PDF</a>
+      <a href="pdf-to-html.html"><span class="dot" style="background:var(--c-pdf2html)">PH</span>PDF to HTML</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260615"></script>
+<script src="../assets/js/site.js?v=20260615"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var go=document.getElementById("go"), statusEl=document.getElementById("status"), opts=document.getElementById("opts"),
+      resultWrap=document.getElementById("resultWrap"), outText=document.getElementById("outText"),
+      dlBtn=document.getElementById("dlBtn"), copyBtn=document.getElementById("copyBtn"),
+      prog=document.getElementById("prog"), bar=document.getElementById("bar");
+  var hasFiles=false;
+
+  function isPdf(f){ return f.type==="application/pdf" || /\.pdf$/i.test(f.name); }
+
+  var fm = PN.fileManager({
+    zone:document.getElementById("zone"), input:document.getElementById("input"), list:document.getElementById("list"),
+    accept:"image/*,application/pdf", multiple:true, color:"var(--c-pdf2txt)",
+    onChange: function(files){
+      hasFiles = files.length>0;
+      opts.classList.toggle("hidden", !hasFiles);
+      go.disabled = !hasFiles;
+      resultWrap.classList.add("hidden");
+      PN.status(statusEl,"");
+    }
+  });
+
+  go.addEventListener("click", async function(){
+    var files = fm.files; if(!files.length) return;
+    if(typeof Tesseract==="undefined"){ PN.status(statusEl,"OCR engine is still loading — try again in a moment.",true); return; }
+    go.disabled=true; resultWrap.classList.add("hidden");
+    var lang=document.getElementById("lang").value;
+    PN.status(statusEl,"Loading OCR engine…"); PN.progress(prog,bar,4);
+    var worker;
+    try{
+      // Build the list of images to recognise (PDF pages are rendered to canvas first).
+      var tasks=[];
+      for(var i=0;i<files.length;i++){
+        var f=files[i];
+        if(isPdf(f)){
+          if(!window.pdfjsLib){ PN.status(statusEl,"Could not load the PDF engine.",true); go.disabled=false; return; }
+          var bytes=await PN.readBytes(f);
+          var pdf=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise;
+          for(var p=1;p<=pdf.numPages;p++) tasks.push({pdf:pdf, page:p, name:f.name});
+        } else {
+          tasks.push({image:f, name:f.name});
+        }
+      }
+      if(!tasks.length){ PN.status(statusEl,"No readable image or PDF found.",true); go.disabled=false; return; }
+
+      worker = await Tesseract.createWorker(lang, 1, { logger:function(m){
+        if(m.status==="recognizing text"){ /* per-page progress handled coarsely below */ }
+      }});
+
+      var out="";
+      for(var t=0;t<tasks.length;t++){
+        var task=tasks[t];
+        PN.status(statusEl,"Reading "+(t+1)+" of "+tasks.length+"…");
+        var src;
+        if(task.image){
+          src=task.image;
+        } else {
+          var page=await task.pdf.getPage(task.page);
+          var vp=page.getViewport({scale:2.5});
+          var canvas=document.createElement("canvas");
+          canvas.width=Math.floor(vp.width); canvas.height=Math.floor(vp.height);
+          var cx=canvas.getContext("2d"); cx.fillStyle="#fff"; cx.fillRect(0,0,canvas.width,canvas.height);
+          await page.render({canvasContext:cx, viewport:vp}).promise;
+          src=canvas;
+        }
+        var res=await worker.recognize(src);
+        var text=(res && res.data && res.data.text ? res.data.text : "").replace(/\s+$/,"");
+        var label = tasks.length>1 ? ("===== "+(task.image ? task.name : (task.name+" — page "+task.page))+" =====\n") : "";
+        out += label + text + "\n\n";
+        PN.progress(prog,bar,4+((t+1)/tasks.length)*92);
+      }
+      await worker.terminate(); worker=null;
+
+      outText.value = out.replace(/\s+$/,"");
+      resultWrap.classList.remove("hidden");
+      PN.progress(prog,bar,100);
+      PN.status(statusEl,"Done — text extracted from "+tasks.length+(tasks.length>1?" pages.":" page."));
+      resultWrap.scrollIntoView({behavior:"smooth",block:"nearest"});
+      setTimeout(function(){ PN.progress(prog,bar,null); },800);
+    }catch(e){
+      console.error(e); PN.status(statusEl,"Something went wrong during OCR. Try a clearer scan or a different language.",true); PN.progress(prog,bar,null);
+      if(worker){ try{ await worker.terminate(); }catch(_){} }
+    }finally{ go.disabled=false; }
+  });
+
+  dlBtn.addEventListener("click", function(){
+    if(!outText.value) return;
+    PN.downloadBlob(new Blob([outText.value],{type:"text/plain;charset=utf-8"}), "ocr-text-pdfnest.txt");
+  });
+  copyBtn.addEventListener("click", async function(){
+    if(!outText.value) return;
+    try{ await navigator.clipboard.writeText(outText.value); var o=copyBtn.textContent; copyBtn.textContent="Copied!"; setTimeout(function(){ copyBtn.textContent=o; },1500); }
+    catch(_){ outText.select(); document.execCommand("copy"); }
+  });
+})();
+</script>
+</body>
+</html>
