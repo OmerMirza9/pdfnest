@@ -134,6 +134,55 @@
       '</div>' +
     '</div></footer>';
 
+  // -- Per-tool-page enrichment ------------------------------------------
+  // Older tool pages shipped with only FAQ schema and no breadcrumb. This
+  // brings every tool page up to the standard of the pages Google already
+  // indexed: a visible breadcrumb + BreadcrumbList + SoftwareApplication
+  // structured data. Generated from the TOOLS registry so each is distinct.
+  function enrichToolPage() {
+    var m = location.pathname.match(/\/tools\/([a-z0-9-]+)\.html$/i);
+    if (!m) return;
+    var slug = m[1], tool = null;
+    for (var i = 0; i < TOOLS.length; i++) { if (TOOLS[i].slug === slug) { tool = TOOLS[i]; break; } }
+    if (!tool) return;
+    var absUrl = "https://getpdfnest.com/tools/" + slug + ".html";
+
+    // Visible breadcrumb — only if the page doesn't already have one.
+    if (!document.querySelector(".breadcrumb")) {
+      var hdr = document.querySelector(".site-header");
+      if (hdr && hdr.parentNode) {
+        var wrap = document.createElement("div");
+        wrap.className = "container";
+        wrap.innerHTML = '<nav class="breadcrumb"><a href="/">Home</a><span>›</span>' + tool.name + '</nav>';
+        hdr.parentNode.insertBefore(wrap, hdr.nextSibling);
+      }
+    }
+
+    // Structured data — add only the types not already present on the page.
+    var existing = "";
+    var blocks = document.querySelectorAll('script[type="application/ld+json"]');
+    for (var j = 0; j < blocks.length; j++) existing += blocks[j].textContent;
+    var add = [];
+    if (existing.indexOf("BreadcrumbList") === -1) {
+      add.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getpdfnest.com/" },
+        { "@type": "ListItem", "position": 2, "name": tool.name, "item": absUrl }
+      ]});
+    }
+    if (existing.indexOf("SoftwareApplication") === -1) {
+      add.push({ "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PDFNest " + tool.name,
+        "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "url": absUrl,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [tool.short, "No watermark", "No upload — runs in your browser"] });
+    }
+    for (var k = 0; k < add.length; k++) {
+      var s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify(add[k]);
+      document.head.appendChild(s);
+    }
+  }
+
   // -- Inject ------------------------------------------------------------
   function inject() {
     injectThirdParty();
@@ -150,6 +199,8 @@
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
       });
     }
+
+    enrichToolPage();
   }
 
   if (document.readyState === "loading") {
