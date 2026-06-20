@@ -5,7 +5,7 @@ browser** — files are never uploaded to a server. Built as a plain static
 site (HTML + CSS + vanilla JS), so it costs **$0 to host** and deploys
 anywhere.
 
-> Live domain: **getpdfnest.com**
+> 🔗 **Live site: [getpdfnest.com](https://getpdfnest.com)** — free online PDF tools (merge, split, compress, convert, OCR), 100% in your browser.
 
 ## ✨ Tools included
 
