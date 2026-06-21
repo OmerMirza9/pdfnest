@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translate PDF — Translate PDF Text Free Online (50+ Languages)</title>
+<meta name="description" content="Translate the text of a PDF into another language free. Extracts the text in your browser, translates it, and gives you the result to copy or download. 50+ languages.">
+<link rel="canonical" href="https://getpdfnest.com/tools/translate-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Translate PDF — Translate PDF Text Free Online">
+<meta property="og:description" content="Translate a PDF's text into another language, free. 50+ languages, copy or download the result.">
+<meta property="og:url" content="https://getpdfnest.com/tools/translate-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260619">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Translate PDF","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/translate-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Translate PDF text","50+ languages","Copy or download translation","Free"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to translate a PDF","totalTime":"PT2M","step":[
+{"@type":"HowToStep","name":"Add your PDF","text":"Open the PDFNest Translate PDF tool and drop your PDF in. Its text is extracted in your browser."},
+{"@type":"HowToStep","name":"Choose languages","text":"Pick the language the PDF is in and the language to translate it into."},
+{"@type":"HowToStep","name":"Translate and download","text":"Click Translate, then copy the translated text or download it as a file."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Translate PDF","item":"https://getpdfnest.com/tools/translate-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I translate a PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Open the PDFNest Translate PDF tool, add your PDF, choose the source and target languages, and click Translate. The text is extracted in your browser and translated, then you can copy it or download it."}},
+{"@type":"Question","name":"Is the translation private?","acceptedAnswer":{"@type":"Answer","text":"Unlike PDFNest's other tools, translation needs an external translation service, so the extracted text is sent to that service to be translated. Don't use it for confidential documents — for those, translate manually."}},
+{"@type":"Question","name":"What languages are supported?","acceptedAnswer":{"@type":"Answer","text":"More than 50 languages including Spanish, French, German, Arabic, Chinese, Hindi, Urdu, Russian, Japanese and many more."}},
+{"@type":"Question","name":"Does it keep the PDF layout?","acceptedAnswer":{"@type":"Answer","text":"It translates the text content and gives you the translated text to copy or download. It does not rebuild the original page layout in the new language."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Translate PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#fff0e6;color:var(--c-md2pdf)">● Translate PDF</span>
+    <h1>Translate PDF</h1>
+    <p class="answer"><strong>To translate a PDF, drop it in below, choose the language it's in and the language you want, then click Translate — PDFNest pulls out the text and translates it for you to copy or download.</strong></p>
+    <p>Translate the text of a PDF into 50+ languages. The text is extracted in your browser; translation is then done by an external service (see the note below).</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:.92rem;color:#9a3412">
+      <strong>⚠️ Privacy note:</strong> Unlike every other PDFNest tool, translation can't be done offline — your PDF's <strong>text is sent to a translation service</strong> (MyMemory) to be translated. The file itself isn't uploaded, but the text is. <strong>Please don't translate confidential documents here.</strong>
+    </div>
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h7M9 3v2c0 4-2 7-6 8M5 9c0 3 3 5 7 6M12 20l4-9 4 9M14.5 17h5"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Languages</h3>
+      <div class="grid-2">
+        <div class="field"><label for="src">PDF is in</label><select id="src"></select></div>
+        <div class="field"><label for="tgt">Translate to</label><select id="tgt"></select></div>
+      </div>
+      <div class="hint">Long PDFs are translated in chunks and can take a little while. The free service has a daily limit, so very large documents may stop partway.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Translate</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+
+    <div id="resultWrap" class="hidden" style="margin-top:18px">
+      <textarea id="outText" readonly style="width:100%;min-height:280px;padding:14px;border:1px solid var(--line);border-radius:10px;font:15px/1.6 inherit;resize:vertical;background:#fff"></textarea>
+      <div class="center" style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn--accent" id="dlBtn">Download .txt</button>
+        <button class="btn btn--ghost" id="copyBtn">Copy text</button>
+      </div>
+    </div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 The PDF file stays on your device — only its text is sent for translation</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to translate a PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your PDF</h3><p>Drop the PDF — its text is extracted in your browser.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick languages</h3><p>Choose the source and target language.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Translate</h3><p>Copy the translated text or download it as a file.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Translate a PDF's text into another language</h2>
+    <p>Need to understand a contract, letter or article in another language? <strong>Translate PDF</strong> reads the text out of your PDF and translates it into the language you choose, then hands you the result to copy or download. It works for any text-based PDF in 50+ languages.</p>
+    <p>Two honest caveats. First, <strong>translation isn't local</strong> — there's no offline translation engine, so the extracted text is sent to a translation service (the PDF file itself never leaves your device, but the text does), which is why we flag it above. Second, if your PDF is a <em>scan</em> (images of pages), there's no text to extract — run it through <a href="ocr-pdf.html">OCR PDF</a> or <a href="image-to-text.html">Image to Text</a> first, then translate the result.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Translate PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I translate a PDF for free?</summary><p>Add your PDF, choose the source and target languages, and click Translate. The text is extracted in your browser and translated, then you copy or download it.</p></details>
+      <details><summary>Is it private?</summary><p>The PDF file stays on your device, but the extracted text is sent to an external translation service. Don't use it for confidential documents.</p></details>
+      <details><summary>What if my PDF is a scan?</summary><p>Scans have no text to extract — OCR it first with OCR PDF or Image to Text, then translate.</p></details>
+      <details><summary>Does it keep the layout?</summary><p>It gives you the translated text; it doesn't rebuild the original page layout.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="pdf-to-text.html"><span class="dot" style="background:var(--c-pdf2txt)">TX</span>PDF to Text</a>
+      <a href="ocr-pdf.html"><span class="dot" style="background:var(--c-pdf2txt)">OP</span>OCR PDF</a>
+      <a href="image-to-text.html"><span class="dot" style="background:var(--c-pdf2txt)">OCR</span>Image to Text</a>
+      <a href="edit-pdf.html"><span class="dot" style="background:var(--c-water)">EP</span>Edit PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="../assets/js/pdf-tools.js?v=20260619"></script>
+<script src="../assets/js/site.js?v=20260619"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var go=document.getElementById("go"), statusEl=document.getElementById("status"), opts=document.getElementById("opts"),
+      resultWrap=document.getElementById("resultWrap"), outText=document.getElementById("outText"),
+      prog=document.getElementById("prog"), bar=document.getElementById("bar"), srcSel=document.getElementById("src"), tgtSel=document.getElementById("tgt");
+  var currentBytes=null;
+
+  var LANGS=[["en","English"],["es","Spanish"],["fr","French"],["de","German"],["it","Italian"],["pt","Portuguese"],
+    ["nl","Dutch"],["ru","Russian"],["ar","Arabic"],["ur","Urdu"],["hi","Hindi"],["zh-CN","Chinese (Simplified)"],
+    ["ja","Japanese"],["ko","Korean"],["tr","Turkish"],["fa","Persian"],["pl","Polish"],["uk","Ukrainian"],
+    ["id","Indonesian"],["vi","Vietnamese"],["th","Thai"],["sv","Swedish"],["el","Greek"],["he","Hebrew"],["ro","Romanian"],["bn","Bengali"]];
+  LANGS.forEach(function(l){ var o1=document.createElement("option"); o1.value=l[0]; o1.textContent=l[1]; srcSel.appendChild(o1);
+    var o2=document.createElement("option"); o2.value=l[0]; o2.textContent=l[1]; tgtSel.appendChild(o2); });
+  srcSel.value="en"; tgtSel.value="es";
+
+  var fm = PN.fileManager({
+    zone:document.getElementById("zone"), input:document.getElementById("input"), list:document.getElementById("list"),
+    accept:"application/pdf", multiple:false, color:"var(--c-md2pdf)",
+    onChange: async function(files){
+      resultWrap.classList.add("hidden");
+      if(!files.length){ opts.classList.add("hidden"); go.disabled=true; currentBytes=null; return; }
+      try { currentBytes=await PN.readBytes(files[0]); opts.classList.remove("hidden"); go.disabled=false; PN.status(statusEl,""); }
+      catch(e){ PN.status(statusEl,"Could not read that PDF.",true); }
+    }
+  });
+
+  async function extractText(bytes){
+    var pdf=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise; var all=[];
+    for(var p=1;p<=pdf.numPages;p++){ var page=await pdf.getPage(p); var tc=await page.getTextContent();
+      all.push(tc.items.map(function(i){return i.str;}).join(" ")); }
+    return all.join("\n\n");
+  }
+
+  function chunk(text, max){
+    var parts=[], buf=""; var pieces=text.split(/(\s+)/);
+    for(var i=0;i<pieces.length;i++){ if((buf+pieces[i]).length>max){ if(buf)parts.push(buf); buf=pieces[i]; if(buf.length>max){ // hard-split very long token
+          while(buf.length>max){ parts.push(buf.slice(0,max)); buf=buf.slice(max);} } } else buf+=pieces[i]; }
+    if(buf.trim())parts.push(buf);
+    return parts.filter(function(s){return s.trim();});
+  }
+
+  async function translateChunk(q, pair){
+    var url="https://api.mymemory.translated.net/get?q="+encodeURIComponent(q)+"&langpair="+encodeURIComponent(pair);
+    var r=await fetch(url); var d=await r.json();
+    if(d && d.responseStatus && d.responseStatus!==200 && d.responseStatus!=="200"){ throw new Error((d.responseDetails||"limit reached")); }
+    return (d && d.responseData && d.responseData.translatedText) || "";
+  }
+
+  go.addEventListener("click", async function(){
+    if(!currentBytes||!window.pdfjsLib) return;
+    var src=srcSel.value, tgt=tgtSel.value;
+    if(src===tgt){ PN.status(statusEl,"Pick two different languages.",true); return; }
+    go.disabled=true; resultWrap.classList.add("hidden"); PN.status(statusEl,"Reading the PDF…"); PN.progress(prog,bar,5);
+    try {
+      var text=await extractText(currentBytes);
+      if(!text.trim()){ PN.status(statusEl,"No selectable text found — if this is a scan, OCR it first.",true); PN.progress(prog,bar,null); go.disabled=false; return; }
+      var chunks=chunk(text, 480), outArr=[];
+      PN.status(statusEl,"Translating…");
+      for(var i=0;i<chunks.length;i++){
+        var tr=await translateChunk(chunks[i], src+"|"+tgt);
+        outArr.push(tr);
+        PN.progress(prog,bar,5+((i+1)/chunks.length)*90);
+        await new Promise(function(r){ setTimeout(r,250); });
+      }
+      outText.value=outArr.join("");
+      resultWrap.classList.remove("hidden");
+      PN.progress(prog,bar,100); PN.status(statusEl,"Done — translated "+chunks.length+" text chunk"+(chunks.length>1?"s":"")+".");
+      resultWrap.scrollIntoView({behavior:"smooth",block:"nearest"});
+      setTimeout(function(){ PN.progress(prog,bar,null); },800);
+    } catch(e){ console.error(e);
+      if((outText.value||"").length){ resultWrap.classList.remove("hidden"); PN.status(statusEl,"Stopped early: "+e.message+" (partial translation shown).",true); }
+      else { PN.status(statusEl,"Translation failed: "+e.message,true); }
+      PN.progress(prog,bar,null);
+    }
+    finally { go.disabled=false; }
+  });
+
+  document.getElementById("dlBtn").addEventListener("click", function(){ if(!outText.value) return; PN.downloadBlob(new Blob([outText.value],{type:"text/plain;charset=utf-8"}), "translated-pdfnest.txt"); });
+  document.getElementById("copyBtn").addEventListener("click", async function(){ if(!outText.value) return; try{ await navigator.clipboard.writeText(outText.value); var b=this,o=b.textContent; b.textContent="Copied!"; setTimeout(function(){b.textContent=o;},1500);}catch(_){ outText.select(); document.execCommand("copy"); } });
+})();
+</script>
+</body>
+</html>

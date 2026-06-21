@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit PDF — Add Text, Draw, Highlight &amp; Sign Free (No Upload)</title>
+<meta name="description" content="Edit a PDF free — add text, draw, highlight, and drop in images or a signature, then save. Annotate PDFs right in your browser. No upload, no watermark, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/edit-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Edit PDF — Add Text, Draw, Highlight &amp; Sign Free">
+<meta property="og:description" content="Annotate a PDF — text, drawing, highlight, images and signature — in your browser. Free, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/edit-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260619">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Edit PDF","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/edit-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Add text to PDF","Draw on PDF","Highlight PDF","Add image or signature","No watermark","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to edit a PDF","totalTime":"PT2M","step":[
+{"@type":"HowToStep","name":"Add your PDF","text":"Open the PDFNest Edit PDF tool and drop your PDF in. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Annotate the pages","text":"Use the text, draw, highlight and image tools to add content where you want it, on any page."},
+{"@type":"HowToStep","name":"Save the edited PDF","text":"Click Save and download your annotated PDF."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Edit PDF","item":"https://getpdfnest.com/tools/edit-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I edit a PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Open the PDFNest Edit PDF tool, drop in your PDF, then add text, drawings, highlights or an image/signature with the toolbar and click Save. It runs in your browser, so nothing is uploaded."}},
+{"@type":"Question","name":"Can I add a signature to a PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Image tool to drop in a photo or PNG of your signature and place it where you need to sign, then save the PDF."}},
+{"@type":"Question","name":"Can I edit the existing text in a PDF?","acceptedAnswer":{"@type":"Answer","text":"This tool adds new content (text, drawings, highlights, images) on top of the pages. Re-typing the original embedded text in place is an advanced feature that requires desktop software like Acrobat Pro."}},
+{"@type":"Question","name":"Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Editing happens entirely in your browser, so the file never leaves your device."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Edit PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#fdeef6;color:var(--c-water)">● Edit PDF</span>
+    <h1>Edit PDF</h1>
+    <p class="answer"><strong>To edit a PDF, drop it in below, then use the text, draw, highlight and image tools to add what you need on any page — and click Save to download. It all happens in your browser, with no upload and no watermark.</strong></p>
+    <p>Annotate and mark up a PDF — add text, freehand drawing, highlights, images and your signature. Nothing is uploaded.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div id="editor" class="hidden">
+      <div id="toolbar" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:12px">
+        <button class="ed-tool btn btn--ghost" data-tool="text">✎ Text</button>
+        <button class="ed-tool btn btn--ghost" data-tool="pen">✏ Draw</button>
+        <button class="ed-tool btn btn--ghost" data-tool="highlight">▭ Highlight</button>
+        <button class="btn btn--ghost" id="imgBtn">🖼 Image / Sign</button>
+        <input type="file" id="imgInput" accept="image/*" class="hidden">
+        <span style="display:inline-flex;align-items:center;gap:6px">Colour <input type="color" id="color" value="#e11d48" style="width:34px;height:30px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer"></span>
+        <span style="display:inline-flex;align-items:center;gap:6px">Size <input type="range" id="size" min="2" max="48" value="16"></span>
+        <button class="btn btn--ghost" id="undo">↶ Undo</button>
+        <span style="flex:1"></span>
+        <button class="btn btn--ghost" id="prev">◀</button>
+        <span id="pageLabel" style="min-width:90px;text-align:center;font-size:14px">Page 1 / 1</span>
+        <button class="btn btn--ghost" id="next">▶</button>
+      </div>
+      <div id="stageWrap" style="overflow:auto;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center">
+        <div id="stage" style="position:relative;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,.15)">
+          <canvas id="page" style="display:block"></canvas>
+          <canvas id="anno" style="position:absolute;left:0;top:0;cursor:crosshair"></canvas>
+        </div>
+      </div>
+      <div class="action-bar"><button class="btn btn--accent btn--lg" id="go">Save &amp; download PDF</button></div>
+    </div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to edit a PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your PDF</h3><p>Drop the PDF you want to mark up — it stays on your device.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Annotate</h3><p>Add text, draw, highlight, or drop in an image or signature on any page.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Save</h3><p>Click Save and download your edited PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Mark up and sign PDFs in your browser</h2>
+    <p>Need to fill a gap, add a note, highlight a clause, or sign on the dotted line? <strong>Edit PDF</strong> lets you place text, freehand drawings, highlights and images anywhere on the page, then saves a new PDF — all without uploading the file. It's ideal for quick fills, comments, reviews and signatures.</p>
+    <p>One honest note: this adds <em>new</em> content on top of the pages. Re-typing a PDF's original embedded text in place is a heavyweight desktop feature; for everyday markup, annotation is what most people actually need. To rearrange pages instead, use <a href="organize-pdf.html">Organize PDF</a>; to stamp every page, use <a href="watermark-pdf.html">Watermark PDF</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Edit PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I edit a PDF for free?</summary><p>Drop your PDF in above, use the text/draw/highlight/image tools, then click Save. Nothing is uploaded.</p></details>
+      <details><summary>Can I add a signature?</summary><p>Yes — use the Image tool to drop in a photo or PNG of your signature and place it where you sign.</p></details>
+      <details><summary>Can I edit the existing text in place?</summary><p>This tool adds new content on top of the pages. Editing the original embedded text needs desktop software like Acrobat Pro.</p></details>
+      <details><summary>Is my PDF uploaded?</summary><p>No — editing happens entirely in your browser.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="organize-pdf.html"><span class="dot" style="background:var(--c-pages)">ORG</span>Organize PDF</a>
+      <a href="watermark-pdf.html"><span class="dot" style="background:var(--c-water)">W</span>Watermark PDF</a>
+      <a href="page-numbers.html"><span class="dot" style="background:var(--c-pages)">#</span>Page Numbers</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260619"></script>
+<script src="../assets/js/site.js?v=20260619"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var editor=document.getElementById("editor"), pageCanvas=document.getElementById("page"), anno=document.getElementById("anno"),
+      statusEl=document.getElementById("status"), result=document.getElementById("result"),
+      prog=document.getElementById("prog"), bar=document.getElementById("bar"),
+      pageLabel=document.getElementById("pageLabel"), colorInp=document.getElementById("color"), sizeInp=document.getElementById("size");
+  var srcBytes=null, pdf=null, cur=0, nPages=0, tool="text";
+  var ann={};            // pageIndex -> array of annotations (display px coords)
+  var scales={};         // pageIndex -> displayScale (px per pt)
+  var actx=anno.getContext("2d");
+  var DISPLAY_W=820;
+
+  var fm = PN.fileManager({
+    zone:document.getElementById("zone"), input:document.getElementById("input"), list:document.getElementById("list"),
+    accept:"application/pdf", multiple:false, color:"var(--c-water)",
+    onChange: async function(files){
+      result.classList.remove("show");
+      if(!files.length){ editor.classList.add("hidden"); srcBytes=null; return; }
+      try {
+        srcBytes=await PN.readBytes(files[0]);
+        pdf=await pdfjsLib.getDocument({data:srcBytes.slice(0)}).promise;
+        nPages=pdf.numPages; cur=0; ann={}; scales={};
+        editor.classList.remove("hidden");
+        await showPage(0);
+        PN.status(statusEl,"");
+      } catch(e){ console.error(e); PN.status(statusEl,"Could not read that PDF.",true); }
+    }
+  });
+
+  async function showPage(i){
+    cur=i; var page=await pdf.getPage(i+1);
+    var vp1=page.getViewport({scale:1});
+    var scale=DISPLAY_W/vp1.width; scales[i]=scale;
+    var vp=page.getViewport({scale:scale});
+    pageCanvas.width=anno.width=Math.floor(vp.width);
+    pageCanvas.height=anno.height=Math.floor(vp.height);
+    var ctx=pageCanvas.getContext("2d"); ctx.fillStyle="#fff"; ctx.fillRect(0,0,pageCanvas.width,pageCanvas.height);
+    await page.render({canvasContext:ctx, viewport:vp}).promise;
+    redraw();
+    pageLabel.textContent="Page "+(i+1)+" / "+nPages;
+  }
+
+  function redraw(){
+    actx.clearRect(0,0,anno.width,anno.height);
+    var list=ann[cur]||[];
+    for(var k=0;k<list.length;k++) drawAnn(list[k]);
+  }
+  function drawAnn(a){
+    if(a.type==="text"){ actx.fillStyle=a.color; actx.font="600 "+a.size+"px Arial"; actx.textBaseline="top"; actx.fillText(a.text,a.x,a.y); }
+    else if(a.type==="pen"){ actx.strokeStyle=a.color; actx.lineWidth=a.size; actx.linejoin="round"; actx.lineCap="round"; actx.beginPath(); for(var i=0;i<a.points.length;i++){ var p=a.points[i]; if(i===0)actx.moveTo(p.x,p.y); else actx.lineTo(p.x,p.y);} actx.stroke(); }
+    else if(a.type==="highlight"){ actx.fillStyle=a.color; actx.globalAlpha=0.35; actx.fillRect(a.x,a.y,a.w,a.h); actx.globalAlpha=1; }
+    else if(a.type==="image"&&a.img){ actx.drawImage(a.img,a.x,a.y,a.w,a.h); }
+  }
+  function add(a){ (ann[cur]=ann[cur]||[]).push(a); redraw(); }
+
+  // tool selection
+  [].forEach.call(document.querySelectorAll(".ed-tool"), function(b){
+    b.addEventListener("click", function(){ tool=b.dataset.tool; document.querySelectorAll(".ed-tool").forEach(function(x){x.classList.remove("btn--accent");}); b.classList.add("btn--accent"); });
+  });
+  document.querySelector('.ed-tool[data-tool="text"]').classList.add("btn--accent");
+  document.getElementById("undo").addEventListener("click", function(){ var l=ann[cur]; if(l&&l.length){ l.pop(); redraw(); } });
+  document.getElementById("prev").addEventListener("click", function(){ if(cur>0) showPage(cur-1); });
+  document.getElementById("next").addEventListener("click", function(){ if(cur<nPages-1) showPage(cur+1); });
+
+  function pos(e){ var r=anno.getBoundingClientRect(); var cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left; var cy=(e.touches?e.touches[0].clientY:e.clientY)-r.top; return {x:cx*(anno.width/r.width), y:cy*(anno.height/r.height)}; }
+
+  var drawing=false, stroke=null, startPt=null;
+  anno.addEventListener("mousedown", function(e){
+    var p=pos(e);
+    if(tool==="text"){ var t=prompt("Text to add:"); if(t){ add({type:"text",x:p.x,y:p.y,text:t,size:parseInt(sizeInp.value,10),color:colorInp.value}); } }
+    else if(tool==="pen"){ drawing=true; stroke={type:"pen",points:[p],color:colorInp.value,size:Math.max(2,parseInt(sizeInp.value,10)/4)}; }
+    else if(tool==="highlight"){ drawing=true; startPt=p; }
+  });
+  anno.addEventListener("mousemove", function(e){
+    if(!drawing) return; var p=pos(e);
+    if(tool==="pen"){ stroke.points.push(p); redraw(); drawAnn(stroke); }
+    else if(tool==="highlight"){ redraw(); actx.fillStyle=colorInp.value; actx.globalAlpha=0.35; actx.fillRect(startPt.x,startPt.y,p.x-startPt.x,p.y-startPt.y); actx.globalAlpha=1; }
+  });
+  window.addEventListener("mouseup", function(e){
+    if(!drawing) return; drawing=false; var p=pos(e);
+    if(tool==="pen"&&stroke&&stroke.points.length>1){ add(stroke); } stroke=null;
+    if(tool==="highlight"&&startPt){ var x=Math.min(startPt.x,p.x),y=Math.min(startPt.y,p.y),w=Math.abs(p.x-startPt.x),h=Math.abs(p.y-startPt.y); if(w>4&&h>4) add({type:"highlight",x:x,y:y,w:w,h:h,color:colorInp.value}); startPt=null; }
+  });
+
+  // image / signature
+  document.getElementById("imgBtn").addEventListener("click", function(){ document.getElementById("imgInput").click(); });
+  document.getElementById("imgInput").addEventListener("change", async function(e){
+    var f=e.target.files[0]; if(!f) return;
+    var bytes=new Uint8Array(await f.arrayBuffer());
+    var url=URL.createObjectURL(f); var im=new Image();
+    im.onload=function(){
+      var maxW=anno.width*0.4, sc=Math.min(1,maxW/im.naturalWidth); var w=im.naturalWidth*sc, h=im.naturalHeight*sc;
+      add({type:"image",x:(anno.width-w)/2,y:(anno.height-h)/2,w:w,h:h,img:im,bytes:bytes,isPng:/png/i.test(f.type)});
+      URL.revokeObjectURL(url);
+    };
+    im.src=url; e.target.value="";
+  });
+
+  function hexRgb(hex){ hex=hex.replace("#",""); return {r:parseInt(hex.substr(0,2),16)/255,g:parseInt(hex.substr(2,2),16)/255,b:parseInt(hex.substr(4,2),16)/255}; }
+
+  document.getElementById("go").addEventListener("click", async function(){
+    if(!srcBytes||!window.PDFLib) return;
+    var btn=this; btn.disabled=true; result.classList.remove("show"); PN.status(statusEl,"Saving…"); PN.progress(prog,bar,15);
+    try {
+      var L=window.PDFLib, rgb=L.rgb, degrees;
+      var doc=await L.PDFDocument.load(srcBytes);
+      var font=await doc.embedFont(L.StandardFonts.Helvetica);
+      var pages=doc.getPages();
+      var keys=Object.keys(ann);
+      for(var ki=0; ki<keys.length; ki++){
+        var idx=parseInt(keys[ki],10); var list=ann[idx]; if(!list||!list.length) continue;
+        var page=pages[idx]; if(!page) continue;
+        var scale=scales[idx]||1; var H=page.getHeight();
+        for(var j=0;j<list.length;j++){
+          var a=list[j], c=hexRgb(a.color||"#000000");
+          if(a.type==="text"){
+            var sz=a.size/scale;
+            page.drawText(a.text,{x:a.x/scale, y:H-(a.y/scale)-sz, size:sz, font:font, color:rgb(c.r,c.g,c.b)});
+          } else if(a.type==="pen"){
+            for(var pi=1; pi<a.points.length; pi++){
+              var p0=a.points[pi-1], p1=a.points[pi];
+              page.drawLine({start:{x:p0.x/scale,y:H-p0.y/scale}, end:{x:p1.x/scale,y:H-p1.y/scale}, thickness:a.size/scale, color:rgb(c.r,c.g,c.b)});
+            }
+          } else if(a.type==="highlight"){
+            page.drawRectangle({x:a.x/scale, y:H-(a.y+a.h)/scale, width:a.w/scale, height:a.h/scale, color:rgb(c.r,c.g,c.b), opacity:0.35});
+          } else if(a.type==="image"&&a.bytes){
+            var emb = a.isPng ? await doc.embedPng(a.bytes) : await doc.embedJpg(a.bytes);
+            page.drawImage(emb,{x:a.x/scale, y:H-(a.y+a.h)/scale, width:a.w/scale, height:a.h/scale});
+          }
+        }
+        PN.progress(prog,bar,15+((ki+1)/keys.length)*80);
+      }
+      var bytes=await doc.save();
+      PN.progress(prog,bar,100); PN.status(statusEl,"");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Your edited PDF is ready</h3><p>'+PN.formatBytes(bytes.length)+'</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick=function(){ PN.downloadBytes(bytes,"edited-pdfnest.pdf","application/pdf"); };
+      setTimeout(function(){ PN.progress(prog,bar,null); },800);
+    } catch(e){ console.error(e); PN.status(statusEl,"Something went wrong saving the PDF.",true); PN.progress(prog,bar,null); }
+    finally { btn.disabled=false; }
+  });
+})();
+</script>
+</body>
+</html>

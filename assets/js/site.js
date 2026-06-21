@@ -70,7 +70,10 @@
     { slug: "image-to-pdf",    name: "Image to PDF",    color: "var(--c-jpg2pdf)",  short: "JPG/PNG/WebP to PDF",       tag: "IP" },
     { slug: "png-to-pdf",      name: "PNG to PDF",      color: "var(--c-pdf2png)",  short: "PNG images into a PDF",     tag: "NP" },
     { slug: "image-to-text",   name: "Image to Text",   color: "var(--c-pdf2txt)",  short: "OCR images & scans to text",tag: "OCR" },
-    { slug: "organize-pdf",    name: "Organize PDF",    color: "var(--c-pages)",    short: "Reorder, rotate, delete pages", tag: "ORG" }
+    { slug: "organize-pdf",    name: "Organize PDF",    color: "var(--c-pages)",    short: "Reorder, rotate, delete pages", tag: "ORG" },
+    { slug: "ocr-pdf",         name: "OCR PDF",         color: "var(--c-pdf2txt)",  short: "Make a scanned PDF searchable", tag: "OP" },
+    { slug: "edit-pdf",        name: "Edit PDF",        color: "var(--c-water)",    short: "Annotate, draw, sign a PDF",   tag: "EP" },
+    { slug: "translate-pdf",   name: "Translate PDF",   color: "var(--c-md2pdf)",   short: "Translate PDF text",           tag: "TR" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;

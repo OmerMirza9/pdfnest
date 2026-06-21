@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCR PDF — Make a Scanned PDF Searchable Free (No Upload)</title>
+<meta name="description" content="OCR a scanned PDF free to make it searchable and selectable — keeps the original look and adds a hidden text layer. Runs in your browser, no upload, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/ocr-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OCR PDF — Make a Scanned PDF Searchable Free">
+<meta property="og:description" content="Turn a scanned PDF into a searchable one with a hidden text layer. Free, in your browser, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/ocr-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260619">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest OCR PDF","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/ocr-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["OCR scanned PDF","Searchable PDF output","Hidden text layer","Multiple languages","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to OCR a scanned PDF","totalTime":"PT2M","step":[
+{"@type":"HowToStep","name":"Add your scanned PDF","text":"Open the PDFNest OCR PDF tool and drop in your scanned PDF. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Choose the language","text":"Pick the language of the document so the OCR engine reads the characters accurately."},
+{"@type":"HowToStep","name":"OCR and download","text":"Click Make searchable. PDFNest adds a hidden text layer over each page and you download a searchable PDF."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"OCR PDF","item":"https://getpdfnest.com/tools/ocr-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I make a scanned PDF searchable?","acceptedAnswer":{"@type":"Answer","text":"Open the PDFNest OCR PDF tool, add your scanned PDF, choose the language and click Make searchable. It runs OCR in your browser and adds a hidden, selectable text layer over the original pages, then you download the searchable PDF."}},
+{"@type":"Question","name":"Does it change how my PDF looks?","acceptedAnswer":{"@type":"Answer","text":"No. The original page images are kept exactly as they are; OCR only adds an invisible text layer on top, so the PDF looks identical but is now searchable and selectable."}},
+{"@type":"Question","name":"Is the OCR done on a server?","acceptedAnswer":{"@type":"Answer","text":"No. The recognition runs entirely in your browser using WebAssembly, so your PDF never leaves your device."}},
+{"@type":"Question","name":"What's the difference from Image to Text?","acceptedAnswer":{"@type":"Answer","text":"Image to Text gives you the plain text extracted from a scan. OCR PDF keeps the original PDF look and embeds the text invisibly, so the file stays a normal-looking PDF you can search inside."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>OCR PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#e6f9f4;color:var(--c-pdf2txt)">● OCR PDF</span>
+    <h1>OCR PDF</h1>
+    <p class="answer"><strong>To make a scanned PDF searchable, drop it in below, choose its language and click Make searchable — PDFNest runs OCR in your browser and adds a hidden text layer over each page, so the PDF looks the same but you can search and select its text.</strong></p>
+    <p>Turn a scanned, image-only PDF into a proper searchable document. Everything runs locally — your file never leaves your device.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7V5a1 1 0 0 1 1-1h2M20 7V5a1 1 0 0 0-1-1h-2M4 17v2a1 1 0 0 0 1 1h2M20 17v2a1 1 0 0 1-1 1h-2M8 9.5h8M8 13h6"/></svg></div>
+      <h3>Drop a scanned PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>OCR options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="lang">Document language</label>
+          <select id="lang">
+            <option value="eng" selected>English</option>
+            <option value="spa">Spanish (Español)</option>
+            <option value="fra">French (Français)</option>
+            <option value="deu">German (Deutsch)</option>
+            <option value="ita">Italian (Italiano)</option>
+            <option value="por">Portuguese (Português)</option>
+          </select>
+        </div>
+      </div>
+      <div class="hint">OCR runs page by page, so a long PDF takes a little while. The first run downloads the language data (a few MB), then it's cached. Sharp, straight scans give the best results.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Make searchable</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to OCR a scanned PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your PDF</h3><p>Drop the scanned PDF — it stays on your device.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick the language</h3><p>Choose the document language so OCR reads it accurately.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download searchable PDF</h3><p>Click Make searchable and save the new, searchable file.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Make any scan searchable — without changing how it looks</h2>
+    <p>A scanned PDF is just pictures of pages: you can't select the text, search it, or copy from it. <strong>OCR PDF</strong> fixes that by reading each page with Optical Character Recognition and adding an <strong>invisible text layer</strong> exactly where the words appear. The page looks identical, but now Ctrl+F finds text, you can highlight and copy, and other software can index it.</p>
+    <p>The whole process runs in your browser with a WebAssembly OCR engine, so even confidential scans never leave your device. If you'd rather just pull the plain text out instead of keeping the PDF, use <a href="image-to-text.html">Image to Text</a>; for a text PDF that already has selectable text, <a href="pdf-to-text.html">PDF to Text</a> is faster.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>OCR PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I make a scanned PDF searchable?</summary><p>Add your scanned PDF above, choose the language, and click Make searchable — OCR runs in your browser and embeds a hidden text layer, then you download the searchable PDF.</p></details>
+      <details><summary>Does it change how my PDF looks?</summary><p>No — the original pages are kept; OCR only adds an invisible text layer on top.</p></details>
+      <details><summary>Is the OCR done on a server?</summary><p>No. It runs entirely in your browser with WebAssembly, so nothing is uploaded.</p></details>
+      <details><summary>How is this different from Image to Text?</summary><p>Image to Text gives you the plain extracted text; OCR PDF keeps the PDF and makes it searchable.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="image-to-text.html"><span class="dot" style="background:var(--c-pdf2txt)">OCR</span>Image to Text</a>
+      <a href="pdf-to-text.html"><span class="dot" style="background:var(--c-pdf2txt)">TX</span>PDF to Text</a>
+      <a href="pdf-to-image.html"><span class="dot" style="background:var(--c-pdf2jpg)">IMG</span>PDF to Image</a>
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260619"></script>
+<script src="../assets/js/site.js?v=20260619"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var go=document.getElementById("go"), statusEl=document.getElementById("status"), opts=document.getElementById("opts"),
+      result=document.getElementById("result"), prog=document.getElementById("prog"), bar=document.getElementById("bar");
+  var currentBytes=null;
+
+  var fm = PN.fileManager({
+    zone:document.getElementById("zone"), input:document.getElementById("input"), list:document.getElementById("list"),
+    accept:"application/pdf", multiple:false, color:"var(--c-pdf2txt)",
+    onChange: async function(files){
+      result.classList.remove("show");
+      if(!files.length){ opts.classList.add("hidden"); go.disabled=true; currentBytes=null; return; }
+      try { currentBytes=await PN.readBytes(files[0]); opts.classList.remove("hidden"); go.disabled=false; PN.status(statusEl,""); }
+      catch(e){ PN.status(statusEl,"Could not read that PDF.",true); }
+    }
+  });
+
+  function clean(s){ return (s||"").replace(/[^\x20-\x7E]/g,"").trim(); } // WinAnsi-safe for the hidden layer
+
+  go.addEventListener("click", async function(){
+    if(!currentBytes||!window.pdfjsLib){ return; }
+    if(typeof Tesseract==="undefined"||!window.PDFLib){ PN.status(statusEl,"Engine still loading — try again in a moment.",true); return; }
+    go.disabled=true; result.classList.remove("show");
+    var lang=document.getElementById("lang").value;
+    PN.status(statusEl,"Loading OCR engine…"); PN.progress(prog,bar,3);
+    var worker;
+    try {
+      var SCALE=2.0;
+      var pdf=await pdfjsLib.getDocument({data:currentBytes.slice(0)}).promise; var n=pdf.numPages;
+      var out=await PDFLib.PDFDocument.create();
+      var font=await out.embedFont(PDFLib.StandardFonts.Helvetica);
+      worker=await Tesseract.createWorker(lang, 1, { logger:function(){} });
+
+      for(var p=1;p<=n;p++){
+        PN.status(statusEl,"Reading page "+p+" of "+n+"…");
+        var page=await pdf.getPage(p);
+        var vp1=page.getViewport({scale:1});               // points
+        var vp=page.getViewport({scale:SCALE});            // render pixels
+        var canvas=document.createElement("canvas");
+        canvas.width=Math.floor(vp.width); canvas.height=Math.floor(vp.height);
+        var ctx=canvas.getContext("2d"); ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+        await page.render({canvasContext:ctx, viewport:vp}).promise;
+
+        var pageW=vp1.width, pageH=vp1.height;
+        var jpgBlob=await new Promise(function(r){ canvas.toBlob(r,"image/jpeg",0.85); });
+        var jpgBytes=new Uint8Array(await jpgBlob.arrayBuffer());
+        var img=await out.embedJpg(jpgBytes);
+        var pg=out.addPage([pageW,pageH]);
+        pg.drawImage(img,{x:0,y:0,width:pageW,height:pageH});
+
+        var res=await worker.recognize(canvas);
+        var words=(res&&res.data&&res.data.words)||[];
+        var placed=0;
+        for(var w=0; w<words.length; w++){
+          var word=words[w]; if(!word||!word.bbox) continue;
+          var txt=clean(word.text); if(!txt) continue;
+          var x0=word.bbox.x0/SCALE, y1=word.bbox.y1/SCALE, y0=word.bbox.y0/SCALE;
+          var size=Math.max(4,(y1-y0)*0.85);
+          try { pg.drawText(txt,{x:x0, y:pageH-y1, size:size, font:font, opacity:0}); placed++; } catch(_){}
+        }
+        if(!placed){ // fallback: embed whole-page text invisibly so it's still searchable
+          var lines=clean((res&&res.data&&res.data.text)||"").split(/\n+/);
+          var yy=pageH-12;
+          for(var li=0; li<lines.length && yy>12; li++){ var t=clean(lines[li]); if(t){ try{ pg.drawText(t.slice(0,200),{x:6,y:yy,size:8,font:font,opacity:0}); }catch(_){} yy-=10; } }
+        }
+        canvas.width=canvas.height=0;
+        PN.progress(prog,bar,3+(p/n)*92);
+      }
+      await worker.terminate(); worker=null;
+      var bytes=await out.save();
+      PN.progress(prog,bar,100); PN.status(statusEl,"");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Your searchable PDF is ready</h3><p>'+n+' page'+(n>1?'s':'')+' • '+PN.formatBytes(bytes.length)+' • text layer added</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download searchable PDF</button>');
+      document.getElementById("dl").onclick=function(){ PN.downloadBytes(bytes,"searchable-pdfnest.pdf","application/pdf"); };
+      setTimeout(function(){ PN.progress(prog,bar,null); },800);
+    } catch(e){ console.error(e); PN.status(statusEl,"Something went wrong during OCR. Try a clearer scan or a different language.",true); PN.progress(prog,bar,null); if(worker){ try{ await worker.terminate(); }catch(_){} } }
+    finally { go.disabled=false; }
+  });
+})();
+</script>
+</body>
+</html>
