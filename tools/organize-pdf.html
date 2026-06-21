@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organize PDF — Reorder, Rotate &amp; Delete Pages Free (No Upload)</title>
+<meta name="description" content="Organize a PDF free — drag to reorder pages, rotate them, and delete the ones you don't need, then save. Visual page manager that runs in your browser. No upload, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/organize-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Organize PDF — Reorder, Rotate &amp; Delete Pages Free">
+<meta property="og:description" content="Drag to reorder, rotate and delete PDF pages, then save. Free, in your browser, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/organize-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260618">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Organize PDF","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/organize-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Reorder PDF pages","Rotate pages","Delete pages","No watermark","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to organize a PDF","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Open the tool and add your PDF","text":"Open the PDFNest Organize PDF tool and drop your PDF in. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Reorder, rotate and delete","text":"Drag page thumbnails to reorder them, rotate any page, and remove pages you do not need."},
+{"@type":"HowToStep","name":"Save the organized PDF","text":"Click Apply and download your reorganized PDF."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Organize PDF","item":"https://getpdfnest.com/tools/organize-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I reorder pages in a PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Open the PDFNest Organize PDF tool, drop in your PDF, then drag the page thumbnails into the order you want and click Apply. It runs in your browser, so nothing is uploaded."}},
+{"@type":"Question","name":"Can I rotate and delete pages too?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each page thumbnail has rotate and delete controls, so you can fix sideways pages and remove unwanted ones before saving."}},
+{"@type":"Question","name":"Is my PDF uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. PDFNest organizes the PDF entirely on your device in the browser, so the file never leaves your computer."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Organize PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#eaf0fb;color:var(--c-pages)">● Organize PDF</span>
+    <h1>Organize PDF</h1>
+    <p class="answer"><strong>To organize a PDF, drop it in below, then drag the page thumbnails to reorder, rotate any page, and delete the ones you don't need — then click Apply to download the reorganized PDF, free and without uploading.</strong></p>
+    <p>A visual page manager for your PDF — reorder, rotate and remove pages in one place. Everything runs in your browser.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <div class="hint" style="margin-bottom:14px"><strong>Drag</strong> a page to move it. Use the buttons on each page to rotate ↺ ↻ or remove ✕ (click again to restore). Deleted pages are skipped when you save.</div>
+      <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px"></div>
+    </div>
+
+    <div class="action-bar hidden" id="actions"><button class="btn btn--accent btn--lg" id="go">Apply &amp; download PDF</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to organize a PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your PDF</h3><p>Drop the PDF you want to reorganize — it stays on your device.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Reorder, rotate, delete</h3><p>Drag pages into order, rotate sideways pages, remove unwanted ones.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Save</h3><p>Click Apply and download the reorganized PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Reorder, rotate and delete PDF pages in one place</h2>
+    <p>Scanned out of order? Cover page in the wrong spot? A blank page to drop? Instead of three separate tools, <strong>Organize PDF</strong> gives you a single visual view of every page so you can drag them into the right order, spin sideways scans the right way up, and delete what you don't need — then save once. Because every page is rendered and rebuilt locally in your browser, even sensitive documents never leave your device, and there's no watermark or sign-up.</p>
+    <p>Need just one of these jobs? There are focused tools too: <a href="merge-pdf.html">Merge PDF</a>, <a href="split-pdf.html">Split PDF</a>, <a href="rotate-pdf.html">Rotate PDF</a> and <a href="remove-pdf-pages.html">Remove Pages</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Organize PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I reorder pages in a PDF for free?</summary><p>Drop your PDF in above, drag the page thumbnails into the order you want, then click Apply. Nothing is uploaded.</p></details>
+      <details><summary>Can I rotate and delete pages too?</summary><p>Yes — each page has rotate and remove controls, so you can fix orientation and drop unwanted pages before saving.</p></details>
+      <details><summary>Is my PDF uploaded anywhere?</summary><p>No. It's organized entirely on your device in the browser.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+      <a href="split-pdf.html"><span class="dot" style="background:var(--c-split)">S</span>Split PDF</a>
+      <a href="rotate-pdf.html"><span class="dot" style="background:var(--c-rotate)">R</span>Rotate PDF</a>
+      <a href="remove-pdf-pages.html"><span class="dot" style="background:var(--c-rmpages)">✕</span>Remove Pages</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260618"></script>
+<script src="../assets/js/site.js?v=20260618"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var opts=document.getElementById("opts"), grid=document.getElementById("grid"), actions=document.getElementById("actions"),
+      go=document.getElementById("go"), statusEl=document.getElementById("status"), result=document.getElementById("result"),
+      prog=document.getElementById("prog"), bar=document.getElementById("bar");
+  var srcBytes=null, dragEl=null;
+
+  var fm = PN.fileManager({
+    zone:document.getElementById("zone"), input:document.getElementById("input"), list:document.getElementById("list"),
+    accept:"application/pdf", multiple:false, color:"var(--c-pages)",
+    onChange: async function(files){
+      result.classList.remove("show"); grid.innerHTML=""; opts.classList.add("hidden"); actions.classList.add("hidden");
+      if(!files.length){ srcBytes=null; return; }
+      try {
+        srcBytes=await PN.readBytes(files[0]);
+        await buildThumbs(srcBytes);
+        opts.classList.remove("hidden"); actions.classList.remove("hidden"); PN.status(statusEl,"");
+      } catch(e){ console.error(e); PN.status(statusEl,"Could not read that PDF.",true); }
+    }
+  });
+
+  async function buildThumbs(bytes){
+    PN.status(statusEl,"Loading pages…"); PN.progress(prog,bar,5);
+    var pdf=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise; var n=pdf.numPages;
+    for(var p=1;p<=n;p++){
+      var page=await pdf.getPage(p);
+      var vp=page.getViewport({scale:0.4});
+      var canvas=document.createElement("canvas"); canvas.width=Math.floor(vp.width); canvas.height=Math.floor(vp.height);
+      var ctx=canvas.getContext("2d"); ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+      await page.render({canvasContext:ctx, viewport:vp}).promise;
+      grid.appendChild(makeCard(canvas, p));
+      PN.progress(prog,bar,5+(p/n)*90);
+    }
+    PN.progress(prog,bar,null); PN.status(statusEl,"");
+  }
+
+  function makeCard(canvas, pageNum){
+    var card=document.createElement("div");
+    card.className="org-card"; card.draggable=true;
+    card.dataset.idx=(pageNum-1); card.dataset.rot="0"; card.dataset.del="0";
+    card.style.cssText="border:1px solid var(--line);border-radius:10px;background:#fff;padding:8px;text-align:center;cursor:grab;position:relative";
+    var imgWrap=document.createElement("div");
+    imgWrap.style.cssText="display:flex;align-items:center;justify-content:center;height:150px;overflow:hidden";
+    canvas.style.cssText="max-width:100%;max-height:150px;transition:transform .15s;box-shadow:0 1px 4px rgba(0,0,0,.12)";
+    imgWrap.appendChild(canvas);
+    var label=document.createElement("div"); label.style.cssText="font-size:12px;color:var(--muted,#666);margin:6px 0 4px"; label.textContent="Page "+pageNum;
+    var btns=document.createElement("div"); btns.style.cssText="display:flex;gap:6px;justify-content:center";
+    function mkBtn(txt,title){ var b=document.createElement("button"); b.type="button"; b.textContent=txt; b.title=title;
+      b.style.cssText="border:1px solid var(--line);background:#fff;border-radius:7px;width:30px;height:30px;cursor:pointer;font-size:14px;line-height:1"; return b; }
+    var rl=mkBtn("↺","Rotate left"), rr=mkBtn("↻","Rotate right"), del=mkBtn("✕","Remove / restore");
+    rl.onclick=function(e){ e.stopPropagation(); rotate(card,canvas,-90); };
+    rr.onclick=function(e){ e.stopPropagation(); rotate(card,canvas,90); };
+    del.onclick=function(e){ e.stopPropagation(); toggleDel(card,del); };
+    btns.appendChild(rl); btns.appendChild(rr); btns.appendChild(del);
+    card.appendChild(imgWrap); card.appendChild(label); card.appendChild(btns);
+
+    card.addEventListener("dragstart", function(){ dragEl=card; card.style.opacity="0.4"; });
+    card.addEventListener("dragend", function(){ card.style.opacity="1"; dragEl=null; });
+    card.addEventListener("dragover", function(e){ e.preventDefault();
+      if(!dragEl||dragEl===card) return;
+      var r=card.getBoundingClientRect();
+      var after=(e.clientY - r.top) > r.height/2 || (e.clientX - r.left) > r.width/2;
+      grid.insertBefore(dragEl, after ? card.nextSibling : card);
+    });
+    return card;
+  }
+
+  function rotate(card,canvas,delta){
+    var rot=((parseInt(card.dataset.rot,10)+delta)%360+360)%360; card.dataset.rot=rot;
+    canvas.style.transform="rotate("+rot+"deg)";
+  }
+  function toggleDel(card,btn){
+    var d=card.dataset.del==="1" ? "0":"1"; card.dataset.del=d;
+    card.style.opacity = d==="1" ? "0.35":"1";
+    card.style.outline = d==="1" ? "2px solid var(--c-rmpages, #e74c3c)":"none";
+    btn.style.borderColor = d==="1" ? "var(--c-rmpages,#e74c3c)":"var(--line)";
+  }
+
+  go.addEventListener("click", async function(){
+    if(!srcBytes||!window.PDFLib) return;
+    var cards=[].slice.call(grid.children).filter(function(c){ return c.dataset.del!=="1"; });
+    if(!cards.length){ PN.status(statusEl,"All pages are removed — keep at least one.",true); return; }
+    go.disabled=true; result.classList.remove("show"); PN.status(statusEl,"Building your PDF…"); PN.progress(prog,bar,10);
+    try {
+      var degrees=PDFLib.degrees;
+      var src=await PDFLib.PDFDocument.load(srcBytes);
+      var out=await PDFLib.PDFDocument.create();
+      for(var i=0;i<cards.length;i++){
+        var idx=parseInt(cards[i].dataset.idx,10), rot=parseInt(cards[i].dataset.rot,10)||0;
+        var copied=await out.copyPages(src,[idx]); var page=copied[0];
+        if(rot){ var base=page.getRotation().angle||0; page.setRotation(degrees((base+rot)%360)); }
+        out.addPage(page);
+        PN.progress(prog,bar,10+((i+1)/cards.length)*85);
+      }
+      var bytes=await out.save();
+      PN.progress(prog,bar,100); PN.status(statusEl,"");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Your organized PDF is ready</h3><p>'+cards.length+' page'+(cards.length>1?'s':'')+' • '+PN.formatBytes(bytes.length)+'</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick=function(){ PN.downloadBytes(bytes,"organized-pdfnest.pdf","application/pdf"); };
+      setTimeout(function(){ PN.progress(prog,bar,null); },800);
+    } catch(e){ console.error(e); PN.status(statusEl,"Something went wrong building the PDF.",true); PN.progress(prog,bar,null); }
+    finally { go.disabled=false; }
+  });
+})();
+</script>
+</body>
+</html>

@@ -69,7 +69,8 @@
     { slug: "pdf-to-image",    name: "PDF to Image",    color: "var(--c-pdf2jpg)",  short: "PDF pages to JPG/PNG",      tag: "IMG" },
     { slug: "image-to-pdf",    name: "Image to PDF",    color: "var(--c-jpg2pdf)",  short: "JPG/PNG/WebP to PDF",       tag: "IP" },
     { slug: "png-to-pdf",      name: "PNG to PDF",      color: "var(--c-pdf2png)",  short: "PNG images into a PDF",     tag: "NP" },
-    { slug: "image-to-text",   name: "Image to Text",   color: "var(--c-pdf2txt)",  short: "OCR images & scans to text",tag: "OCR" }
+    { slug: "image-to-text",   name: "Image to Text",   color: "var(--c-pdf2txt)",  short: "OCR images & scans to text",tag: "OCR" },
+    { slug: "organize-pdf",    name: "Organize PDF",    color: "var(--c-pages)",    short: "Reorder, rotate, delete pages", tag: "ORG" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;
