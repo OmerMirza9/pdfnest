@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel to PDF — Convert XLSX & CSV to PDF Free (No Upload)</title>
+<meta name="description" content="Convert Excel to PDF free — turn an .xlsx, .xls or .csv spreadsheet into a clean PDF in your browser. Every sheet included. No watermark, no sign-up, nothing uploaded.">
+<link rel="canonical" href="https://getpdfnest.com/tools/excel-to-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Excel to PDF — Convert XLSX & CSV to PDF Free">
+<meta property="og:description" content="Turn an Excel spreadsheet into a PDF in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/excel-to-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260622">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Excel to PDF Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/excel-to-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["XLSX to PDF","XLS and CSV to PDF","All sheets included","Portrait or landscape","No watermark","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to convert Excel to PDF","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your spreadsheet","text":"Open the Excel to PDF tool and drop in your .xlsx, .xls or .csv file. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Choose orientation","text":"Pick landscape for wide tables or portrait for tall ones, then click Convert to PDF."},
+{"@type":"HowToStep","name":"Save as PDF","text":"When the print dialog opens, choose Save as PDF as the destination and save your file."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Excel to PDF","item":"https://getpdfnest.com/tools/excel-to-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I convert an Excel file to PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Open the Excel to PDF tool, drop in your .xlsx, .xls or .csv file, choose portrait or landscape, then click Convert to PDF. PDFNest builds the tables in your browser and opens a Save-as-PDF dialog. Nothing is uploaded and there is no watermark."}},
+{"@type":"Question","name":"Are all my sheets converted?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every worksheet in the workbook is included in the PDF, each under its own heading."}},
+{"@type":"Question","name":"Does it upload my spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"No. The file is read and rendered entirely in your browser, so your data never leaves your device."}},
+{"@type":"Question","name":"Will charts and cell colors be kept?","acceptedAnswer":{"@type":"Answer","text":"The cell values and table structure are converted faithfully. Charts, conditional formatting and complex cell styling are not carried over, since the tables are rebuilt from the data for a clean, readable layout."}},
+{"@type":"Question","name":"Do I need Microsoft Excel?","acceptedAnswer":{"@type":"Answer","text":"No. This tool runs entirely in your web browser with no Microsoft Office, no account and no Adobe Acrobat required."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Excel to PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#e6f2ec;color:var(--c-excel)">● Excel to PDF</span>
+    <h1>Excel to PDF</h1>
+    <p class="answer"><strong>To convert Excel to PDF, drop your .xlsx, .xls or .csv file in below, pick portrait or landscape, and click Convert to PDF — every sheet is included, free and without a watermark.</strong></p>
+    <p>Turn a spreadsheet into a clean, shareable PDF right in your browser. Nothing is uploaded, there's no sign-up and no watermark.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+      <h3>Drop your spreadsheet here</h3><p>or click to choose a file</p>
+      <small>.xlsx, .xls or .csv — processed locally, never uploaded</small>
+    </div>
+    <input type="file" id="input" accept=".xlsx,.xls,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>PDF options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="orient">Orientation</label>
+          <select id="orient">
+            <option value="landscape" selected>Landscape — best for wide tables</option>
+            <option value="portrait">Portrait</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="size">Page size</label>
+          <select id="size">
+            <option value="a4" selected>A4</option>
+            <option value="letter">US Letter</option>
+          </select>
+        </div>
+      </div>
+      <div class="hint">Wide spreadsheets fit best in landscape. Each worksheet is added under its own heading.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Convert to PDF</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:14px"><span class="hint" style="display:inline-block">When the print dialog opens, choose <strong>“Save as PDF”</strong> as the destination.</span></p>
+    <p class="center" style="margin-top:10px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to convert Excel to PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your file</h3><p>Drop your .xlsx, .xls or .csv into the box above — it stays on your device.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick orientation</h3><p>Landscape for wide tables, portrait for tall ones.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Save as PDF</h3><p>Click convert and choose “Save as PDF” in the print dialog.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Convert Excel to PDF without uploading your data</h2>
+    <p>Turning a spreadsheet into a PDF makes it easy to share — the recipient sees a fixed, tidy table that opens on any device and can't be accidentally changed. PDFNest reads your <strong>.xlsx</strong>, <strong>.xls</strong> or <strong>.csv</strong> file entirely in your browser, rebuilds each worksheet as a clean table, and hands it to your browser's built-in PDF engine. Because nothing is uploaded, even sensitive financial data, invoices or contact lists never leave your computer.</p>
+    <h3>What gets converted</h3>
+    <p>Every worksheet's <strong>cell values and table structure</strong> are converted faithfully, each sheet under its own heading. Charts, conditional formatting and elaborate cell styling are <em>not</em> carried over — the tables are rebuilt from the data for a clean, readable result. For very wide spreadsheets, choose <strong>landscape</strong> so more columns fit across the page.</p>
+    <p>Working with other formats? Try <a href="word-to-pdf.html">Word to PDF</a> for documents, <a href="html-to-pdf.html">HTML to PDF</a> for web content, or <a href="merge-pdf.html">Merge PDF</a> to combine the result with other files.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Excel to PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I convert an Excel file to PDF for free?</summary><p>Drop your .xlsx, .xls or .csv in above, pick portrait or landscape, and click Convert to PDF. PDFNest builds the tables in your browser and opens a print dialog — choose “Save as PDF”.</p></details>
+      <details><summary>Are all my sheets converted?</summary><p>Yes — every worksheet is included, each under its own heading.</p></details>
+      <details><summary>Does it upload my spreadsheet?</summary><p>No — the file is read and rendered entirely in your browser, so your data never leaves your device.</p></details>
+      <details><summary>Will charts and cell colors be kept?</summary><p>Cell values and table structure convert faithfully. Charts and complex styling aren't carried over, for a clean, readable layout.</p></details>
+      <details><summary>Do I need Microsoft Excel?</summary><p>No. It runs entirely in your browser — no Office, no account, no Adobe.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="word-to-pdf.html"><span class="dot" style="background:var(--c-word)">WP</span>Word to PDF</a>
+      <a href="pdf-to-ppt.html"><span class="dot" style="background:var(--c-ppt)">PP</span>PDF to PowerPoint</a>
+      <a href="html-to-pdf.html"><span class="dot" style="background:var(--c-html2pdf)">HP</span>HTML to PDF</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260622"></script>
+<script src="../assets/js/site.js?v=20260622"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar");
+
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: ".xlsx", multiple: false, color: "var(--c-excel)",
+    onChange: function (files) {
+      go.disabled = files.length < 1; result.classList.remove("show");
+      opts.classList.toggle("hidden", files.length < 1); PN.status(statusEl, "");
+    }
+  });
+
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+  function buildDoc(sectionsHtml, title) {
+    var css =
+      "body{font-family:Arial,Helvetica,sans-serif;font-size:10pt;color:#111;margin:0}" +
+      "h2{font-size:14pt;margin:0 0 .5em;padding-bottom:.3em;border-bottom:2px solid var(--c-excel,#217346);color:#217346}" +
+      ".sheet{margin:0 0 26px;page-break-inside:auto}" +
+      ".sheet + .sheet{page-break-before:always}" +
+      "table{border-collapse:collapse;width:100%}" +
+      "td,th{border:1px solid #b3b3b3;padding:4px 7px;text-align:left;vertical-align:top;white-space:nowrap}" +
+      "tr:first-child td{background:#eef3f0;font-weight:700}";
+    return "<!DOCTYPE html><html><head><meta charset='utf-8'><title>" + title +
+      "</title><style>" + css + "</style></head><body>" + sectionsHtml + "</body></html>";
+  }
+
+  go.addEventListener("click", async function () {
+    var file = fm.files[0]; if (!file) return;
+    if (!window.XLSX) { PN.status(statusEl, "Converter is still loading — try again in a moment.", true); return; }
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Reading spreadsheet…"); PN.progress(prog, bar, 12);
+    try {
+      var bytes = await PN.readBytes(file);
+      PN.progress(prog, bar, 40);
+      var wb = XLSX.read(bytes, { type: "array" });
+      if (!wb.SheetNames.length) throw new Error("no sheets");
+      var sections = "";
+      wb.SheetNames.forEach(function (name) {
+        var ws = wb.Sheets[name];
+        var tableHtml = XLSX.utils.sheet_to_html(ws, { header: "", footer: "" });
+        // sheet_to_html returns a full <html> doc — pull out just the <table>.
+        var m = /<table[\s\S]*<\/table>/i.exec(tableHtml);
+        var table = m ? m[0] : tableHtml;
+        sections += '<div class="sheet"><h2>' + esc(name) + "</h2>" + table + "</div>";
+      });
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      var orient = document.getElementById("orient").value;
+      var size = document.getElementById("size").value;
+      var doc = buildDoc(sections, PN.sanitizeName(file.name, "spreadsheet"));
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Your spreadsheet is ready</h3><p>' + wb.SheetNames.length + ' sheet' + (wb.SheetNames.length > 1 ? 's' : '') +
+        ' • click below, then choose <strong>“Save as PDF”</strong>.</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () {
+        PN.printHtmlAsPdf(doc, { format: size, orientation: orient, margin: 12 });
+      };
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e);
+      PN.status(statusEl, "Could not read that spreadsheet. Make sure it's a valid .xlsx, .xls or .csv file.", true);
+      PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
