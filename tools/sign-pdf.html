@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign PDF — Add Your Signature to a PDF Free (No Upload)</title>
+<meta name="description" content="Sign a PDF for free — draw, type or upload your signature and place it anywhere on the page, then download. Runs in your browser: no upload, no sign-up, no watermark.">
+<link rel="canonical" href="https://getpdfnest.com/tools/sign-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sign PDF — Add Your Signature to a PDF Free">
+<meta property="og:description" content="Draw, type or upload a signature and place it on a PDF, in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/sign-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260625">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Sign PDF","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/sign-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Draw a signature","Type a signature","Upload a signature image","Place anywhere on the page","No watermark","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to sign a PDF","totalTime":"PT2M","step":[
+{"@type":"HowToStep","name":"Add your PDF","text":"Open the Sign PDF tool and drop in your PDF. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Create your signature","text":"Draw it with your mouse or finger, type it, or upload an image of your signature."},
+{"@type":"HowToStep","name":"Place and download","text":"Drag the signature onto the right spot, resize it, then click Apply and download the signed PDF."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Sign PDF","item":"https://getpdfnest.com/tools/sign-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I sign a PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Open the Sign PDF tool, add your PDF, then draw, type or upload your signature. Drag it onto the page, resize it, and click Apply to download the signed PDF. Everything happens in your browser, so nothing is uploaded and there is no watermark."}},
+{"@type":"Question","name":"Is signing a PDF here legally valid?","acceptedAnswer":{"@type":"Answer","text":"A drawn, typed or uploaded signature placed on a PDF is an electronic signature, which is widely accepted for everyday agreements. For documents that require a certificate-based digital signature, use a dedicated e-signature service."}},
+{"@type":"Question","name":"Does the tool upload my document?","acceptedAnswer":{"@type":"Answer","text":"No. The PDF and your signature are processed entirely in your browser, so your document never leaves your device."}},
+{"@type":"Question","name":"Can I place more than one signature or initials?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can add your signature to several pages or drop multiple marks, then apply them all at once."}}
+]}
+</script>
+<style>
+  .sign-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .sign-tabs button{padding:8px 14px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;font:inherit}
+  .sign-tabs button.active{background:var(--c-sign);color:#fff;border-color:var(--c-sign)}
+  .sign-pane{display:none}.sign-pane.active{display:block}
+  #padWrap{border:1px dashed var(--line);border-radius:10px;background:#fff;display:inline-block;max-width:100%}
+  #pad{touch-action:none;display:block;cursor:crosshair;max-width:100%}
+  .pages{margin-top:8px;display:flex;flex-direction:column;align-items:center;gap:18px}
+  .page-wrap{position:relative;box-shadow:0 1px 8px rgba(0,0,0,.18);line-height:0}
+  .page-wrap canvas{display:block;max-width:100%}
+  .sig-ov{position:absolute;top:0;left:0;cursor:move;border:1px dashed var(--c-sign);touch-action:none}
+  .sig-ov img{width:100%;height:100%;display:block;pointer-events:none}
+  .sig-ov .rz{position:absolute;right:-7px;bottom:-7px;width:14px;height:14px;background:var(--c-sign);border:2px solid #fff;border-radius:50%;cursor:nwse-resize}
+  .sig-ov .rm{position:absolute;right:-9px;top:-9px;width:18px;height:18px;background:#c0392b;color:#fff;border-radius:50%;font-size:12px;line-height:14px;text-align:center;cursor:pointer;border:2px solid #fff}
+  .type-preview{font-size:34px;padding:8px 4px;min-height:54px;color:#111}
+</style>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Sign PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#e3f3ec;color:var(--c-sign)">● Sign PDF</span>
+    <h1>Sign PDF</h1>
+    <p class="answer"><strong>To sign a PDF, add your file, draw, type or upload your signature, drag it onto the page, and click Apply — free, in your browser, with no watermark.</strong></p>
+    <p>Add a handwritten, typed or image signature to any PDF. Nothing is uploaded, there's no sign-up and no watermark.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 19s4-1 7-4 5-7 5-7M14 5l3 3M12 20h9"/></svg></div>
+      <h3>Drop your PDF here</h3><p>or click to choose a file</p>
+      <small>One PDF — processed locally, never uploaded</small>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <!-- Signature builder -->
+    <div class="options hidden" id="builder">
+      <h3>1. Create your signature</h3>
+      <div class="sign-tabs">
+        <button type="button" data-tab="draw" class="active">✍️ Draw</button>
+        <button type="button" data-tab="type">⌨️ Type</button>
+        <button type="button" data-tab="upload">🖼️ Upload</button>
+      </div>
+
+      <div class="sign-pane active" data-pane="draw">
+        <div id="padWrap"><canvas id="pad" width="480" height="180"></canvas></div>
+        <div class="action-bar" style="gap:10px;justify-content:flex-start;flex-wrap:wrap">
+          <button class="btn btn--ghost" id="padClear" type="button">Clear</button>
+          <button class="btn btn--accent" id="useDraw" type="button">Use this signature</button>
+        </div>
+        <div class="hint">Draw with your mouse or finger. The background stays transparent.</div>
+      </div>
+
+      <div class="sign-pane" data-pane="type">
+        <div class="grid-2">
+          <div class="field"><label for="typeText">Your name</label><input type="text" id="typeText" placeholder="e.g. Jane Smith" autocomplete="off"></div>
+          <div class="field"><label for="typeFont">Style</label>
+            <select id="typeFont">
+              <option value="'Segoe Script','Bradley Hand',cursive" selected>Handwriting</option>
+              <option value="'Brush Script MT',cursive">Brush script</option>
+              <option value="Georgia,'Times New Roman',serif">Formal serif</option>
+            </select>
+          </div>
+        </div>
+        <div class="type-preview" id="typePreview"></div>
+        <div class="action-bar" style="justify-content:flex-start"><button class="btn btn--accent" id="useType" type="button">Use this signature</button></div>
+      </div>
+
+      <div class="sign-pane" data-pane="upload">
+        <input type="file" id="sigImg" accept="image/png,image/jpeg,image/webp">
+        <div class="hint">A PNG with a transparent background works best. JPGs get a white box behind them.</div>
+        <div class="action-bar" style="justify-content:flex-start"><button class="btn btn--accent" id="useUpload" type="button" disabled>Use this image</button></div>
+      </div>
+
+      <div id="sigReady" class="hint" style="display:none;color:var(--c-sign);font-weight:600"></div>
+    </div>
+
+    <!-- Pages + placement -->
+    <div id="placeStep" class="options hidden">
+      <h3>2. Place your signature</h3>
+      <div class="hint" id="placeHint">Your signature was added to the first page. Drag it where you want, drag the green dot to resize, and use “Add to this page” to drop more. Then click Apply.</div>
+      <div class="action-bar" style="gap:10px;justify-content:flex-start;flex-wrap:wrap;margin-top:6px">
+        <button class="btn btn--ghost" id="addMore" type="button" disabled>Add signature to current page</button>
+      </div>
+      <div class="pages" id="pages"></div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Apply &amp; download signed PDF</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to sign a PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your PDF</h3><p>Drop the document you need to sign into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Create your signature</h3><p>Draw it, type it, or upload an image of your signature.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Place &amp; download</h3><p>Drag it into position, resize, then apply and save the signed PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Sign a PDF without printing, scanning or uploading</h2>
+    <p>The old way to sign a document — print it, sign with a pen, scan it back — is slow and needs a printer. PDFNest lets you add your signature digitally and keep everything <strong>on your own device</strong>: the PDF and your signature are processed in your browser and never uploaded, which matters for contracts, agreements and forms.</p>
+    <h3>Three ways to sign</h3>
+    <ul>
+      <li><strong>Draw</strong> your signature with a mouse, trackpad or finger — great on a touchscreen.</li>
+      <li><strong>Type</strong> your name and pick a handwriting style for a quick, neat signature.</li>
+      <li><strong>Upload</strong> a photo or scan of your real signature (a transparent PNG looks best).</li>
+    </ul>
+    <p>Then drag it exactly where it belongs, resize to fit the signature line, and download. Need to fill in text fields or add a date too? Use <a href="edit-pdf.html">Edit PDF</a>. Want to lock the signed file so it can't be changed? <a href="protect-pdf.html">Protect PDF</a> adds a password.</p>
+    <p class="hint">Note: this adds an <strong>electronic signature</strong> (an image of your signature on the page), which is fine for most everyday agreements. It is not a certificate-based digital signature — for those, use a dedicated e-signature provider.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Sign PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I sign a PDF for free?</summary><p>Add your PDF, then draw, type or upload your signature, drag it onto the page, resize, and click Apply to download. It all happens in your browser — nothing uploaded, no watermark.</p></details>
+      <details><summary>Is it legally valid?</summary><p>A drawn, typed or uploaded signature is an electronic signature, widely accepted for everyday agreements. For certificate-based digital signatures, use a dedicated e-signature service.</p></details>
+      <details><summary>Does it upload my document?</summary><p>No — the PDF and signature are processed entirely in your browser.</p></details>
+      <details><summary>Can I add more than one signature?</summary><p>Yes — place your signature on several pages or add multiple marks, then apply them all at once.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="edit-pdf.html"><span class="dot" style="background:var(--c-water)">EP</span>Edit PDF</a>
+      <a href="protect-pdf.html"><span class="dot" style="background:var(--c-protect)">LK</span>Protect PDF</a>
+      <a href="watermark-pdf.html"><span class="dot" style="background:var(--c-water)">W</span>Watermark PDF</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/site.js?v=20260625"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"), result = document.getElementById("result"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      builder = document.getElementById("builder"), placeStep = document.getElementById("placeStep"),
+      pagesEl = document.getElementById("pages"), addMore = document.getElementById("addMore"), sigReady = document.getElementById("sigReady");
+
+  var srcBytes = null;          // Uint8Array of the PDF
+  var currentSig = null;        // { dataURL, w, h, type:'png'|'jpg' }
+  var placements = [];          // { pageIndex, el, wrap }
+  var pageWraps = [];           // .page-wrap elements
+  var currentPage = 0;          // page being viewed (for "add to this page")
+
+  /* ---- coordinate transform (pure, testable) ----
+     Given fractional placement on the page preview, return pdf-lib draw coords
+     in PDF points (origin bottom-left). */
+  function placementToPdf(p, pageWpt, pageHpt) {
+    var sigWpt = p.wFrac * pageWpt;
+    var sigHpt = sigWpt * (p.sigH / p.sigW);
+    var xpt = p.xFrac * pageWpt;
+    var ypt = pageHpt - (p.yFrac * pageHpt) - sigHpt; // flip Y (top-fraction -> bottom origin)
+    return { x: xpt, y: ypt, width: sigWpt, height: sigHpt };
+  }
+  window.__placementToPdf = placementToPdf; // exposed for self-test
+
+  /* ---------- file ---------- */
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "application/pdf", multiple: false, color: "var(--c-sign)",
+    onChange: async function (files) {
+      result.classList.remove("show"); placements = []; pageWraps = []; pagesEl.innerHTML = "";
+      builder.classList.toggle("hidden", files.length < 1);
+      placeStep.classList.add("hidden"); go.disabled = true; addMore.disabled = !currentSig;
+      if (files.length) { await loadPdf(files[0]); }
+    }
+  });
+
+  async function loadPdf(file) {
+    if (!window.pdfjsLib) { PN.status(statusEl, "Could not load the PDF engine.", true); return; }
+    PN.status(statusEl, "Opening PDF…");
+    srcBytes = await PN.readBytes(file);
+    var pdf = await pdfjsLib.getDocument({ data: srcBytes.slice(0) }).promise;
+    pagesEl.innerHTML = ""; pageWraps = [];
+    var maxW = Math.min(820, (document.querySelector(".workspace").clientWidth || 800) - 8);
+    for (var i = 1; i <= pdf.numPages; i++) {
+      var page = await pdf.getPage(i);
+      var vp1 = page.getViewport({ scale: 1 });
+      var scale = maxW / vp1.width;
+      var vp = page.getViewport({ scale: scale });
+      var wrap = document.createElement("div"); wrap.className = "page-wrap";
+      wrap.style.width = Math.floor(vp.width) + "px"; wrap.style.height = Math.floor(vp.height) + "px";
+      var canvas = document.createElement("canvas");
+      canvas.width = Math.floor(vp.width); canvas.height = Math.floor(vp.height);
+      var ctx = canvas.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      await page.render({ canvasContext: ctx, viewport: vp }).promise;
+      wrap.appendChild(canvas);
+      (function (idx, w) {
+        w.addEventListener("pointerdown", function () { currentPage = idx; });
+      })(i - 1, wrap);
+      pagesEl.appendChild(wrap); pageWraps.push(wrap);
+    }
+    PN.status(statusEl, "");
+    placeStep.classList.remove("hidden");
+    if (currentSig) addMore.disabled = false;
+  }
+
+  /* ---------- tabs ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".sign-tabs button"), function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".sign-tabs button").forEach(function (x) { x.classList.remove("active"); });
+      document.querySelectorAll(".sign-pane").forEach(function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      document.querySelector('.sign-pane[data-pane="' + b.dataset.tab + '"]').classList.add("active");
+    });
+  });
+
+  /* ---------- draw pad ---------- */
+  var pad = document.getElementById("pad"), pctx = pad.getContext("2d"), drawing = false, hasInk = false, last = null;
+  pctx.lineWidth = 2.6; pctx.lineCap = "round"; pctx.lineJoin = "round"; pctx.strokeStyle = "#0a2540";
+  function padPos(e) { var r = pad.getBoundingClientRect(); return { x: (e.clientX - r.left) * (pad.width / r.width), y: (e.clientY - r.top) * (pad.height / r.height) }; }
+  pad.addEventListener("pointerdown", function (e) { drawing = true; hasInk = true; last = padPos(e); pad.setPointerCapture(e.pointerId); });
+  pad.addEventListener("pointermove", function (e) { if (!drawing) return; var p = padPos(e); pctx.beginPath(); pctx.moveTo(last.x, last.y); pctx.lineTo(p.x, p.y); pctx.stroke(); last = p; });
+  pad.addEventListener("pointerup", function () { drawing = false; });
+  pad.addEventListener("pointerleave", function () { drawing = false; });
+  document.getElementById("padClear").addEventListener("click", function () { pctx.clearRect(0, 0, pad.width, pad.height); hasInk = false; });
+  document.getElementById("useDraw").addEventListener("click", function () {
+    if (!hasInk) { PN.status(statusEl, "Draw your signature first.", true); return; }
+    setSignature(pad.toDataURL("image/png"), pad.width, pad.height, "png");
+  });
+
+  /* ---------- type ---------- */
+  var typeText = document.getElementById("typeText"), typeFont = document.getElementById("typeFont"), typePreview = document.getElementById("typePreview");
+  function refreshTypePreview() { typePreview.style.fontFamily = typeFont.value; typePreview.textContent = typeText.value || "Your signature"; }
+  typeText.addEventListener("input", refreshTypePreview); typeFont.addEventListener("change", refreshTypePreview); refreshTypePreview();
+  document.getElementById("useType").addEventListener("click", function () {
+    var txt = (typeText.value || "").trim();
+    if (!txt) { PN.status(statusEl, "Type your name first.", true); return; }
+    var fontPx = 96, pad2 = 24;
+    var c = document.createElement("canvas"); var cx = c.getContext("2d");
+    cx.font = fontPx + "px " + typeFont.value;
+    var w = Math.ceil(cx.measureText(txt).width) + pad2 * 2;
+    c.width = w; c.height = Math.ceil(fontPx * 1.6);
+    cx.font = fontPx + "px " + typeFont.value; cx.fillStyle = "#0a2540"; cx.textBaseline = "middle";
+    cx.fillText(txt, pad2, c.height / 2);
+    setSignature(c.toDataURL("image/png"), c.width, c.height, "png");
+  });
+
+  /* ---------- upload ---------- */
+  var sigImg = document.getElementById("sigImg"), useUpload = document.getElementById("useUpload"), pendingUpload = null;
+  sigImg.addEventListener("change", function () {
+    var f = sigImg.files[0]; if (!f) { useUpload.disabled = true; return; }
+    var url = URL.createObjectURL(f); var img = new Image();
+    img.onload = function () { pendingUpload = { url: url, w: img.naturalWidth, h: img.naturalHeight, type: /png/i.test(f.type) || /webp/i.test(f.type) ? "png" : "jpg" }; useUpload.disabled = false; };
+    img.onerror = function () { URL.revokeObjectURL(url); useUpload.disabled = true; PN.status(statusEl, "That image could not be read.", true); };
+    img.src = url;
+  });
+  useUpload.addEventListener("click", function () {
+    if (!pendingUpload) return;
+    // Read as data URL so we keep bytes for pdf-lib (handles png/jpg/webp via canvas re-encode to png for webp).
+    var f = sigImg.files[0]; var fr = new FileReader();
+    fr.onload = function () {
+      if (pendingUpload.type === "jpg") { setSignature(fr.result, pendingUpload.w, pendingUpload.h, "jpg"); }
+      else if (/webp/i.test(f.type)) {
+        // re-encode webp -> png for pdf-lib
+        var img = new Image(); img.onload = function () {
+          var c = document.createElement("canvas"); c.width = img.naturalWidth; c.height = img.naturalHeight;
+          c.getContext("2d").drawImage(img, 0, 0); setSignature(c.toDataURL("image/png"), c.width, c.height, "png");
+        }; img.src = fr.result;
+      } else { setSignature(fr.result, pendingUpload.w, pendingUpload.h, "png"); }
+    };
+    fr.readAsDataURL(f);
+  });
+
+  /* ---------- signature ready ---------- */
+  function setSignature(dataURL, w, h, type) {
+    currentSig = { dataURL: dataURL, w: w, h: h, type: type };
+    sigReady.style.display = ""; sigReady.textContent = "✓ Signature ready — it's been added to the current page. Drag to position, resize, or add it to more pages.";
+    addMore.disabled = pageWraps.length === 0;
+    PN.status(statusEl, "");
+    if (pageWraps.length) addPlacement(currentPage || 0);
+  }
+
+  /* ---------- placement overlays ---------- */
+  function addPlacement(pageIndex) {
+    if (!currentSig || !pageWraps[pageIndex]) return;
+    var wrap = pageWraps[pageIndex];
+    var ov = document.createElement("div"); ov.className = "sig-ov";
+    var defW = Math.max(80, wrap.clientWidth * 0.28);
+    var defH = defW * (currentSig.h / currentSig.w);
+    var left = (wrap.clientWidth - defW) / 2, top = Math.max(8, wrap.clientHeight - defH - wrap.clientHeight * 0.12);
+    ov.style.width = defW + "px"; ov.style.height = defH + "px"; ov.style.left = left + "px"; ov.style.top = top + "px";
+    ov.innerHTML = '<img src="' + currentSig.dataURL + '" alt="signature"><span class="rz"></span><span class="rm" title="Remove">×</span>';
+    wrap.appendChild(ov);
+    var rec = { pageIndex: pageIndex, el: ov, wrap: wrap, sigW: currentSig.w, sigH: currentSig.h, dataURL: currentSig.dataURL, type: currentSig.type };
+    placements.push(rec);
+    go.disabled = false;
+
+    // drag
+    ov.addEventListener("pointerdown", function (e) {
+      if (e.target.classList.contains("rz") || e.target.classList.contains("rm")) return;
+      e.preventDefault(); currentPage = pageIndex;
+      var r = wrap.getBoundingClientRect(); var ox = e.clientX - ov.offsetLeft, oy = e.clientY - ov.offsetTop;
+      ov.setPointerCapture(e.pointerId);
+      function mv(ev) {
+        var nl = ev.clientX - ox, nt = ev.clientY - oy;
+        nl = Math.max(0, Math.min(nl, wrap.clientWidth - ov.offsetWidth));
+        nt = Math.max(0, Math.min(nt, wrap.clientHeight - ov.offsetHeight));
+        ov.style.left = nl + "px"; ov.style.top = nt + "px";
+      }
+      function up(ev) { ov.releasePointerCapture(e.pointerId); ov.removeEventListener("pointermove", mv); ov.removeEventListener("pointerup", up); }
+      ov.addEventListener("pointermove", mv); ov.addEventListener("pointerup", up);
+    });
+    // resize (preserve aspect)
+    ov.querySelector(".rz").addEventListener("pointerdown", function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var startX = e.clientX, startW = ov.offsetWidth; var ar = currentSig ? (rec.sigH / rec.sigW) : (ov.offsetHeight / ov.offsetWidth);
+      e.target.setPointerCapture(e.pointerId);
+      function mv(ev) {
+        var nw = Math.max(40, Math.min(startW + (ev.clientX - startX), wrap.clientWidth - ov.offsetLeft));
+        ov.style.width = nw + "px"; ov.style.height = (nw * (rec.sigH / rec.sigW)) + "px";
+      }
+      function up(ev) { e.target.releasePointerCapture(e.pointerId); e.target.removeEventListener("pointermove", mv); e.target.removeEventListener("pointerup", up); }
+      e.target.addEventListener("pointermove", mv); e.target.addEventListener("pointerup", up);
+    });
+    // remove
+    ov.querySelector(".rm").addEventListener("pointerdown", function (e) {
+      e.preventDefault(); e.stopPropagation();
+      ov.remove(); placements = placements.filter(function (x) { return x !== rec; });
+      go.disabled = placements.length === 0;
+    });
+  }
+
+  addMore.addEventListener("click", function () { addPlacement(currentPage || 0); });
+
+  /* ---------- apply ---------- */
+  go.addEventListener("click", async function () {
+    if (!srcBytes || !placements.length || !window.PDFLib) return;
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Applying signature…"); PN.progress(prog, bar, 10);
+    try {
+      var doc = await PDFLib.PDFDocument.load(srcBytes.slice(0));
+      var pages = doc.getPages();
+      // cache embedded images by dataURL
+      var cache = {};
+      for (var i = 0; i < placements.length; i++) {
+        var p = placements[i];
+        var page = pages[p.pageIndex]; if (!page) continue;
+        var size = page.getSize(); // points, unrotated box
+        var wrap = p.wrap;
+        var frac = {
+          xFrac: p.el.offsetLeft / wrap.clientWidth,
+          yFrac: p.el.offsetTop / wrap.clientHeight,
+          wFrac: p.el.offsetWidth / wrap.clientWidth,
+          sigW: p.sigW, sigH: p.sigH
+        };
+        var box = placementToPdf(frac, size.width, size.height);
+        var img = cache[p.dataURL];
+        if (!img) {
+          var bytes = dataUrlToBytes(p.dataURL);
+          img = p.type === "jpg" ? await doc.embedJpg(bytes) : await doc.embedPng(bytes);
+          cache[p.dataURL] = img;
+        }
+        page.drawImage(img, { x: box.x, y: box.y, width: box.width, height: box.height });
+        PN.progress(prog, bar, 10 + ((i + 1) / placements.length) * 80);
+      }
+      var out = await doc.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Your signed PDF is ready</h3><p>' + placements.length + ' signature' + (placements.length > 1 ? 's' : '') + ' added • ' + PN.formatBytes(out.length) + '</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download signed PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(out, (fm.files[0] ? PN.sanitizeName(fm.files[0].name, "document") : "document") + "-signed.pdf", "application/pdf"); };
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong applying the signature. Try a different signature image.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+
+  function dataUrlToBytes(durl) {
+    var base64 = durl.split(",")[1]; var bin = atob(base64); var len = bin.length; var bytes = new Uint8Array(len);
+    for (var i = 0; i < len; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image to HTML — Extract Text From an Image to HTML (Free)</title>
+<meta name="description" content="Convert an image to HTML free — OCR reads the text in your image and outputs clean, ready-to-use HTML, in your browser. No upload, no sign-up, no watermark.">
+<link rel="canonical" href="https://getpdfnest.com/tools/image-to-html.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image to HTML — Extract Text From an Image to HTML">
+<meta property="og:description" content="OCR an image into clean HTML in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/image-to-html.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%236c5ce7'/%3E%3Ctext x='20' y='27' font-size='15' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260625">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Image to HTML Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/image-to-html.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Image to HTML","OCR text recognition","Clean paragraph HTML","Optional embedded image","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to convert an image to HTML","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your image","text":"Open the Image to HTML tool and drop in your image. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Run OCR","text":"Pick the language and click convert. The tool reads the text in the image and turns it into HTML."},
+{"@type":"HowToStep","name":"Copy or download","text":"Copy the HTML or download an .html file, and preview the result."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Image to HTML","item":"https://getpdfnest.com/tools/image-to-html.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What does the Image to HTML tool do?","acceptedAnswer":{"@type":"Answer","text":"It uses OCR (optical character recognition) to read the text inside an image and outputs it as clean HTML paragraphs you can paste into a web page. It extracts the text content; it does not recreate the visual design as code."}},
+{"@type":"Question","name":"How do I convert an image to HTML for free?","acceptedAnswer":{"@type":"Answer","text":"Open the Image to HTML tool, drop in your image, choose the language, and click convert. PDFNest runs OCR in your browser and gives you ready-to-use HTML, with nothing uploaded."}},
+{"@type":"Question","name":"Can it turn a screenshot of a website into working code?","acceptedAnswer":{"@type":"Answer","text":"No. This tool extracts the readable text into HTML. Recreating a pixel-perfect layout from a screenshot requires an AI design tool, which is a different kind of product."}},
+{"@type":"Question","name":"Is my image uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The OCR engine runs entirely in your browser, so your image never leaves your device."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Image to HTML</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#efe9fa;color:var(--c-img2html)">● Image to HTML</span>
+    <h1>Image to HTML</h1>
+    <p class="answer"><strong>To convert an image to HTML, drop your image in below and click convert — OCR reads the text and turns it into clean, ready-to-paste HTML, free and in your browser.</strong></p>
+    <p>This tool <strong>extracts the text</strong> from an image into HTML. It doesn't recreate a design as code — it gives you the words, marked up and ready to use. Nothing is uploaded.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 9l-2 3 2 3M16 9l2 3-2 3M13 7l-2 10"/></svg></div>
+      <h3>Drop an image here</h3><p>or click to choose a file</p>
+      <small>JPG, PNG, WebP, GIF, BMP — add one or several</small>
+    </div>
+    <input type="file" id="input" accept="image/*" multiple class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="lang">Language</label>
+          <select id="lang">
+            <option value="eng" selected>English</option>
+            <option value="spa">Spanish</option>
+            <option value="fra">French</option>
+            <option value="deu">German</option>
+            <option value="ita">Italian</option>
+            <option value="por">Portuguese</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="embed">Embed the image?</label>
+          <select id="embed">
+            <option value="no" selected>No — text only</option>
+            <option value="yes">Yes — add the image above its text</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="full">Output</label>
+          <select id="full">
+            <option value="frag" selected>HTML snippet (paste into a page)</option>
+            <option value="full">Full HTML document</option>
+          </select>
+        </div>
+      </div>
+      <div class="hint">OCR works best on clear, high-contrast images. Text is grouped into paragraphs. The result is editable below before you download.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Convert to HTML</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+
+    <div id="resultWrap" class="hidden">
+      <div class="field" style="margin-top:18px">
+        <label for="outHtml">HTML output (editable)</label>
+        <textarea id="outHtml" rows="12" style="width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem"></textarea>
+      </div>
+      <div class="action-bar" style="gap:10px;flex-wrap:wrap">
+        <button class="btn btn--accent" id="dlBtn">Download .html</button>
+        <button class="btn btn--ghost" id="copyBtn">Copy HTML</button>
+        <button class="btn btn--ghost" id="previewBtn">Preview</button>
+      </div>
+      <div id="previewBox" style="display:none;margin-top:14px">
+        <label style="font-weight:600;display:block;margin-bottom:6px">Preview</label>
+        <iframe id="previewFrame" style="width:100%;height:340px;border:1px solid var(--line);border-radius:10px;background:#fff"></iframe>
+      </div>
+    </div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to convert an image to HTML</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add an image</h3><p>Drop a photo, screenshot or scan into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Run OCR</h3><p>Pick the language and click convert — the text is read in your browser.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Copy or download</h3><p>Grab the HTML snippet or a full .html file, and preview it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Turn the text in an image into usable HTML</h2>
+    <p>Got a flyer, a scanned page or a screenshot whose text you want on a web page? Retyping it is slow and error-prone. This tool runs a full <strong>OCR engine (Tesseract, compiled to WebAssembly) inside your browser</strong>, reads the words, and wraps them in clean HTML paragraphs you can paste straight into a site or CMS.</p>
+    <h3>What it does — and doesn't — do</h3>
+    <p>It's important to be clear: this is a <strong>text-to-HTML</strong> tool. It pulls the readable text out of the image and marks it up as paragraphs. It does <em>not</em> reverse-engineer a screenshot's design into pixel-perfect layout code — that's an AI design problem, not OCR. What you get is accurate, editable text content, ready to style however you like.</p>
+    <p>Just need plain text instead of HTML? Use <a href="image-to-text.html">Image to Text</a>. Working from a PDF? <a href="pdf-to-html.html">PDF to HTML</a> converts a whole PDF, and <a href="ocr-pdf.html">OCR PDF</a> makes a scanned PDF searchable.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Image to HTML — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>What does this tool do?</summary><p>It uses OCR to read the text inside an image and outputs it as clean HTML paragraphs. It extracts text content; it doesn't recreate the visual design as code.</p></details>
+      <details><summary>How do I convert an image to HTML for free?</summary><p>Drop in your image, choose the language, and click convert. OCR runs in your browser and gives you ready-to-use HTML — nothing uploaded.</p></details>
+      <details><summary>Can it turn a website screenshot into working code?</summary><p>No — it extracts the text into HTML. Recreating a pixel-perfect layout from a screenshot needs an AI design tool.</p></details>
+      <details><summary>Is my image uploaded anywhere?</summary><p>No — the OCR engine runs entirely in your browser.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="image-to-text.html"><span class="dot" style="background:var(--c-pdf2txt)">OCR</span>Image to Text</a>
+      <a href="pdf-to-html.html"><span class="dot" style="background:var(--c-pdf2html)">PH</span>PDF to HTML</a>
+      <a href="ocr-pdf.html"><span class="dot" style="background:var(--c-pdf2txt)">OP</span>OCR PDF</a>
+      <a href="html-editor.html"><span class="dot" style="background:var(--c-htmledit)">ED</span>HTML Editor</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/site.js?v=20260625"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"), opts = document.getElementById("opts"),
+      resultWrap = document.getElementById("resultWrap"), prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      outHtml = document.getElementById("outHtml");
+
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "image/*", multiple: true, color: "var(--c-img2html)",
+    onChange: function (files) {
+      go.disabled = files.length < 1;
+      opts.classList.toggle("hidden", files.length < 1);
+      resultWrap.classList.add("hidden"); PN.status(statusEl, "");
+    }
+  });
+
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  // Turn raw OCR text into <p> blocks: split on blank lines, join wrapped lines with spaces.
+  function textToParagraphs(text) {
+    var blocks = String(text).replace(/\r/g, "").split(/\n[ \t]*\n+/);
+    var html = "";
+    blocks.forEach(function (b) {
+      var t = b.split("\n").map(function (l) { return l.trim(); }).filter(Boolean).join(" ").trim();
+      if (t) html += "  <p>" + escapeHtml(t) + "</p>\n";
+    });
+    return html || "  <p></p>\n";
+  }
+
+  function fileToDataURL(file) {
+    return new Promise(function (resolve, reject) {
+      var fr = new FileReader();
+      fr.onload = function () { resolve(fr.result); };
+      fr.onerror = reject; fr.readAsDataURL(file);
+    });
+  }
+
+  function wrapFull(body) {
+    return "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n" +
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Converted from image</title>\n" +
+      "<style>body{font-family:system-ui,Segoe UI,Arial,sans-serif;line-height:1.6;max-width:760px;margin:2rem auto;padding:0 1rem;color:#111}" +
+      "img{max-width:100%;height:auto}h2{margin-top:1.6em}</style>\n</head>\n<body>\n" + body + "</body>\n</html>\n";
+  }
+
+  go.addEventListener("click", async function () {
+    var files = fm.files; if (!files.length) return;
+    if (typeof Tesseract === "undefined") { PN.status(statusEl, "OCR engine is still loading — try again in a moment.", true); return; }
+    go.disabled = true; resultWrap.classList.add("hidden");
+    var lang = document.getElementById("lang").value;
+    var embed = document.getElementById("embed").value === "yes";
+    var full = document.getElementById("full").value === "full";
+    PN.status(statusEl, "Loading OCR engine…"); PN.progress(prog, bar, 4);
+    var worker;
+    try {
+      worker = await Tesseract.createWorker(lang, 1, { logger: function () {} });
+      var body = "";
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        PN.status(statusEl, "Reading " + (i + 1) + " of " + files.length + "…");
+        if (files.length > 1) body += "  <h2>" + escapeHtml(file.name) + "</h2>\n";
+        if (embed) {
+          var durl = await fileToDataURL(file);
+          body += '  <img src="' + durl + '" alt="' + escapeHtml(file.name) + '">\n';
+        }
+        var res = await worker.recognize(file);
+        var text = (res && res.data && res.data.text) ? res.data.text : "";
+        body += textToParagraphs(text);
+        PN.progress(prog, bar, 4 + ((i + 1) / files.length) * 92);
+      }
+      await worker.terminate(); worker = null;
+
+      outHtml.value = full ? wrapFull(body) : body.replace(/\s+$/, "") + "\n";
+      resultWrap.classList.remove("hidden");
+      document.getElementById("previewBox").style.display = "none";
+      PN.progress(prog, bar, 100);
+      PN.status(statusEl, "Done — converted " + files.length + " image" + (files.length > 1 ? "s" : "") + " to HTML.");
+      resultWrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong during OCR. Try a clearer image or a different language.", true); PN.progress(prog, bar, null);
+      if (worker) { try { await worker.terminate(); } catch (_) {} }
+    } finally { go.disabled = false; }
+  });
+
+  document.getElementById("dlBtn").addEventListener("click", function () {
+    if (!outHtml.value) return;
+    PN.downloadBlob(new Blob([outHtml.value], { type: "text/html;charset=utf-8" }), "image-to-html-pdfnest.html");
+  });
+  document.getElementById("copyBtn").addEventListener("click", async function () {
+    if (!outHtml.value) return;
+    var b = this;
+    try { await navigator.clipboard.writeText(outHtml.value); var o = b.textContent; b.textContent = "Copied!"; setTimeout(function () { b.textContent = o; }, 1500); }
+    catch (_) { outHtml.select(); document.execCommand("copy"); }
+  });
+  document.getElementById("previewBtn").addEventListener("click", function () {
+    var box = document.getElementById("previewBox");
+    if (box.style.display === "none") {
+      var f = document.getElementById("previewFrame");
+      var full = document.getElementById("full").value === "full";
+      var doc = full ? outHtml.value : wrapFull(outHtml.value);
+      f.srcdoc = doc; box.style.display = "";
+    } else { box.style.display = "none"; }
+  });
+})();
+</script>
+</body>
+</html>

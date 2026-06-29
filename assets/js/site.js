@@ -76,7 +76,11 @@
     { slug: "translate-pdf",   name: "Translate PDF",   color: "var(--c-md2pdf)",   short: "Translate PDF text",           tag: "TR" },
     { slug: "word-to-pdf",     name: "Word to PDF",     color: "var(--c-word)",     short: "Convert DOCX to PDF",          tag: "WP" },
     { slug: "excel-to-pdf",    name: "Excel to PDF",    color: "var(--c-excel)",    short: "Convert XLSX/CSV to PDF",      tag: "XP" },
-    { slug: "pdf-to-ppt",      name: "PDF to PowerPoint", color: "var(--c-ppt)",    short: "Convert PDF to PPTX slides",   tag: "PP" }
+    { slug: "pdf-to-ppt",      name: "PDF to PowerPoint", color: "var(--c-ppt)",    short: "Convert PDF to PPTX slides",   tag: "PP" },
+    { slug: "sign-pdf",        name: "Sign PDF",        color: "var(--c-sign)",     short: "Add your signature to a PDF",  tag: "SG" },
+    { slug: "compress-image",  name: "Compress Image",  color: "var(--c-imgcomp)",  short: "Shrink JPG/PNG/WebP size",     tag: "CM" },
+    { slug: "convert-image",   name: "Convert Image",   color: "var(--c-imgconv)",  short: "JPG/PNG/WebP converter",       tag: "CV" },
+    { slug: "image-to-html",   name: "Image to HTML",   color: "var(--c-img2html)", short: "OCR an image into HTML",       tag: "IH" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;
