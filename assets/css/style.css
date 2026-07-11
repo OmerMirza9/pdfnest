@@ -36,6 +36,9 @@
   --c-imgcomp:  #e58e26;
   --c-imgconv:  #2e86de;
   --c-img2html: #8854d0;
+  --c-imgrot:   #10ac84;
+  --c-imgresz:  #5f27cd;
+  --c-imgcrop:  #e17055;
 
   /* Neutrals */
   --ink:        #1a1a2e;

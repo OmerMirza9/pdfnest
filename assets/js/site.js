@@ -80,7 +80,10 @@
     { slug: "sign-pdf",        name: "Sign PDF",        color: "var(--c-sign)",     short: "Add your signature to a PDF",  tag: "SG" },
     { slug: "compress-image",  name: "Compress Image",  color: "var(--c-imgcomp)",  short: "Shrink JPG/PNG/WebP size",     tag: "CM" },
     { slug: "convert-image",   name: "Convert Image",   color: "var(--c-imgconv)",  short: "JPG/PNG/WebP converter",       tag: "CV" },
-    { slug: "image-to-html",   name: "Image to HTML",   color: "var(--c-img2html)", short: "OCR an image into HTML",       tag: "IH" }
+    { slug: "image-to-html",   name: "Image to HTML",   color: "var(--c-img2html)", short: "OCR an image into HTML",       tag: "IH" },
+    { slug: "rotate-image",    name: "Rotate Image",    color: "var(--c-imgrot)",   short: "Rotate & flip JPG/PNG/WebP",   tag: "RI" },
+    { slug: "resize-image",    name: "Resize Image",    color: "var(--c-imgresz)",  short: "Resize by pixels or percent",  tag: "RS" },
+    { slug: "crop-image",      name: "Crop Image",      color: "var(--c-imgcrop)",  short: "Crop a photo or screenshot",   tag: "CR" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;

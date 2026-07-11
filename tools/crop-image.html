@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crop Image — Crop JPG, PNG &amp; WebP Online Free (No Upload)</title>
+<meta name="description" content="Crop an image free, in your browser — drag to select the area, snap to square, 4:3 or 16:9, and download. Works with JPG, PNG and WebP. No upload, no watermark, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/crop-image.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crop Image — Crop JPG, PNG & WebP Online Free">
+<meta property="og:description" content="Drag to crop a photo or screenshot in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/crop-image.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260625">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Crop Image","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/crop-image.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Drag to select the crop area","Square, 4:3 and 16:9 presets","Exact pixel readout","Works with JPG, PNG and WebP","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to crop an image","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your image","text":"Open the Crop Image tool and drop in a JPG, PNG or WebP. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Select the area","text":"Drag on the picture to draw the crop box — move it, resize it from the corners, or snap it to square, 4:3 or 16:9."},
+{"@type":"HowToStep","name":"Download","text":"Click Crop and download the cropped image."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Crop Image","item":"https://getpdfnest.com/tools/crop-image.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I crop an image for free?","acceptedAnswer":{"@type":"Answer","text":"Open the Crop Image tool, drop in your JPG, PNG or WebP, drag to select the area you want to keep, and download. PDFNest crops in your browser, so nothing is uploaded and there is no watermark."}},
+{"@type":"Question","name":"How do I crop an image to a square?","acceptedAnswer":{"@type":"Answer","text":"Pick the 1:1 preset and the crop box snaps to a perfect square — ideal for profile pictures. 4:3 and 16:9 presets are there too."}},
+{"@type":"Question","name":"Does cropping reduce image quality?","acceptedAnswer":{"@type":"Answer","text":"No — cropping just keeps the pixels inside your selection at their original resolution. Nothing is resampled or recompressed beyond a high-quality save."}},
+{"@type":"Question","name":"Is it safe to crop private photos online?","acceptedAnswer":{"@type":"Answer","text":"With PDFNest, yes — the photo is cropped locally in your browser and never uploaded, so it never leaves your device."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Crop Image</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#fcebe4;color:var(--c-imgcrop)">● Crop Image</span>
+    <h1>Crop Image</h1>
+    <p class="answer"><strong>To crop an image, drop your JPG, PNG or WebP in below, drag to select the area you want to keep, and download — free, in your browser, with no watermark.</strong></p>
+    <p>Cut out the part that matters — square it for a profile picture, trim a screenshot, or reframe a photo. Nothing is uploaded, there's no sign-up and no watermark.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2v16a2 2 0 0 0 2 2h16"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg></div>
+      <h3>Drop an image here</h3><p>or click to choose a file</p>
+      <small>JPG, PNG or WebP — one image at a time</small>
+    </div>
+    <input type="file" id="input" accept="image/*" class="hidden">
+
+    <div class="options hidden" id="opts">
+      <h3>Crop area</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="ratio">Aspect ratio</label>
+          <select id="ratio">
+            <option value="free" selected>Free — drag any shape</option>
+            <option value="1">Square (1:1) — profile pictures</option>
+            <option value="1.3333">4:3 — classic photo</option>
+            <option value="1.7778">16:9 — widescreen</option>
+            <option value="0.75">3:4 — portrait</option>
+            <option value="0.5625">9:16 — story / reel</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Selection (px)</label>
+          <div id="dims" style="padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg-soft);font-weight:600">Drag on the image to select</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;position:relative;display:inline-block;max-width:100%" id="stage">
+        <canvas id="view" style="max-width:100%;display:block;border-radius:10px;cursor:crosshair;touch-action:none"></canvas>
+      </div>
+      <div class="hint">Drag to draw the crop box. Drag inside it to move, or grab a corner to resize. Pick a ratio to keep the box locked to it. Everything happens on your device — nothing is uploaded.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Crop &amp; download</button></div>
+    <div class="status" id="status"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to crop an image</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add an image</h3><p>Drop your JPG, PNG or WebP into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Select the area</h3><p>Drag to draw the crop box — move it, resize it, or snap it to a ratio.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Click Crop &amp; download to save the cropped image.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Crop photos and screenshots without uploading anything</h2>
+    <p>Most crops are about removing, not editing: the stranger at the edge of the photo, the toolbar in the screenshot, the empty sky above the subject. Drawing a box around what matters and cutting the rest takes seconds — and PDFNest does it <strong>entirely in your browser</strong>, so even private photos never get uploaded.</p>
+    <h3>Which aspect ratio should I use?</h3>
+    <p><strong>1:1 (square)</strong> for profile pictures and most avatars. <strong>4:3</strong> is the classic photo shape; <strong>16:9</strong> fits video thumbnails, presentation slides and banners; <strong>9:16</strong> is the vertical story/reel format. And <strong>free</strong> is for everything else — trim exactly what you want with no constraint.</p>
+    <p>Cropping keeps every pixel inside your selection at full resolution — nothing is scaled, so there's no quality loss. If the cropped result also needs to hit exact dimensions, run it through <a href="resize-image.html">Resize Image</a> next; if the file needs to be smaller, finish with <a href="compress-image.html">Compress Image</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Crop Image — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I crop an image for free?</summary><p>Drop your image in above, drag to select the area to keep, and click Crop &amp; download. It's cropped in your browser — nothing uploaded, no watermark.</p></details>
+      <details><summary>How do I crop to a square?</summary><p>Pick the 1:1 preset — the crop box snaps to a perfect square, ideal for profile pictures.</p></details>
+      <details><summary>Does cropping reduce quality?</summary><p>No — the pixels inside your selection are kept at their original resolution.</p></details>
+      <details><summary>Are my photos private?</summary><p>Yes — the photo is cropped locally in your browser and never uploaded.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="resize-image.html"><span class="dot" style="background:var(--c-imgresz)">RS</span>Resize Image</a>
+      <a href="rotate-image.html"><span class="dot" style="background:var(--c-imgrot)">RI</span>Rotate Image</a>
+      <a href="compress-image.html"><span class="dot" style="background:var(--c-imgcomp)">CM</span>Compress Image</a>
+      <a href="convert-image.html"><span class="dot" style="background:var(--c-imgconv)">CV</span>Convert Image</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/site.js?v=20260625"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"), opts = document.getElementById("opts"),
+      zone = document.getElementById("zone"), input = document.getElementById("input"),
+      view = document.getElementById("view"), dims = document.getElementById("dims"), ratioSel = document.getElementById("ratio");
+
+  var img = null, srcFile = null;      // original image + file
+  var scale = 1;                        // canvas px per image px (display)
+  var sel = null;                       // selection in IMAGE pixels {x,y,w,h}
+  var drag = null;                      // {mode:'new'|'move'|'nw'|'ne'|'sw'|'se', startX, startY, orig}
+  var HANDLE = 12;                      // handle hit size in canvas px
+
+  // -- file intake --------------------------------------------------------
+  zone.addEventListener("click", function () { input.click(); });
+  zone.addEventListener("dragover", function (e) { e.preventDefault(); zone.classList.add("drag"); });
+  zone.addEventListener("dragleave", function () { zone.classList.remove("drag"); });
+  zone.addEventListener("drop", function (e) {
+    e.preventDefault(); zone.classList.remove("drag");
+    if (e.dataTransfer.files.length) take(e.dataTransfer.files[0]);
+  });
+  input.addEventListener("change", function () { if (input.files.length) take(input.files[0]); });
+
+  function take(file) {
+    if (!/^image\//.test(file.type)) { PN.status(statusEl, "That doesn't look like an image file.", true); return; }
+    srcFile = file;
+    var url = URL.createObjectURL(file);
+    var im = new Image();
+    im.onload = function () {
+      img = im; sel = null;
+      opts.classList.remove("hidden");
+      layout(); defaultSelection(); paint();
+      go.disabled = false;
+      PN.status(statusEl, "");
+      opts.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    };
+    im.onerror = function () { URL.revokeObjectURL(url); PN.status(statusEl, "Could not open that image.", true); };
+    im.src = url;
+  }
+
+  function layout() {
+    var maxW = Math.min(860, document.getElementById("stage").parentNode.clientWidth || 860);
+    scale = Math.min(1, maxW / img.naturalWidth);
+    view.width = Math.round(img.naturalWidth * scale);
+    view.height = Math.round(img.naturalHeight * scale);
+  }
+
+  function ratioVal() {
+    var v = ratioSel.value;
+    return v === "free" ? 0 : parseFloat(v);
+  }
+
+  function defaultSelection() {
+    var W = img.naturalWidth, H = img.naturalHeight, r = ratioVal();
+    var w = Math.round(W * 0.8), h = Math.round(H * 0.8);
+    if (r) { if (w / h > r) w = Math.round(h * r); else h = Math.round(w / r); }
+    sel = { x: Math.round((W - w) / 2), y: Math.round((H - h) / 2), w: w, h: h };
+    updateDims();
+  }
+
+  ratioSel.addEventListener("change", function () { if (img) { defaultSelection(); paint(); } });
+  window.addEventListener("resize", function () { if (img) { layout(); paint(); } });
+
+  function updateDims() {
+    dims.textContent = sel ? (sel.w + " × " + sel.h + " px") : "Drag on the image to select";
+  }
+
+  // -- painting -----------------------------------------------------------
+  function paint() {
+    var ctx = view.getContext("2d");
+    ctx.clearRect(0, 0, view.width, view.height);
+    ctx.drawImage(img, 0, 0, view.width, view.height);
+    if (!sel) return;
+    var x = sel.x * scale, y = sel.y * scale, w = sel.w * scale, h = sel.h * scale;
+    // dim outside
+    ctx.fillStyle = "rgba(20,20,40,.55)";
+    ctx.beginPath();
+    ctx.rect(0, 0, view.width, view.height);
+    ctx.rect(x, y, w, h);
+    ctx.fill("evenodd");
+    // border + thirds
+    ctx.strokeStyle = "#fff"; ctx.lineWidth = 2;
+    ctx.strokeRect(x + 1, y + 1, w - 2, h - 2);
+    ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,.45)";
+    ctx.beginPath();
+    ctx.moveTo(x + w / 3, y); ctx.lineTo(x + w / 3, y + h);
+    ctx.moveTo(x + 2 * w / 3, y); ctx.lineTo(x + 2 * w / 3, y + h);
+    ctx.moveTo(x, y + h / 3); ctx.lineTo(x + w, y + h / 3);
+    ctx.moveTo(x, y + 2 * h / 3); ctx.lineTo(x + w, y + 2 * h / 3);
+    ctx.stroke();
+    // corner handles
+    ctx.fillStyle = "#fff";
+    [[x, y], [x + w, y], [x, y + h], [x + w, y + h]].forEach(function (p) {
+      ctx.fillRect(p[0] - 5, p[1] - 5, 10, 10);
+    });
+    updateDims();
+  }
+
+  // -- interaction --------------------------------------------------------
+  function pos(e) {
+    var r = view.getBoundingClientRect();
+    var cx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+    var cy = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+    // account for CSS max-width scaling of the canvas element
+    var f = view.width / r.width;
+    return { x: cx * f / scale, y: cy * f / scale }; // in IMAGE px
+  }
+
+  function hit(p) {
+    if (!sel) return "new";
+    var hs = HANDLE / scale;
+    var corners = { nw: [sel.x, sel.y], ne: [sel.x + sel.w, sel.y], sw: [sel.x, sel.y + sel.h], se: [sel.x + sel.w, sel.y + sel.h] };
+    for (var k in corners) {
+      if (Math.abs(p.x - corners[k][0]) < hs && Math.abs(p.y - corners[k][1]) < hs) return k;
+    }
+    if (p.x > sel.x && p.x < sel.x + sel.w && p.y > sel.y && p.y < sel.y + sel.h) return "move";
+    return "new";
+  }
+
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+  function down(e) {
+    if (!img) return;
+    e.preventDefault();
+    var p = pos(e);
+    var mode = hit(p);
+    drag = { mode: mode, startX: p.x, startY: p.y, orig: sel ? { x: sel.x, y: sel.y, w: sel.w, h: sel.h } : null };
+    if (mode === "new") { sel = { x: p.x, y: p.y, w: 1, h: 1 }; }
+  }
+
+  function move(e) {
+    if (!drag || !img) return;
+    e.preventDefault();
+    var p = pos(e);
+    var W = img.naturalWidth, H = img.naturalHeight, r = ratioVal();
+    p.x = clamp(p.x, 0, W); p.y = clamp(p.y, 0, H);
+
+    if (drag.mode === "move") {
+      var o = drag.orig;
+      sel.x = clamp(o.x + (p.x - drag.startX), 0, W - o.w);
+      sel.y = clamp(o.y + (p.y - drag.startY), 0, H - o.h);
+    } else if (drag.mode === "new") {
+      var x0 = drag.startX, y0 = drag.startY;
+      var w = p.x - x0, h = p.y - y0;
+      if (r) {
+        var s = Math.max(Math.abs(w), Math.abs(h * r));
+        w = (w < 0 ? -1 : 1) * s;
+        h = (h < 0 ? -1 : 1) * s / r;
+      }
+      sel = normRect(x0, y0, w, h, W, H, r);
+    } else {
+      // corner resize: anchor is the opposite corner
+      var o2 = drag.orig;
+      var ax = drag.mode === "nw" || drag.mode === "sw" ? o2.x + o2.w : o2.x;
+      var ay = drag.mode === "nw" || drag.mode === "ne" ? o2.y + o2.h : o2.y;
+      var w2 = p.x - ax, h2 = p.y - ay;
+      if (r) {
+        var s2 = Math.max(Math.abs(w2), Math.abs(h2 * r));
+        w2 = (w2 < 0 ? -1 : 1) * s2;
+        h2 = (h2 < 0 ? -1 : 1) * s2 / r;
+      }
+      sel = normRect(ax, ay, w2, h2, W, H, r);
+    }
+    paint();
+  }
+
+  function normRect(x0, y0, w, h, W, H, r) {
+    var x = w < 0 ? x0 + w : x0, y = h < 0 ? y0 + h : y0;
+    w = Math.abs(w); h = Math.abs(h);
+    x = clamp(x, 0, W); y = clamp(y, 0, H);
+    w = Math.min(w, W - x); h = Math.min(h, H - y);
+    if (r) { // re-lock after clamping
+      if (w / h > r) w = h * r; else h = w / r;
+    }
+    return { x: Math.round(x), y: Math.round(y), w: Math.max(1, Math.round(w)), h: Math.max(1, Math.round(h)) };
+  }
+
+  function up() { drag = null; }
+
+  view.addEventListener("mousedown", down);
+  window.addEventListener("mousemove", move);
+  window.addEventListener("mouseup", up);
+  view.addEventListener("touchstart", down, { passive: false });
+  window.addEventListener("touchmove", move, { passive: false });
+  window.addEventListener("touchend", up);
+
+  // -- crop & download ----------------------------------------------------
+  go.addEventListener("click", async function () {
+    if (!img || !sel || sel.w < 2 || sel.h < 2) { PN.status(statusEl, "Drag on the image to select an area first.", true); return; }
+    go.disabled = true;
+    try {
+      var mime = (srcFile.type === "image/png" || srcFile.type === "image/webp" || srcFile.type === "image/jpeg") ? srcFile.type : "image/png";
+      var c = document.createElement("canvas");
+      c.width = sel.w; c.height = sel.h;
+      var ctx = c.getContext("2d");
+      if (mime === "image/jpeg") { ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height); }
+      ctx.drawImage(img, sel.x, sel.y, sel.w, sel.h, 0, 0, sel.w, sel.h);
+      var blob = await new Promise(function (r) { c.toBlob(r, mime, 0.92); });
+      c.width = c.height = 0;
+      if (!blob) throw new Error("encode failed");
+      var ext = mime === "image/png" ? "png" : mime === "image/webp" ? "webp" : "jpg";
+      PN.downloadBlob(blob, PN.sanitizeName(srcFile.name, "image") + "-cropped." + ext);
+      PN.status(statusEl, "Done — cropped to " + sel.w + " × " + sel.h + " px.");
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "The image could not be cropped. Try another file.", true);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

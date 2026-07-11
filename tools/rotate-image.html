@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotate Image — Rotate &amp; Flip JPG, PNG, WebP Free (No Upload)</title>
+<meta name="description" content="Rotate an image 90°, 180° or 270° and flip it horizontally or vertically — free, in your browser. Batch-rotate many photos at once, no upload, no watermark, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/rotate-image.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rotate Image — Rotate & Flip JPG, PNG, WebP Free">
+<meta property="og:description" content="Turn sideways or upside-down photos the right way up in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/rotate-image.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260625">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Rotate Image","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/rotate-image.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Rotate 90, 180 or 270 degrees","Flip horizontally or vertically","Batch rotate many images","Keeps original format and quality","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to rotate an image","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your images","text":"Open the Rotate Image tool and drop in your JPG, PNG or WebP files. They are processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Pick the rotation","text":"Choose 90° left, 90° right or 180°, and flip horizontally or vertically if needed. The preview shows the result."},
+{"@type":"HowToStep","name":"Download","text":"Download each rotated image, or all of them as a ZIP."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Rotate Image","item":"https://getpdfnest.com/tools/rotate-image.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I rotate an image for free?","acceptedAnswer":{"@type":"Answer","text":"Open the Rotate Image tool, drop in your JPG, PNG or WebP, pick 90° left, 90° right or 180°, and download the rotated image. PDFNest rotates in your browser, so nothing is uploaded and there is no watermark."}},
+{"@type":"Question","name":"Does rotating an image lose quality?","acceptedAnswer":{"@type":"Answer","text":"Rotating by 90, 180 or 270 degrees just rearranges the pixels, so there is no visible quality loss. JPGs are re-encoded at high quality when saving; PNG output is fully lossless."}},
+{"@type":"Question","name":"Can I rotate multiple images at once?","acceptedAnswer":{"@type":"Answer","text":"Yes — add as many images as you like, apply the same rotation to all of them, and download everything as a ZIP."}},
+{"@type":"Question","name":"What is the difference between rotating and flipping?","acceptedAnswer":{"@type":"Answer","text":"Rotating turns the image around its centre (90, 180 or 270 degrees). Flipping mirrors it — horizontally (left-right, like a mirror) or vertically (top-bottom). Flipping fixes mirrored selfies and scans."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Rotate Image</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#e0f6ef;color:var(--c-imgrot)">● Rotate Image</span>
+    <h1>Rotate Image</h1>
+    <p class="answer"><strong>To rotate an image, drop your JPG, PNG or WebP files in below, choose 90° left, 90° right or 180° (or flip it), and download — free, in your browser, with no watermark.</strong></p>
+    <p>Turn sideways photos the right way up, fix upside-down scans, and un-mirror selfies. Nothing is uploaded, there's no sign-up and no watermark.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></div>
+      <h3>Drop images here</h3><p>or click to choose files</p>
+      <small>JPG, PNG, WebP — add as many as you like</small>
+    </div>
+    <input type="file" id="input" accept="image/*" multiple class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Rotation options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="angle">Rotate</label>
+          <select id="angle">
+            <option value="90" selected>90° right (clockwise)</option>
+            <option value="270">90° left (counter-clockwise)</option>
+            <option value="180">180° (upside-down fix)</option>
+            <option value="0">No rotation (flip only)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="flip">Flip (mirror)</label>
+          <select id="flip">
+            <option value="none" selected>No flip</option>
+            <option value="h">Flip horizontally (left ↔ right)</option>
+            <option value="v">Flip vertically (top ↕ bottom)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">Output format</label>
+          <select id="format">
+            <option value="keep" selected>Same as original</option>
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG (lossless)</option>
+            <option value="image/webp">WebP</option>
+          </select>
+        </div>
+      </div>
+      <div class="hint">Rotation is applied to every image you added. 90° rotations swap width and height; flipping mirrors the picture. Everything is processed on your device — nothing is uploaded.</div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Rotate images</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div id="resultWrap" class="hidden"></div>
+    <div class="action-bar" id="zipBar" style="display:none"><button class="btn btn--primary" id="zipBtn">Download all as ZIP</button></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to rotate an image</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add images</h3><p>Drop your JPG, PNG or WebP files into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick the rotation</h3><p>90° left or right, 180°, or a horizontal / vertical flip.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Save each rotated image, or all of them as a ZIP.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Rotate and flip photos without uploading anything</h2>
+    <p>Phones save photos sideways, scanners feed pages in upside-down, and front cameras mirror everything. Rotating fixes all of it — and PDFNest does it <strong>entirely in your browser</strong>: the image is turned on your device, so even private photos never get uploaded.</p>
+    <h3>Rotate or flip — which do you need?</h3>
+    <p><strong>Rotate</strong> turns the image around its centre: 90° right for photos taken with the phone tilted left, 90° left for the opposite, 180° for upside-down. <strong>Flip</strong> mirrors it instead: horizontal flip fixes mirrored selfies and text that reads backwards; vertical flip fixes scans that went through the feeder face-down. You can combine both in one pass.</p>
+    <p>Rotating by right angles is effectively lossless — the pixels are rearranged, not resampled — so your photo stays exactly as sharp as it was. Need to fix a sideways <em>document</em> instead? That's the <a href="rotate-pdf.html">Rotate PDF tool</a>. Want to shrink the photo while you're at it? Follow up with <a href="compress-image.html">Compress Image</a> or <a href="resize-image.html">Resize Image</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Rotate Image — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I rotate an image for free?</summary><p>Drop your JPG, PNG or WebP in above, pick 90° left, 90° right or 180°, and download. It's rotated in your browser — nothing uploaded, no watermark.</p></details>
+      <details><summary>Does rotating lose quality?</summary><p>No — right-angle rotation rearranges pixels without resampling. JPGs are re-encoded at high quality; PNG output is fully lossless.</p></details>
+      <details><summary>Can I rotate many images at once?</summary><p>Yes — add them all, apply the same rotation, and download everything as a ZIP.</p></details>
+      <details><summary>What's the difference between rotate and flip?</summary><p>Rotate turns the image; flip mirrors it. Horizontal flip fixes mirrored selfies, vertical flip fixes face-down scans.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="resize-image.html"><span class="dot" style="background:var(--c-imgresz)">RS</span>Resize Image</a>
+      <a href="crop-image.html"><span class="dot" style="background:var(--c-imgcrop)">CR</span>Crop Image</a>
+      <a href="compress-image.html"><span class="dot" style="background:var(--c-imgcomp)">CM</span>Compress Image</a>
+      <a href="rotate-pdf.html"><span class="dot" style="background:var(--c-rotate)">R</span>Rotate PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/site.js?v=20260625"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"), opts = document.getElementById("opts"),
+      resultWrap = document.getElementById("resultWrap"), prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      zipBar = document.getElementById("zipBar"), zipBtn = document.getElementById("zipBtn");
+  var produced = [];
+
+  var fm = PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "image/*", multiple: true, color: "var(--c-imgrot)",
+    onChange: function (files) {
+      go.disabled = files.length < 1;
+      opts.classList.toggle("hidden", files.length < 1);
+      resultWrap.classList.add("hidden"); resultWrap.innerHTML = ""; zipBar.style.display = "none"; PN.status(statusEl, "");
+    }
+  });
+
+  function loadImage(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () { resolve(img); };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error("bad image")); };
+      img.src = url;
+      img._url = url;
+    });
+  }
+
+  function outMime(file) {
+    var sel = document.getElementById("format").value;
+    if (sel !== "keep") return sel;
+    if (file.type === "image/png" || file.type === "image/webp" || file.type === "image/jpeg") return file.type;
+    return "image/png";
+  }
+  function extFor(mime) { return mime === "image/png" ? "png" : mime === "image/webp" ? "webp" : "jpg"; }
+
+  go.addEventListener("click", async function () {
+    var files = fm.files; if (!files.length) return;
+    go.disabled = true; produced = []; resultWrap.innerHTML = ""; resultWrap.classList.add("hidden"); zipBar.style.display = "none";
+    var angle = parseInt(document.getElementById("angle").value, 10) || 0;
+    var flip = document.getElementById("flip").value;
+    if (angle === 0 && flip === "none") {
+      PN.status(statusEl, "Pick a rotation or a flip first.", true); go.disabled = false; return;
+    }
+    PN.progress(prog, bar, 3);
+    try {
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        PN.status(statusEl, "Rotating " + (i + 1) + " of " + files.length + "…");
+        var img = await loadImage(file);
+        var w = img.naturalWidth, h = img.naturalHeight;
+        var swap = (angle === 90 || angle === 270);
+        var canvas = document.createElement("canvas");
+        canvas.width = swap ? h : w; canvas.height = swap ? w : h;
+        var ctx = canvas.getContext("2d");
+        var mime = outMime(file);
+        if (mime === "image/jpeg") { ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate(angle * Math.PI / 180);
+        ctx.scale(flip === "h" ? -1 : 1, flip === "v" ? -1 : 1);
+        ctx.drawImage(img, -w / 2, -h / 2);
+        URL.revokeObjectURL(img._url);
+        var blob = await new Promise(function (r) { canvas.toBlob(r, mime, 0.92); });
+        canvas.width = canvas.height = 0;
+        if (!blob) throw new Error("encode failed");
+        var name = PN.sanitizeName(file.name, "image") + "-rotated." + extFor(mime);
+        produced.push({ name: name, blob: blob });
+        addResult(blob, name);
+        PN.progress(prog, bar, 3 + ((i + 1) / files.length) * 94);
+      }
+      PN.progress(prog, bar, 100);
+      PN.status(statusEl, "Done — rotated " + files.length + " image" + (files.length > 1 ? "s" : "") + ".");
+      resultWrap.classList.remove("hidden");
+      if (produced.length > 1) zipBar.style.display = "";
+      resultWrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "One of the images could not be rotated. Try another file or format.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+
+  function addResult(blob, name) {
+    var div = document.createElement("div"); div.className = "file-result";
+    div.style.cssText = "display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap;margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:10px";
+    var thumb = document.createElement("img");
+    thumb.style.cssText = "width:56px;height:56px;object-fit:contain;border-radius:6px;background:var(--bg-soft)";
+    thumb.src = URL.createObjectURL(blob);
+    var info = document.createElement("div");
+    info.style.cssText = "min-width:0;flex:1";
+    info.innerHTML = '<div style="font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></div>' +
+      '<div style="font-size:.9rem;color:var(--muted,#666)">' + PN.formatBytes(blob.size) + '</div>';
+    info.querySelector("div").textContent = name;
+    var btn = document.createElement("button"); btn.className = "btn btn--accent"; btn.textContent = "Download";
+    btn.onclick = function () { PN.downloadBlob(blob, name); };
+    div.appendChild(thumb); div.appendChild(info); div.appendChild(btn); resultWrap.appendChild(div);
+  }
+
+  zipBtn.addEventListener("click", async function () {
+    if (!produced.length || !window.JSZip) return;
+    zipBtn.disabled = true; var old = zipBtn.textContent; zipBtn.textContent = "Zipping…";
+    try {
+      var zip = new JSZip();
+      produced.forEach(function (p) { zip.file(p.name, p.blob); });
+      var out = await zip.generateAsync({ type: "blob" });
+      PN.downloadBlob(out, "rotated-images.zip");
+    } finally { zipBtn.disabled = false; zipBtn.textContent = old; }
+  });
+})();
+</script>
+</body>
+</html>
