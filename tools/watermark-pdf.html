@@ -125,7 +125,7 @@
 <div id="site-footer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
-<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
 <script src="../assets/js/site.js?v=20260625"></script>
 <script>
 (function () {
@@ -160,6 +160,7 @@
       var angle = parseInt(document.getElementById("angle").value,10) || 0;
       var col = hexToRgb(document.getElementById("color").value);
       var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+      if (PN.encryptedGuard(doc, statusEl)) { go.disabled = false; PN.progress(prog, bar, null); return; }
       var font = await doc.embedFont(PDFLib.StandardFonts.HelveticaBold);
       var pages = doc.getPages(), total = pages.length;
       var rad = angle * Math.PI / 180;

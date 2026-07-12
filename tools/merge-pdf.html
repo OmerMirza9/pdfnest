@@ -106,7 +106,7 @@
 <div id="site-footer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
-<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
 <script src="../assets/js/site.js?v=20260625"></script>
 <script>
 (function () {
@@ -137,6 +137,10 @@
       for (var i = 0; i < files.length; i++) {
         var bytes = await PN.readBytes(files[i]);
         var doc = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+        if (PN.encryptedGuard(doc, statusEl)) {
+          statusEl.insertAdjacentText("afterbegin", "“" + files[i].name + "”: ");
+          go.disabled = false; PN.progress(prog, bar, null); return;
+        }
         var pages = await merged.copyPages(doc, doc.getPageIndices());
         pages.forEach(function (p) { merged.addPage(p); });
         PN.progress(prog, bar, 5 + ((i + 1) / files.length) * 90);

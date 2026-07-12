@@ -41,6 +41,19 @@
     el.classList.toggle("error", !!isError);
   };
 
+  /* -- encrypted-PDF guard --------------------------------------------- */
+  // pdf-lib opens password-protected PDFs with ignoreEncryption, but the page
+  // streams stay encrypted, so any copy/edit yields corrupted, garbled output.
+  // Block early and send the user to the Unlock tool instead.
+  PN.encryptedGuard = function (doc, el) {
+    if (!doc || !doc.isEncrypted) return false;
+    if (el) {
+      el.innerHTML = 'This PDF is <strong>password-protected</strong> — processing it in this state would produce a corrupted, unreadable file. Remove the password first with the <a href="unlock-pdf.html">Unlock PDF tool</a>, then try again.';
+      el.classList.add("error");
+    }
+    return true;
+  };
+
   PN.progress = function (wrap, bar, pct) {
     if (!wrap || !bar) return;
     if (pct == null) { wrap.classList.remove("show"); bar.style.width = "0%"; return; }

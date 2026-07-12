@@ -106,7 +106,7 @@
 <div id="site-footer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
-<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
 <script src="../assets/js/site.js?v=20260625"></script>
 <script>
 (function () {
@@ -124,6 +124,7 @@
       PN.status(statusEl,"Reading…");
       try { currentBytes=await PN.readBytes(files[0]);
         var doc=await PDFLib.PDFDocument.load(currentBytes,{ignoreEncryption:true});
+        if(PN.encryptedGuard(doc,statusEl)){ go.disabled=true; currentBytes=null; return; }
         totalPages=doc.getPageCount(); pageCountEl.textContent=totalPages;
         opts.classList.remove("hidden"); go.disabled=false; PN.status(statusEl,"");
       } catch(e){ PN.status(statusEl,"Could not read that PDF.",true); }
