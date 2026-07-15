@@ -228,7 +228,11 @@
   /* -- HTML -> PDF via the browser's native print engine (rock solid) ---
      Opens the print dialog with the content rendered at full fidelity.
      The user chooses "Save as PDF". Never produces a blank page.        */
-  PN.printHtmlAsPdf = function (html, opts) {
+  // Load HTML into a hidden same-origin iframe via a Blob URL (robust for
+  // multi-MB documents, unlike document.write) and wait until layout, images
+  // and fonts are ready. Resolves {win, cleanup} — cleanup removes the iframe
+  // and revokes the URL.
+  PN.prepareHtmlFrame = function (html, opts) {
     opts = opts || {};
     var marginMm = (opts.margin != null ? opts.margin : 12);
     var fmt = (String(opts.format || "a4").toLowerCase() === "letter") ? "Letter" : "A4";
@@ -243,23 +247,55 @@
     } else {
       fullDoc = "<!DOCTYPE html><html><head><meta charset='utf-8'>" + pageCss + "</head><body>" + html + "</body></html>";
     }
+    var url = URL.createObjectURL(new Blob([fullDoc], { type: "text/html" }));
     var iframe = document.createElement("iframe");
     iframe.style.cssText = "position:fixed;left:-10000px;top:0;width:820px;height:1160px;border:0;";
-    document.body.appendChild(iframe);
-    return new Promise(function (resolve) {
-      var win = iframe.contentWindow, started = false, cleaned = false;
-      function cleanup() { if (cleaned) return; cleaned = true; setTimeout(function () { if (iframe.parentNode) iframe.parentNode.removeChild(iframe); }, 800); }
-      function doPrint() {
-        if (started) return; started = true;
-        setTimeout(function () {
-          try { win.focus(); win.onafterprint = cleanup; win.print(); resolve(true); setTimeout(cleanup, 120000); }
-          catch (e) { cleanup(); resolve(false); }
-        }, 450);
-      }
-      iframe.onload = doPrint;
-      var doc = win.document; doc.open(); doc.write(fullDoc); doc.close();
-      if (doc.readyState === "complete") doPrint();
+    var cleaned = false;
+    function cleanup() {
+      if (cleaned) return; cleaned = true;
+      URL.revokeObjectURL(url);
+      setTimeout(function () { if (iframe.parentNode) iframe.parentNode.removeChild(iframe); }, 800);
+    }
+    return new Promise(function (resolve, reject) {
+      var settled = false;
+      var failTimer = setTimeout(function () { // hard stop: never leave the caller hanging
+        if (settled) return; settled = true; cleanup();
+        reject(new Error("timeout loading HTML"));
+      }, 60000);
+      iframe.onload = function () {
+        var win = iframe.contentWindow, doc = win.document;
+        // wait for images (bounded) and fonts, then one paint frame
+        var imgs = Array.prototype.slice.call(doc.images || []);
+        var waits = imgs.map(function (im) {
+          if (im.complete) return Promise.resolve();
+          return new Promise(function (r) { im.onload = im.onerror = r; setTimeout(r, 8000); });
+        });
+        if (doc.fonts && doc.fonts.ready) waits.push(doc.fonts.ready.catch(function () {}));
+        Promise.all(waits).then(function () {
+          // NOTE: requestAnimationFrame never fires in an offscreen iframe
+          // (no paint frames are scheduled) — force a layout pass instead.
+          void doc.body.scrollHeight;
+          setTimeout(function () {
+            if (settled) return; settled = true; clearTimeout(failTimer);
+            resolve({ win: win, cleanup: cleanup });
+          }, 120);
+        });
+      };
+      iframe.src = url;
+      document.body.appendChild(iframe);
     });
+  };
+
+  PN.printHtmlAsPdf = function (html, opts) {
+    return PN.prepareHtmlFrame(html, opts).then(function (frame) {
+      try {
+        frame.win.focus();
+        frame.win.onafterprint = frame.cleanup;
+        frame.win.print();
+        setTimeout(frame.cleanup, 120000);
+        return true;
+      } catch (e) { frame.cleanup(); return false; }
+    }).catch(function () { return false; });
   };
 
   window.PN = PN;

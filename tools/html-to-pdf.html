@@ -36,9 +36,9 @@
         <h3><span class="tag">HTML</span> Your code</h3>
         <textarea id="code" class="code-area" spellcheck="false"></textarea>
         <div class="toolbar" style="justify-content:flex-start;margin-top:10px">
-          <button class="btn btn--ghost" id="upload">Upload .html file</button>
+          <button class="btn btn--ghost" id="upload">Upload .html / .htm file</button>
           <button class="btn btn--ghost" id="sample">Load sample</button>
-          <input type="file" id="file" accept=".html,text/html" class="hidden">
+          <input type="file" id="file" accept=".html,.htm,text/html" class="hidden">
         </div>
       </div>
       <div class="editor-pane">
@@ -116,12 +116,14 @@
 
 <div id="site-footer"></div>
 
-<script src="../assets/js/pdf-tools.js?v=20260625"></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
 <script src="../assets/js/site.js?v=20260625"></script>
 <script>
 (function () {
   var code=document.getElementById("code"), preview=document.getElementById("preview"),
       go=document.getElementById("go"), statusEl=document.getElementById("status"), fileInput=document.getElementById("file");
+  var BIG = 300 * 1024; // above this, preview via Blob URL and debounce harder
+  var renderTimer = null, lastBlobUrl = null;
 
   var SAMPLE='<h1 style="font-family:Arial;color:#6c5ce7">Invoice #1024</h1>\n'+
     '<p style="font-family:Arial">Billed to: Acme Corp<br>Date: 2026-06-07</p>\n'+
@@ -131,8 +133,27 @@
     '  <tr><td style="padding:8px;border:1px solid #ddd">Hosting</td><td style="padding:8px;border:1px solid #ddd">$120</td></tr>\n'+
     '</table>\n<p style="font-family:Arial"><strong>Total: $1,320</strong></p>';
 
-  function render(){ preview.srcdoc = code.value || "<p style='color:#888;font-family:sans-serif'>Your preview appears here…</p>"; }
-  code.addEventListener("input", render);
+  function render(){
+    var v = code.value;
+    if (lastBlobUrl) { URL.revokeObjectURL(lastBlobUrl); lastBlobUrl = null; }
+    if (!v) { preview.removeAttribute("src"); preview.srcdoc = "<p style='color:#888;font-family:sans-serif'>Your preview appears here…</p>"; return; }
+    if (v.length > BIG) {
+      // srcdoc re-parses the whole string as an attribute — a Blob URL is far
+      // cheaper for multi-MB documents and keeps the page responsive.
+      preview.removeAttribute("srcdoc");
+      lastBlobUrl = URL.createObjectURL(new Blob([v], { type: "text/html" }));
+      preview.src = lastBlobUrl;
+    } else {
+      preview.removeAttribute("src");
+      preview.srcdoc = v;
+    }
+  }
+  // Debounce so typing (or pasting a huge file) doesn't re-parse the preview
+  // on every keystroke; large documents get a longer settle time.
+  code.addEventListener("input", function(){
+    clearTimeout(renderTimer);
+    renderTimer = setTimeout(render, code.value.length > BIG ? 700 : 250);
+  });
   document.getElementById("sample").addEventListener("click", function(){ code.value=SAMPLE; render(); });
   document.getElementById("upload").addEventListener("click", function(){ fileInput.click(); });
   fileInput.addEventListener("change", function(){
@@ -141,14 +162,18 @@
   });
   code.value=SAMPLE; render();
 
-  go.addEventListener("click", function(){
+  go.addEventListener("click", async function(){
     if(!code.value.trim()){ PN.status(statusEl,"Add some HTML first.",true); return; }
-    PN.status(statusEl,"Opening the print dialog — choose “Save as PDF” as the destination.");
-    PN.printHtmlAsPdf(code.value, {
+    go.disabled = true;
+    PN.status(statusEl,"Preparing your document" + (code.value.length > BIG ? " — large HTML can take a few seconds…" : "…"));
+    var ok = await PN.printHtmlAsPdf(code.value, {
       margin: parseFloat(document.getElementById("margin").value)||0,
       format: document.getElementById("size").value,
       orientation: document.getElementById("orient").value
     });
+    go.disabled = false;
+    if (ok) PN.status(statusEl,"Print dialog opened — choose “Save as PDF” as the destination.");
+    else PN.status(statusEl,"The document could not be prepared. Check the HTML for errors and try again.",true);
   });
 })();
 </script>
