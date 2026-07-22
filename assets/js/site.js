@@ -84,7 +84,9 @@
     { slug: "image-to-html",   name: "Image to HTML",   color: "var(--c-img2html)", short: "OCR an image into HTML",       tag: "IH" },
     { slug: "rotate-image",    name: "Rotate Image",    color: "var(--c-imgrot)",   short: "Rotate & flip JPG/PNG/WebP",   tag: "RI" },
     { slug: "resize-image",    name: "Resize Image",    color: "var(--c-imgresz)",  short: "Resize by pixels or percent",  tag: "RS" },
-    { slug: "crop-image",      name: "Crop Image",      color: "var(--c-imgcrop)",  short: "Crop a photo or screenshot",   tag: "CR" }
+    { slug: "crop-image",      name: "Crop Image",      color: "var(--c-imgcrop)",  short: "Crop a photo or screenshot",   tag: "CR" },
+    { slug: "zip-files",       name: "Create ZIP",      color: "var(--c-zip)",      short: "Zip files or a folder",        tag: "Z" },
+    { slug: "unzip-files",     name: "Unzip",           color: "var(--c-unzip)",    short: "Open a ZIP & extract files",   tag: "UZ" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;

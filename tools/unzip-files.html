@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unzip — Open a ZIP &amp; Extract Files Online Free (No Upload)</title>
+<meta name="description" content="Open a .zip in your browser and extract the files you need — see everything inside, download one file or all of them. Free, no upload, no sign-up, works on any device.">
+<link rel="canonical" href="https://getpdfnest.com/tools/unzip-files.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Unzip — Open a ZIP & Extract Files Free">
+<meta property="og:description" content="Open and extract ZIP archives in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/unzip-files.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260625">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Unzip","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/unzip-files.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Open any .zip in the browser","See every file inside before extracting","Download single files or everything","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to open a ZIP file online","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your ZIP","text":"Open the Unzip tool and drop in the .zip file. It is read in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Browse the contents","text":"Every file inside is listed with its size."},
+{"@type":"HowToStep","name":"Extract","text":"Download just the file you need, or all of them."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Unzip","item":"https://getpdfnest.com/tools/unzip-files.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I open a ZIP file online for free?","acceptedAnswer":{"@type":"Answer","text":"Open the Unzip tool, drop in the .zip, and every file inside is listed — download the ones you need. With PDFNest the archive is read in your browser, so nothing is uploaded."}},
+{"@type":"Question","name":"Can I extract just one file from a ZIP?","acceptedAnswer":{"@type":"Answer","text":"Yes — each file inside the archive has its own download button, so you can pull out a single document without extracting everything."}},
+{"@type":"Question","name":"Does this work with password-protected ZIPs?","acceptedAnswer":{"@type":"Answer","text":"No — encrypted archives can't be opened in the browser. Ask the sender for an unprotected copy, or open it with your computer's built-in archive tool and the password."}},
+{"@type":"Question","name":"Is it safe to open a private ZIP here?","acceptedAnswer":{"@type":"Answer","text":"Yes. The archive is read and extracted locally in your browser and never uploaded, so its contents never leave your device."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Unzip</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#e1eef5;color:var(--c-unzip)">● Unzip</span>
+    <h1>Unzip</h1>
+    <p class="answer"><strong>To open a ZIP file, drop it in below — every file inside is listed, and you can download one file or all of them. Free, in your browser, nothing uploaded.</strong></p>
+    <p>Got a .zip on a phone, a locked-down work laptop, or a Chromebook? Open it right here — no software to install.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 8v13H3V3h13z"/><path d="M16 3v5h5M12 11v6M9 14l3 3 3-3"/></svg></div>
+      <h3>Drop a ZIP here</h3><p>or click to choose a file</p>
+      <small>.zip archives — contents stay on your device</small>
+    </div>
+    <input type="file" id="input" accept=".zip,application/zip,application/x-zip-compressed" class="hidden">
+
+    <div class="options hidden" id="opts">
+      <h3 id="zipTitle">Archive contents</h3>
+      <div class="hint" id="summary"></div>
+      <div id="fileTable" style="margin-top:12px"></div>
+      <div class="action-bar" style="margin-top:16px"><button class="btn btn--accent btn--lg" id="dlAll">Download all files</button></div>
+    </div>
+
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to open a ZIP file</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your ZIP</h3><p>Drop the .zip into the box above.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Browse inside</h3><p>Every file is listed with its size — no extracting needed to look.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Extract</h3><p>Download just the file you need, or everything.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Open ZIP archives anywhere — without uploading them</h2>
+    <p>Sometimes you just need <em>one document</em> out of an archive someone sent — on a phone, a tablet, or a machine where you can't install anything. PDFNest reads the ZIP <strong>entirely in your browser</strong>: the archive is parsed on your device, you see everything inside, and only the files you choose are extracted. Nothing is uploaded, so a ZIP full of contracts is as safe here as on your own disk.</p>
+    <p>Two honest limits: <strong>password-protected archives</strong> can't be opened in the browser (use your computer's built-in tool and the password), and exotic formats like RAR or 7z aren't supported — this tool is for standard .zip files, which is what nearly everything sends. Need to go the other way? <a href="zip-files.html">Create a ZIP</a> from files or a whole folder.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Unzip — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I open a ZIP online?</summary><p>Drop the .zip in above — every file inside is listed, each with a download button. Nothing is uploaded.</p></details>
+      <details><summary>Can I extract just one file?</summary><p>Yes — download any single file without extracting the rest.</p></details>
+      <details><summary>Do password-protected ZIPs work?</summary><p>No — encrypted archives can't be opened in the browser. Open them with your computer's archive tool and the password.</p></details>
+      <details><summary>Is my archive private?</summary><p>Yes — it's read and extracted locally and never uploaded.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="zip-files.html"><span class="dot" style="background:var(--c-zip)">Z</span>Create ZIP</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+      <a href="pdf-to-image.html"><span class="dot" style="background:var(--c-pdf2jpg)">IMG</span>PDF to Image</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
+<script src="../assets/js/site.js?v=20260625"></script>
+<script>
+(function () {
+  var zone = document.getElementById("zone"), input = document.getElementById("input"),
+      opts = document.getElementById("opts"), statusEl = document.getElementById("status"),
+      table = document.getElementById("fileTable"), summary = document.getElementById("summary"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      dlAll = document.getElementById("dlAll"), zipTitle = document.getElementById("zipTitle");
+  var currentZip = null, fileEntries = [];
+
+  zone.addEventListener("click", function () { input.click(); });
+  zone.addEventListener("dragover", function (e) { e.preventDefault(); zone.classList.add("drag"); });
+  zone.addEventListener("dragleave", function () { zone.classList.remove("drag"); });
+  zone.addEventListener("drop", function (e) {
+    e.preventDefault(); zone.classList.remove("drag");
+    if (e.dataTransfer.files.length) open(e.dataTransfer.files[0]);
+  });
+  input.addEventListener("change", function () { if (input.files.length) open(input.files[0]); input.value = ""; });
+
+  async function open(file) {
+    if (!window.JSZip) { PN.status(statusEl, "Still loading — try again in a second.", true); return; }
+    opts.classList.add("hidden"); table.innerHTML = ""; fileEntries = [];
+    PN.status(statusEl, "Reading archive…"); PN.progress(prog, bar, 15);
+    try {
+      currentZip = await JSZip.loadAsync(file);
+      var total = 0;
+      currentZip.forEach(function (path, entry) {
+        if (!entry.dir) fileEntries.push(entry);
+      });
+      fileEntries.sort(function (a, b) { return a.name.localeCompare(b.name); });
+      fileEntries.forEach(function (entry) {
+        var size = entry._data && entry._data.uncompressedSize > 0 ? entry._data.uncompressedSize : 0;
+        total += size;
+        var row = document.createElement("div");
+        row.style.cssText = "display:flex;align-items:center;gap:12px;justify-content:space-between;padding:9px 12px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px";
+        row.innerHTML = '<span style="min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600"></span>' +
+          '<span style="color:var(--muted);font-size:.85rem;white-space:nowrap">' + (size ? PN.formatBytes(size) : "") + '</span>' +
+          '<button class="btn btn--accent" style="padding:6px 14px">Download</button>';
+        row.querySelector("span").textContent = entry.name;
+        row.querySelector("button").onclick = async function () {
+          this.disabled = true;
+          try {
+            var blob = await entry.async("blob");
+            PN.downloadBlob(blob, entry.name.split("/").pop());
+          } finally { this.disabled = false; }
+        };
+        table.appendChild(row);
+      });
+      if (!fileEntries.length) { PN.status(statusEl, "That archive appears to be empty.", true); PN.progress(prog, bar, null); return; }
+      zipTitle.textContent = "Archive contents — " + (file.name || "archive.zip");
+      summary.textContent = fileEntries.length + " file" + (fileEntries.length > 1 ? "s" : "") +
+        (total ? " • " + PN.formatBytes(total) + " uncompressed" : "") + ". Download one file, or all of them below.";
+      opts.classList.remove("hidden");
+      PN.status(statusEl, ""); PN.progress(prog, bar, 100);
+      setTimeout(function () { PN.progress(prog, bar, null); }, 600);
+      opts.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } catch (e) {
+      console.error(e);
+      PN.status(statusEl, "Could not read that archive. Password-protected or non-ZIP files (RAR, 7z) aren't supported.", true);
+      PN.progress(prog, bar, null);
+    }
+  }
+
+  dlAll.addEventListener("click", async function () {
+    if (!fileEntries.length) return;
+    dlAll.disabled = true; var old = dlAll.textContent;
+    try {
+      for (var i = 0; i < fileEntries.length; i++) {
+        dlAll.textContent = "Extracting " + (i + 1) + " of " + fileEntries.length + "…";
+        var blob = await fileEntries[i].async("blob");
+        PN.downloadBlob(blob, fileEntries[i].name.split("/").pop());
+        await new Promise(function (r) { setTimeout(r, 350); }); // let the browser breathe between downloads
+      }
+    } finally { dlAll.disabled = false; dlAll.textContent = old; }
+  });
+})();
+</script>
+</body>
+</html>

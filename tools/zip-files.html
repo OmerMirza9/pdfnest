@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create ZIP — Compress Files or a Folder to a ZIP Free (No Upload)</title>
+<meta name="description" content="Zip files or a whole folder into a compressed .zip free, in your browser — pick the compression level and download. Folder structure preserved. No upload, no sign-up.">
+<link rel="canonical" href="https://getpdfnest.com/tools/zip-files.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Create ZIP — Compress Files or a Folder Free">
+<meta property="og:description" content="Zip files or folders in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/zip-files.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260625">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Create ZIP","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/zip-files.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Zip many files at once","Zip a whole folder with its structure","Choose the compression level","See size before and after","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to compress files into a ZIP","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add files or a folder","text":"Open the Create ZIP tool and drop in files — or an entire folder. Everything is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Pick the compression level","text":"Choose between faster zipping or a smaller file."},
+{"@type":"HowToStep","name":"Download","text":"Click Create ZIP and download the compressed archive."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Create ZIP","item":"https://getpdfnest.com/tools/zip-files.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I compress files into a ZIP for free?","acceptedAnswer":{"@type":"Answer","text":"Open the Create ZIP tool, drop in your files or a whole folder, pick a compression level, and download the .zip. With PDFNest the zipping happens in your browser, so nothing is uploaded."}},
+{"@type":"Question","name":"Can I zip an entire folder?","acceptedAnswer":{"@type":"Answer","text":"Yes — drag a folder into the drop zone (or use the Choose a folder button) and the whole folder, including its subfolders and structure, goes into the ZIP."}},
+{"@type":"Question","name":"How much smaller will my files get?","acceptedAnswer":{"@type":"Answer","text":"Text, documents, spreadsheets and code compress a lot — often 50–90% smaller. Photos, videos and other already-compressed files (JPG, MP4, PDF with images) barely shrink, because they are compressed formats to begin with."}},
+{"@type":"Question","name":"Is it safe to zip private files here?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every file is read and compressed locally in your browser and never uploaded, so private documents never leave your device."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Create ZIP</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#f7e2ec;color:var(--c-zip)">● Create ZIP</span>
+    <h1>Create ZIP</h1>
+    <p class="answer"><strong>To compress files into a ZIP, drop your files — or a whole folder — in below, pick the compression level, and download the .zip. Free, in your browser, nothing uploaded.</strong></p>
+    <p>Bundle attachments, shrink documents for email, or archive a project folder with its structure intact. No sign-up, no size games.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 8v13H3V3h13z"/><path d="M16 3v5h5M10 12h4M10 16h4"/></svg></div>
+      <h3>Drop files or a folder here</h3><p>or use the buttons below</p>
+      <small>Any file type — subfolders are kept in the archive</small>
+    </div>
+    <div class="toolbar" style="justify-content:center;margin-top:10px;display:flex;gap:10px">
+      <button class="btn btn--ghost" id="pickFiles">Choose files</button>
+      <button class="btn btn--ghost" id="pickFolder">Choose a folder</button>
+    </div>
+    <input type="file" id="inputFiles" multiple class="hidden">
+    <input type="file" id="inputFolder" webkitdirectory class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>ZIP options</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="level">Compression</label>
+          <select id="level">
+            <option value="6" selected>Normal — good balance</option>
+            <option value="9">Maximum — smallest file, slower</option>
+            <option value="1">Fast — quickest, larger file</option>
+            <option value="0">Store only — no compression</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="zipname">Archive name</label>
+          <input type="text" id="zipname" value="archive" placeholder="archive">
+        </div>
+      </div>
+      <div class="hint" id="summary"></div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Create ZIP</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to compress files into a ZIP</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add files or a folder</h3><p>Drop them in — subfolders and structure are preserved.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick the level</h3><p>Normal for everyday use, Maximum for the smallest file.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Click Create ZIP and save the archive.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Zip files and folders without uploading anything</h2>
+    <p>ZIP is the universal way to bundle many files into one and shrink them at the same time — for email attachments, uploads, backups and tidy hand-offs. PDFNest builds the archive <strong>entirely in your browser</strong>: files are read and compressed on your device, so even confidential documents never get uploaded.</p>
+    <h3>What compresses well — and what doesn't</h3>
+    <p>Compression works by finding repetition. Text-heavy files — documents, spreadsheets, CSVs, code, logs — often shrink by <strong>50–90%</strong>. Already-compressed formats — JPG photos, MP4 video, MP3 audio and most PDFs — barely shrink at all, because their repetition has already been squeezed out. Zipping them still helps, though: you get <em>one</em> tidy file instead of twenty attachments. If the goal is smaller <em>photos</em> rather than one bundle, <a href="compress-image.html">Compress Image</a> is the sharper tool; for a bulky PDF it's <a href="compress-pdf.html">Compress PDF</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Create ZIP — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I zip files for free?</summary><p>Drop your files or a folder in above, pick a compression level, and download the .zip. It's built in your browser — nothing uploaded.</p></details>
+      <details><summary>Can I zip a whole folder?</summary><p>Yes — drag the folder in (or use "Choose a folder") and its full structure, subfolders included, goes into the archive.</p></details>
+      <details><summary>How much smaller will files get?</summary><p>Text and documents often shrink 50–90%; photos, video and other compressed formats barely change.</p></details>
+      <details><summary>Are my files private?</summary><p>Yes — everything is read and compressed locally and never uploaded.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="unzip-files.html"><span class="dot" style="background:var(--c-unzip)">UZ</span>Unzip</a>
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+      <a href="compress-image.html"><span class="dot" style="background:var(--c-imgcomp)">CM</span>Compress Image</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
+<script src="../assets/js/site.js?v=20260625"></script>
+<script>
+(function () {
+  var zone = document.getElementById("zone"), listEl = document.getElementById("list"),
+      opts = document.getElementById("opts"), go = document.getElementById("go"),
+      statusEl = document.getElementById("status"), result = document.getElementById("result"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      summary = document.getElementById("summary");
+  var entries = []; // { path, file }
+
+  function totalSize() { return entries.reduce(function (s, e) { return s + e.file.size; }, 0); }
+
+  function refresh() {
+    listEl.innerHTML = "";
+    entries.slice(0, 200).forEach(function (e, i) {
+      var li = document.createElement("li");
+      li.className = "file-item";
+      li.innerHTML = '<span class="file-item__name" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>' +
+        '<span class="file-item__size">' + PN.formatBytes(e.file.size) + '</span>' +
+        '<button class="btn btn--ghost" style="padding:2px 10px" aria-label="Remove">✕</button>';
+      li.querySelector(".file-item__name").textContent = e.path;
+      li.querySelector("button").onclick = function () { entries.splice(i, 1); refresh(); };
+      listEl.appendChild(li);
+    });
+    if (entries.length > 200) {
+      var more = document.createElement("li");
+      more.className = "file-item";
+      more.textContent = "… and " + (entries.length - 200) + " more files";
+      listEl.appendChild(more);
+    }
+    opts.classList.toggle("hidden", !entries.length);
+    go.disabled = !entries.length;
+    summary.textContent = entries.length
+      ? entries.length + " file" + (entries.length > 1 ? "s" : "") + " • " + PN.formatBytes(totalSize()) + " before compression. Everything is processed on your device."
+      : "";
+    result.classList.remove("show");
+    PN.status(statusEl, "");
+  }
+
+  function addFile(file, path) {
+    entries.push({ path: (path || file.name).replace(/^\/+/, ""), file: file });
+  }
+
+  // -- folder-aware drag & drop ------------------------------------------
+  function walkEntry(entry, prefix) {
+    return new Promise(function (resolve) {
+      if (entry.isFile) {
+        entry.file(function (f) { addFile(f, prefix + entry.name); resolve(); }, function () { resolve(); });
+      } else if (entry.isDirectory) {
+        var reader = entry.createReader(), all = [];
+        (function readMore() {
+          reader.readEntries(function (batch) {
+            if (!batch.length) {
+              Promise.all(all.map(function (e) { return walkEntry(e, prefix + entry.name + "/"); })).then(resolve);
+            } else { all = all.concat(batch); readMore(); }
+          }, function () { resolve(); });
+        })();
+      } else resolve();
+    });
+  }
+
+  zone.addEventListener("dragover", function (e) { e.preventDefault(); zone.classList.add("drag"); });
+  zone.addEventListener("dragleave", function () { zone.classList.remove("drag"); });
+  zone.addEventListener("drop", async function (e) {
+    e.preventDefault(); zone.classList.remove("drag");
+    // Snapshot both views of the payload up front — a DataTransfer can become
+    // empty after the first await, and webkitGetAsEntry() returns null for
+    // drags that carry plain files (then we fall back to the file list).
+    var plainFiles = Array.prototype.slice.call(e.dataTransfer.files);
+    var dirEntries = [];
+    var items = e.dataTransfer.items;
+    if (items && items.length && items[0].webkitGetAsEntry) {
+      for (var i = 0; i < items.length; i++) {
+        var entry = items[i].webkitGetAsEntry();
+        if (entry) dirEntries.push(entry);
+      }
+    }
+    var before = entries.length;
+    if (dirEntries.length) {
+      await Promise.all(dirEntries.map(function (en) { return walkEntry(en, ""); }));
+    }
+    if (entries.length === before) {
+      plainFiles.forEach(function (f) { addFile(f); });
+    }
+    refresh();
+  });
+  zone.addEventListener("click", function () { document.getElementById("inputFiles").click(); });
+
+  document.getElementById("pickFiles").addEventListener("click", function () { document.getElementById("inputFiles").click(); });
+  document.getElementById("pickFolder").addEventListener("click", function () { document.getElementById("inputFolder").click(); });
+  document.getElementById("inputFiles").addEventListener("change", function () {
+    for (var i = 0; i < this.files.length; i++) addFile(this.files[i]);
+    this.value = ""; refresh();
+  });
+  document.getElementById("inputFolder").addEventListener("change", function () {
+    for (var i = 0; i < this.files.length; i++) addFile(this.files[i], this.files[i].webkitRelativePath);
+    this.value = ""; refresh();
+  });
+
+  // -- build the archive --------------------------------------------------
+  go.addEventListener("click", async function () {
+    if (!entries.length || !window.JSZip) return;
+    go.disabled = true; result.classList.remove("show");
+    var level = parseInt(document.getElementById("level").value, 10);
+    var name = (document.getElementById("zipname").value.trim() || "archive").replace(/\.zip$/i, "");
+    PN.status(statusEl, "Compressing " + entries.length + " file" + (entries.length > 1 ? "s" : "") + "…");
+    PN.progress(prog, bar, 2);
+    try {
+      var zip = new JSZip();
+      entries.forEach(function (e) { zip.file(e.path, e.file); });
+      var blob = await zip.generateAsync(
+        level === 0 ? { type: "blob", compression: "STORE" }
+                    : { type: "blob", compression: "DEFLATE", compressionOptions: { level: level } },
+        function (meta) { PN.progress(prog, bar, 2 + meta.percent * 0.97); }
+      );
+      var before = totalSize();
+      var saved = before > 0 ? Math.max(0, Math.round((1 - blob.size / before) * 100)) : 0;
+      PN.progress(prog, bar, 100);
+      PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>ZIP ready</h3><p>' + PN.formatBytes(before) + ' → <strong>' + PN.formatBytes(blob.size) + '</strong> (−' + saved + '%)</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download ZIP</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBlob(blob, name + ".zip"); };
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Could not build the ZIP. Try fewer or smaller files.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
