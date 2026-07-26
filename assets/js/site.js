@@ -200,6 +200,60 @@
     }
   }
 
+  // -- Motion: scroll reveals, stagger, header elevation ------------------
+  // Only enabled when JS runs and the visitor allows motion; content is
+  // never hidden for crawlers or reduced-motion users.
+  function initMotion() {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("pn-motion");
+
+    var targets = document.querySelectorAll(
+      ".tool-card, .post-card, .step, .feature, .related > a, .faq details, .cta-box, .section .center"
+    );
+    var counts = []; // per-parent stagger counters
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          entries[i].target.classList.add("in");
+          io.unobserve(entries[i].target);
+        }
+      }
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+
+    try {
+      Array.prototype.forEach.call(targets, function (el) {
+        var parent = el.parentNode, rec = null;
+        for (var i = 0; i < counts.length; i++) if (counts[i].p === parent) rec = counts[i];
+        if (!rec) { rec = { p: parent, n: 0 }; counts.push(rec); }
+        el.style.setProperty("--rv", Math.min(rec.n, 7) * 55 + "ms");
+        rec.n++;
+        el.classList.add("reveal");
+        io.observe(el);
+      });
+    } catch (e) {
+      // If anything goes wrong, never leave content hidden.
+      Array.prototype.forEach.call(document.querySelectorAll(".reveal"), function (el) { el.classList.add("in"); });
+    }
+
+    // Failsafe for environments where IntersectionObserver exists but never
+    // fires (odd webviews, prerenderers): in a working browser the above-fold
+    // elements reveal instantly, so zero reveals after 1.5s means IO is dead —
+    // show everything rather than leave the page blank.
+    setTimeout(function () {
+      if (!document.querySelector(".reveal.in")) {
+        Array.prototype.forEach.call(document.querySelectorAll(".reveal"), function (el) { el.classList.add("in"); });
+      }
+    }, 1500);
+
+    var hdr = document.querySelector(".site-header");
+    if (hdr) {
+      var onScroll = function () { hdr.classList.toggle("scrolled", (window.scrollY || 0) > 6); };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+  }
+
   // -- Inject ------------------------------------------------------------
   function inject() {
     injectThirdParty();
@@ -218,6 +272,7 @@
     }
 
     enrichToolPage();
+    initMotion();
   }
 
   if (document.readyState === "loading") {

@@ -375,3 +375,99 @@ img { max-width: 100%; display: block; }
   .grid-2 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Motion layer — scroll reveals, entrances, micro-interactions.
+   Gated behind html.pn-motion, which site.js adds only when JS runs AND the
+   visitor hasn't asked for reduced motion — so crawlers and no-JS visitors
+   always see the full, static page (no hidden content, no CLS).
+   ========================================================================== */
+
+/* -- Scroll reveal ------------------------------------------------------- */
+html.pn-motion .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1);
+  transition-delay: var(--rv, 0ms);
+}
+html.pn-motion .reveal.in { opacity: 1; transform: none; }
+
+/* -- Hero entrance (runs once on page load) ------------------------------ */
+@keyframes pn-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+html.pn-motion .hero > .container > *,
+html.pn-motion .tool-hero > .container > * {
+  animation: pn-rise .55s cubic-bezier(.22,.61,.36,1) backwards;
+}
+html.pn-motion .hero > .container > :nth-child(2),
+html.pn-motion .tool-hero > .container > :nth-child(2) { animation-delay: .09s; }
+html.pn-motion .hero > .container > :nth-child(3),
+html.pn-motion .tool-hero > .container > :nth-child(3) { animation-delay: .18s; }
+html.pn-motion .hero > .container > :nth-child(4),
+html.pn-motion .tool-hero > .container > :nth-child(4) { animation-delay: .27s; }
+html.pn-motion .hero > .container > :nth-child(5),
+html.pn-motion .tool-hero > .container > :nth-child(5) { animation-delay: .36s; }
+
+/* -- Hero ambient glow (slow, soft drift behind the headline) ------------ */
+html.pn-motion .hero { position: relative; overflow: hidden; }
+html.pn-motion .hero::before {
+  content: ""; position: absolute; inset: -40% -20%; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(420px 320px at 30% 40%, rgba(108,92,231,.10), transparent 70%),
+    radial-gradient(520px 360px at 72% 30%, rgba(0,184,148,.07), transparent 70%);
+  animation: pn-drift 22s ease-in-out infinite alternate;
+}
+html.pn-motion .hero > .container { position: relative; z-index: 1; }
+@keyframes pn-drift {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to   { transform: translate3d(3%, 3%, 0) scale(1.06); }
+}
+
+/* -- Header elevation on scroll ------------------------------------------ */
+.site-header { transition: box-shadow .25s ease; }
+.site-header.scrolled { box-shadow: 0 8px 24px -14px rgba(20,20,43,.28); }
+
+/* -- Micro-interactions --------------------------------------------------- */
+.tool-card__icon { transition: transform .22s cubic-bezier(.34,1.56,.64,1); }
+.tool-card:hover .tool-card__icon { transform: scale(1.1) rotate(-4deg); }
+.tool-card h3 { transition: color .15s ease; }
+.tool-card:hover h3 { color: var(--brand); }
+html.pn-motion .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+html.pn-motion .btn:active { transform: translateY(0) scale(.97); box-shadow: none; }
+.related a { transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.related a:hover { transform: translateY(-2px); box-shadow: var(--shadow); text-decoration: none; }
+.related a:hover .dot { transform: scale(1.12); }
+.related .dot { transition: transform .18s cubic-bezier(.34,1.56,.64,1); }
+.post-card .post-card__top { transition: height .18s ease; }
+.post-card:hover .post-card__top { height: 6px; }
+
+/* -- Drop zone: invite + drag pulse -------------------------------------- */
+html.pn-motion .dropzone:hover { border-color: var(--brand); }
+html.pn-motion .dropzone:hover .dropzone__ico { transform: translateY(-3px); }
+.dropzone__ico { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+@keyframes pn-pulse {
+  from { box-shadow: 0 0 0 0 rgba(108,92,231,.30); }
+  to   { box-shadow: 0 0 0 16px rgba(108,92,231,0); }
+}
+html.pn-motion .dropzone.drag { animation: pn-pulse 1s ease-out infinite; transform: scale(1.01); }
+
+/* -- FAQ open feedback ---------------------------------------------------- */
+html.pn-motion .faq details[open] > p { animation: pn-rise .3s ease backwards; }
+
+/* -- Reduced motion: belt-and-braces (JS also skips the pn-motion class) -- */
+@media (prefers-reduced-motion: reduce) {
+  html.pn-motion .reveal { opacity: 1; transform: none; transition: none; }
+  html.pn-motion .hero > .container > *,
+  html.pn-motion .tool-hero > .container > * { animation: none; }
+  html.pn-motion .hero::before { animation: none; }
+  html.pn-motion .dropzone.drag { animation: none; }
+}
+
+/* Printing must never inherit hidden reveal states. */
+@media print {
+  html.pn-motion .reveal { opacity: 1 !important; transform: none !important; }
+  html.pn-motion .hero > .container > *,
+  html.pn-motion .tool-hero > .container > * { animation: none !important; }
+}
