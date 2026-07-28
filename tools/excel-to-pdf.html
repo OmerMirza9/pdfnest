@@ -169,12 +169,12 @@
   function buildDoc(sectionsHtml, title) {
     var css =
       "body{font-family:Arial,Helvetica,sans-serif;font-size:10pt;color:#111;margin:0}" +
-      "h2{font-size:14pt;margin:0 0 .5em;padding-bottom:.3em;border-bottom:2px solid var(--c-excel,#217346);color:#217346}" +
+      "h2{font-size:14pt;margin:0 0 .5em;padding-bottom:.3em;border-bottom:1px solid #999;color:#111}" +
       ".sheet{margin:0 0 26px;page-break-inside:auto}" +
       ".sheet + .sheet{page-break-before:always}" +
       "table{border-collapse:collapse;width:100%}" +
       "td,th{border:1px solid #b3b3b3;padding:4px 7px;text-align:left;vertical-align:top;white-space:nowrap}" +
-      "tr:first-child td{background:#eef3f0;font-weight:700}";
+      "tr:first-child td{background:#f2f2f2;font-weight:700}";
     return "<!DOCTYPE html><html><head><meta charset='utf-8'><title>" + title +
       "</title><style>" + css + "</style></head><body>" + sectionsHtml + "</body></html>";
   }

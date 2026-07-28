@@ -34,7 +34,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How do I convert a PDF to PowerPoint for free?","acceptedAnswer":{"@type":"Answer","text":"Open the PDF to PowerPoint tool, drop in your PDF and click Convert to PowerPoint. PDFNest renders each page into a slide in your browser and gives you an editable .pptx file. Nothing is uploaded and there is no watermark."}},
-{"@type":"Question","name":"Is the text in the slides editable?","acceptedAnswer":{"@type":"Answer","text":"Each PDF page becomes a high-resolution image placed on its own slide, so the layout is pixel-perfect but the text is part of the image rather than editable text boxes. You can add your own text boxes, notes and shapes on top."}},
+{"@type":"Question","name":"Is the text in the slides editable?","acceptedAnswer":{"@type":"Answer","text":"Yes — in the default Editable text mode every line of the PDF becomes a real PowerPoint text box in its original position, so you can edit, restyle and move the text. An Exact snapshot mode is also available that places each page as a pixel-perfect image instead."}},
 {"@type":"Question","name":"Does it upload my PDF?","acceptedAnswer":{"@type":"Answer","text":"No. The PDF is rendered entirely in your browser, so your file never leaves your device."}},
 {"@type":"Question","name":"What file do I get?","acceptedAnswer":{"@type":"Answer","text":"You get a standard .pptx file that opens in Microsoft PowerPoint, Apple Keynote and Google Slides, with one slide per PDF page."}},
 {"@type":"Question","name":"Do I need PowerPoint installed?","acceptedAnswer":{"@type":"Answer","text":"No. The conversion runs entirely in your web browser. You only need PowerPoint, Keynote or Slides afterwards to open the file."}}
@@ -72,6 +72,13 @@
       <h3>Slide options</h3>
       <div class="grid-2">
         <div class="field">
+          <label for="mode">Output</label>
+          <select id="mode">
+            <option value="text" selected>Editable text — real text boxes you can edit</option>
+            <option value="image">Exact snapshot — each page as one image</option>
+          </select>
+        </div>
+        <div class="field" id="qualityField" style="display:none">
           <label for="quality">Slide quality</label>
           <select id="quality">
             <option value="1.5">Standard — smaller file</option>
@@ -80,7 +87,7 @@
           </select>
         </div>
       </div>
-      <div class="hint">Each page is rendered as a crisp image, sized to its own slide. Higher quality looks sharper but makes a larger .pptx file.</div>
+      <div class="hint" id="modeHint">Editable text rebuilds each page from real, movable text boxes in their original positions — edit any line in PowerPoint. Pictures and drawings inside the PDF aren't carried over in this mode; switch to Exact snapshot if the look matters more than editing.</div>
     </div>
 
     <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Convert to PowerPoint</button></div>
@@ -107,7 +114,7 @@
     <h2>Turn a PDF into editable PowerPoint slides</h2>
     <p>Dropping a PDF into a presentation usually means awkward screenshots. PDFNest does it properly: it renders <strong>every page of your PDF into a high-resolution slide</strong> and packages them as a real <strong>.pptx</strong> file you can open in PowerPoint, Keynote or Google Slides. Because every page is rendered locally in your browser, even a confidential report or deck never leaves your computer — no watermark, no account, no Adobe.</p>
     <h3>How the conversion works</h3>
-    <p>Each page becomes a crisp image placed on its own slide, sized to match the page so the layout stays <strong>pixel-perfect</strong>. The text lives inside the image rather than as editable text boxes, which means the slide looks exactly like the original — and you can add your own <strong>text boxes, notes, arrows and shapes</strong> on top to build a talk around it. It's the reliable way to get a PDF into a deck without redoing the layout by hand.</p>
+    <p>In the default <strong>Editable text</strong> mode, PDFNest reads the real text out of each PDF page and rebuilds it as <strong>PowerPoint text boxes in their original positions</strong>, with the original font sizes — so you can click any line and edit it, restyle it or move it. Pictures and drawings inside the PDF aren't carried over in this mode, and text colours are simplified to black. When the exact look matters more than editing, switch to <strong>Exact snapshot</strong> mode: each page becomes a crisp image sized to its own slide, pixel-perfect, with your own text boxes and shapes added on top.</p>
     <p>Need the page as flat images instead? Try <a href="pdf-to-image.html">PDF to Image</a>. Going the other way between Office and PDF? See <a href="word-to-pdf.html">Word to PDF</a> and <a href="excel-to-pdf.html">Excel to PDF</a>.</p>
   </div>
 </section>
@@ -117,7 +124,7 @@
     <div class="center"><h2>PDF to PowerPoint — FAQ</h2></div>
     <div class="faq" style="margin-top:24px">
       <details open><summary>How do I convert a PDF to PowerPoint for free?</summary><p>Drop your PDF in above and click Convert to PowerPoint. PDFNest renders each page into a slide in your browser and gives you an editable .pptx — nothing is uploaded and no watermark is added.</p></details>
-      <details><summary>Is the text in the slides editable?</summary><p>Each page becomes a high-resolution image on its own slide, so the layout is pixel-perfect but the text is part of the image. You can add your own text boxes and shapes on top.</p></details>
+      <details><summary>Is the text in the slides editable?</summary><p>Yes — the default Editable text mode turns every line into a real text box in its original position, ready to edit in PowerPoint. Prefer a pixel-perfect copy instead? Switch to Exact snapshot mode.</p></details>
       <details><summary>Does it upload my PDF?</summary><p>No — the PDF is rendered entirely in your browser, so it never leaves your device.</p></details>
       <details><summary>What file do I get?</summary><p>A standard .pptx that opens in PowerPoint, Keynote and Google Slides, with one slide per page.</p></details>
       <details><summary>Do I need PowerPoint installed?</summary><p>No. The conversion runs in your browser; you only need PowerPoint, Keynote or Slides to open the result.</p></details>
@@ -159,11 +166,85 @@
     }
   });
 
+  var modeSel = document.getElementById("mode"), modeHint = document.getElementById("modeHint");
+  modeSel.addEventListener("change", function () {
+    var img = this.value === "image";
+    document.getElementById("qualityField").style.display = img ? "" : "none";
+    modeHint.textContent = img
+      ? "Each page is rendered as a crisp image, sized to its own slide — pixel-perfect, with the text as part of the picture. Switch to Editable text if you need to change the words later."
+      : "Editable text rebuilds each page from real, movable text boxes in their original positions — edit any line in PowerPoint. Pictures and drawings inside the PDF aren't carried over in this mode; switch to Exact snapshot if the look matters more than editing.";
+  });
+
+  // Render a page to a JPEG data URI, capping the canvas area and validating
+  // the result. An oversized canvas makes toDataURL return an empty/invalid
+  // URI, which PptxGenJS silently replaces with its pink broken-image
+  // placeholder — never let that reach the deck.
+  var MAX_PIXELS = 24 * 1000 * 1000;
+  async function renderPageData(page, wantScale) {
+    var vp1 = page.getViewport({ scale: 1 });
+    var s = Math.min(wantScale, Math.sqrt(MAX_PIXELS / (vp1.width * vp1.height)));
+    for (; s >= 0.75; s = s / 1.5) {
+      var vp = page.getViewport({ scale: s });
+      var canvas = document.createElement("canvas");
+      canvas.width = Math.floor(vp.width); canvas.height = Math.floor(vp.height);
+      var ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      await page.render({ canvasContext: ctx, viewport: vp }).promise;
+      var data = canvas.toDataURL("image/jpeg", 0.85);
+      canvas.width = canvas.height = 0;
+      if (data && data.indexOf("data:image/jpeg;base64,") === 0 && data.length > 1000) return data;
+    }
+    throw new Error("page render failed at every scale");
+  }
+
+  // Extract the page's text as positioned lines: [{str, xPt, topPt, wPt, sizePt, font, bold, italic}]
+  async function pageTextLines(page) {
+    var tc = await page.getTextContent();
+    var vp1 = page.getViewport({ scale: 1 });
+    var pageH = vp1.height;
+    var frags = [];
+    tc.items.forEach(function (it) {
+      if (!it.str || !it.str.trim()) return;
+      var tr = it.transform;
+      var size = Math.hypot(tr[2], tr[3]) || 10;
+      var st = (tc.styles && tc.styles[it.fontName]) || {};
+      frags.push({
+        str: it.str, x: tr[4], yBase: tr[5], w: it.width || (it.str.length * size * 0.5), size: size,
+        font: (st.fontFamily || "Helvetica").replace(/^[A-Z]{6}\+/, ""),
+        bold: /bold|black|heavy/i.test(it.fontName || ""), italic: /italic|oblique/i.test(it.fontName || "")
+      });
+    });
+    // group fragments into lines by baseline proximity
+    frags.sort(function (a, b) { return b.yBase - a.yBase || a.x - b.x; });
+    var lines = [];
+    frags.forEach(function (f) {
+      var line = lines.length ? lines[lines.length - 1] : null;
+      if (line && Math.abs(line.yBase - f.yBase) < Math.max(2, f.size * 0.35)) line.frags.push(f);
+      else lines.push({ yBase: f.yBase, frags: [f] });
+    });
+    return lines.map(function (line) {
+      var fs = line.frags.sort(function (a, b) { return a.x - b.x; });
+      var text = "", prev = null;
+      fs.forEach(function (f) {
+        if (prev && f.x - (prev.x + prev.w) > f.size * 0.22 && !/\s$/.test(text)) text += " ";
+        text += f.str; prev = f;
+      });
+      var size = Math.max.apply(null, fs.map(function (f) { return f.size; }));
+      var x0 = fs[0].x, x1 = fs[fs.length - 1].x + fs[fs.length - 1].w;
+      return {
+        str: text, xPt: x0, topPt: pageH - line.yBase - size * 0.85,
+        wPt: Math.max(x1 - x0 + size * 0.6, 8), sizePt: size,
+        font: fs[0].font, bold: fs[0].bold, italic: fs[0].italic
+      };
+    });
+  }
+
   go.addEventListener("click", async function () {
     var file = fm.files[0]; if (!file || !window.pdfjsLib) return;
     if (!window.PptxGenJS) { PN.status(statusEl, "Converter is still loading — try again in a moment.", true); return; }
     go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Reading PDF…"); PN.progress(prog, bar, 4);
     try {
+      var mode = modeSel.value;
       var scale = parseFloat(document.getElementById("quality").value) || 2;
       var bytes = await PN.readBytes(file);
       var pdf = await pdfjsLib.getDocument({ data: bytes.slice(0) }).promise;
@@ -175,27 +256,39 @@
       var wIn = Math.min(56, firstVp.width / 72), hIn = Math.min(56, firstVp.height / 72);
       pptx.defineLayout({ name: "PDFPAGE", width: wIn, height: hIn });
       pptx.layout = "PDFPAGE";
+      var totalTextBoxes = 0;
 
       for (var p = 1; p <= n; p++) {
-        PN.status(statusEl, "Rendering page " + p + " of " + n + "…");
+        PN.status(statusEl, (mode === "text" ? "Extracting page " : "Rendering page ") + p + " of " + n + "…");
         var page = await pdf.getPage(p);
-        var vp = page.getViewport({ scale: scale });
-        var canvas = document.createElement("canvas");
-        canvas.width = Math.floor(vp.width); canvas.height = Math.floor(vp.height);
-        var ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-        await page.render({ canvasContext: ctx, viewport: vp }).promise;
-        var data = canvas.toDataURL("image/jpeg", 0.85);
-
-        // Fit this page into the deck slide, preserving aspect (handles mixed page sizes).
-        var pwIn = vp.width / scale / 72, phIn = vp.height / scale / 72;
+        var vp1 = page.getViewport({ scale: 1 });
+        var pwIn = vp1.width / 72, phIn = vp1.height / 72;
         var fit = Math.min(wIn / pwIn, hIn / phIn);
-        var dw = pwIn * fit, dh = phIn * fit;
+        var offX = (wIn - pwIn * fit) / 2, offY = (hIn - phIn * fit) / 2;
         var slide = pptx.addSlide();
-        slide.addImage({ data: data, x: (wIn - dw) / 2, y: (hIn - dh) / 2, w: dw, h: dh });
+        slide.background = { color: "FFFFFF" };
 
-        canvas.width = canvas.height = 0; // free memory
+        if (mode === "text") {
+          var lines = await pageTextLines(page);
+          lines.forEach(function (ln) {
+            slide.addText(ln.str, {
+              x: offX + (ln.xPt / 72) * fit, y: offY + (ln.topPt / 72) * fit,
+              w: Math.min((ln.wPt / 72) * fit, wIn), h: (ln.sizePt * 1.45 / 72) * fit,
+              fontSize: Math.max(1, Math.round(ln.sizePt * fit * 10) / 10),
+              fontFace: ln.font, bold: ln.bold, italic: ln.italic,
+              color: "000000", align: "left", valign: "top", margin: 0, wrap: false
+            });
+          });
+          totalTextBoxes += lines.length;
+        } else {
+          var data = await renderPageData(page, scale);
+          slide.addImage({ data: data, x: offX, y: offY, w: pwIn * fit, h: phIn * fit });
+        }
         PN.progress(prog, bar, 4 + (p / n) * 88);
+      }
+      if (mode === "text" && totalTextBoxes === 0) {
+        PN.status(statusEl, "No selectable text found — this looks like a scanned PDF. Use Exact snapshot mode, or run OCR first with the OCR PDF tool.", true);
+        PN.progress(prog, bar, null); go.disabled = false; return;
       }
 
       PN.status(statusEl, "Building PowerPoint file…");
