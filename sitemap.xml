@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://getpdfnest.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://getpdfnest.com/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getpdfnest.com/blog/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://getpdfnest.com/blog/what-is-pdf/</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://getpdfnest.com/blog/convert-word-to-pdf/</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://getpdfnest.com/blog/convert-pdf-to-powerpoint/</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -89,4 +89,13 @@
   <url><loc>https://getpdfnest.com/blog/photos-to-pdf-job-application/</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://getpdfnest.com/blog/merge-lecture-notes-into-one-pdf/</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://getpdfnest.com/blog/pdf-blurry-after-compressing/</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/merge-pdf-on-phone/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/make-pdf-smaller-on-mac/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/handwritten-notes-to-pdf/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/pdf-tools-for-students/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/batch-process-pdfs/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/pdf-workflow-for-remote-teams/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/pdf-wont-open/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/pdf-too-large-to-upload/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getpdfnest.com/blog/merge-invoices-into-one-pdf/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
