@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Convert an Image to HTML</title>
+<meta name="description" content="Convert an image to HTML with in-browser OCR. Get clean paragraph markup from a screenshot or scan, understand what OCR can and cannot read, and tidy the output.">
+<link rel="canonical" href="https://getpdfnest.com/blog/convert-image-to-html/">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Convert an Image to HTML">
+<meta property="og:description" content="Convert an image to HTML with in-browser OCR. Get clean paragraph markup from a screenshot or scan, understand what OCR can and cannot read, and tidy the output.">
+<meta property="og:url" content="https://getpdfnest.com/blog/convert-image-to-html/">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<meta property="article:published_time" content="2026-10-03">
+<meta property="article:modified_time" content="2026-10-03">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Convert an Image to HTML">
+<meta name="twitter:description" content="Convert an image to HTML with in-browser OCR. Get clean paragraph markup from a screenshot or scan, understand what OCR can and cannot read, and tidy the output.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260722">
+<style>
+.article h2[id] { scroll-margin-top: 90px; }
+.article__body table { width:100%; border-collapse:collapse; margin:16px 0 24px; text-align:left; }
+.article__body th, .article__body td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; }
+.article__body th { background:var(--bg-soft); color:var(--ink); }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Convert an Image to HTML", "description": "Convert an image to HTML with in-browser OCR. Get clean paragraph markup from a screenshot or scan, understand what OCR can and cannot read, and tidy the output.", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "author": {"@type": "Organization", "name": "PDFNest Team", "url": "https://getpdfnest.com/about.html"}, "publisher": {"@type": "Organization", "name": "PDFNest", "url": "https://getpdfnest.com/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://getpdfnest.com/blog/convert-image-to-html/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getpdfnest.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getpdfnest.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How to Convert an Image to HTML", "item": "https://getpdfnest.com/blog/convert-image-to-html/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will converting an image to HTML recreate the design?", "acceptedAnswer": {"@type": "Answer", "text": "No. OCR extracts the text and outputs it as HTML paragraphs. Recreating a pixel-accurate layout from a screenshot is a different job and needs an AI design tool."}}, {"@type": "Question", "name": "Can OCR read handwriting?", "acceptedAnswer": {"@type": "Answer", "text": "Not reliably. OCR is trained on printed type. Neat block capitals sometimes work; ordinary cursive handwriting generally does not and is faster to type out."}}, {"@type": "Question", "name": "Does it keep tables as HTML tables?", "acceptedAnswer": {"@type": "Answer", "text": "No. A table in an image comes out as lines of text, because the output is paragraph markup. You rebuild the table structure yourself from the extracted content."}}]}</script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<div class="container"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span>How to Convert an Image to HTML</nav></div>
+<article class="container article">
+<span class="article__cat">Web &amp; HTML</span>
+<h1>How to Convert an Image to HTML</h1>
+<div class="article__meta"><span class="avatar">P</span><span>By the <a href="/about.html"><strong>PDFNest Team</strong></a></span><span>·</span><time datetime="2026-10-03">October 3, 2026</time><span>·</span><span>5 min read</span></div>
+<p class="article__lead">“Image to HTML” gets used for two very different jobs, and picking the wrong one wastes an afternoon. One is recreating a design from a screenshot as working code. The other — the one you can actually do in a browser, reliably and for free — is reading the text out of an image and getting clean HTML markup back. This guide covers the second, and is honest about where the line sits.</p>
+<nav class="toc" aria-label="In this guide"><strong>In this guide</strong><ol><li><a href="#section-1">What image-to-HTML actually produces</a></li><li><a href="#section-2">Choose an image the OCR can read</a></li><li><a href="#section-3">Convert the image in your browser</a></li><li><a href="#section-4">Tidy up the markup that comes out</a></li><li><a href="#section-5">Decide whether to embed the image</a></li><li><a href="#section-6">Where this fits in real work</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
+<div class="article__body">
+<section aria-labelledby="section-1"><h2 id="section-1">What image-to-HTML actually produces</h2>
+<p>The conversion runs optical character recognition over your image, finds the text, and wraps it in HTML paragraphs. You get the words, in reading order, as markup you can paste into a page or a CMS. What you do not get is the design: no columns, no colours, no fonts, no positioning.</p><p>That distinction matters because of what people hope for. A screenshot of a website will not come back as a working replica of that website — recreating a layout as code from a picture is a design task, not a text-extraction one, and needs a different class of tool entirely. Expecting a replica and receiving paragraphs feels like a failure, when the tool did exactly what it does.</p><p>Where paragraphs are the right answer, this is a genuinely fast route. A scanned page of a report, a photographed notice, a screenshot of text you cannot select — all become editable, searchable markup in a few seconds, which is far quicker than retyping and less error-prone than you might expect.</p></section>
+<section aria-labelledby="section-2"><h2 id="section-2">Choose an image the OCR can read</h2>
+<p>OCR quality is set almost entirely by the input. Sharp, high-contrast printed text at a reasonable size reads well. Small, blurry, skewed or low-contrast text reads badly, and no amount of retrying changes that — the fix is a better image, not a better attempt.</p><p>If you are photographing a page, light it evenly, hold the camera square to the paper and fill the frame with the text. Shadows across the page and a 15-degree tilt are the two most common causes of garbled output. Cropping away the surrounding desk before converting helps too — <a href="/tools/crop-image.html">Crop Image</a> does that in the browser.</p>
+<table><thead><tr><th>Input</th><th>Expected result</th></tr></thead><tbody><tr><td>Screenshot of on-screen text</td><td>Very good — crisp pixels, high contrast</td></tr><tr><td>Flat scan of a printed page</td><td>Very good</td></tr><tr><td>Straight, well-lit photo of a page</td><td>Good, with some cleanup</td></tr><tr><td>Angled or shadowed photo</td><td>Patchy — reshoot rather than retry</td></tr><tr><td>Handwriting</td><td>Unreliable; usually faster to type</td></tr></tbody></table></section>
+<section aria-labelledby="section-3"><h2 id="section-3">Convert the image in your browser</h2>
+<p>Open <a href="/tools/image-to-html.html">Image to HTML</a>, drop the image in, and choose the language of the text before converting. The language setting matters more than people expect: it governs which character shapes and accents the recognition expects, and leaving it on the wrong language is a common cause of mangled words in non-English text.</p><p>Choose whether you want a full HTML document or just a fragment. A fragment is the right choice when you are pasting into an existing page or a CMS field, because it gives you the content without a second set of <code>html</code> and <code>body</code> tags. A full document is what you want if the output should open standalone in a browser.</p><p>The OCR engine runs in your browser, so the image is never uploaded. That matters when the image is a scanned contract, a payslip or anything with personal data in it — the recognition happens on your own machine, and there is no copy on a server afterwards. The first run may take a moment while the engine loads.</p></section>
+<section aria-labelledby="section-4"><h2 id="section-4">Tidy up the markup that comes out</h2>
+<p>Read the output against the image before using it. OCR makes characteristic mistakes — <code>rn</code> read as <code>m</code>, <code>1</code> and <code>l</code> confused, a stray full stop where the paper had a speck — and they are easy to miss because the result reads plausibly. Numbers deserve particular attention, since a misread digit changes meaning without looking wrong.</p><p>The output pane is editable, so fix things there rather than pasting and then repairing. Paragraph breaks are the other thing to check: OCR infers them from spacing, so a two-column page or a page with wide line spacing may come out with breaks in odd places, or run two paragraphs together.</p><p>Then add the structure the image implied but the markup cannot know about. A heading in the picture arrives as an ordinary paragraph; make it an <code>&lt;h2&gt;</code>. A bulleted list arrives as lines of text; make it a <code>&lt;ul&gt;</code>. If you want to do that with a preview beside you, paste the output into the <a href="/tools/html-editor.html">HTML Editor</a> and work there.</p></section>
+<section aria-labelledby="section-5"><h2 id="section-5">Decide whether to embed the image</h2>
+<p>The tool can embed the source image in the HTML alongside the extracted text. That is useful when the picture is part of the content — a diagram, a signed form, a photograph the text refers to — and the reader needs to see the original rather than just read what it said.</p><p>Leave it out when the image was only a carrier for the words. A screenshot of a paragraph has no value once the paragraph is text, and embedding it bloats the file substantially: an embedded image is encoded into the markup itself, which makes the HTML many times larger than the text alone.</p><p>If you do need the image on a real page, a separate image file referenced from the markup is usually better than an embedded one — it caches properly and keeps the HTML small. Embedding earns its place in self-contained files you are sending to someone, where a single file that works everywhere beats a tidy one that needs its assets.</p></section>
+<section aria-labelledby="section-6"><h2 id="section-6">Where this fits in real work</h2>
+<p>The strongest use is reclaiming text that exists only as pixels: an old scanned document with no source file, a photographed notice, a report page from a PDF that was produced by a scanner. The extracted markup makes that content searchable, editable and accessible to a screen reader, which the image never was.</p><p>Choose the right starting point, though. If your source is a PDF rather than an image, go straight to <a href="/tools/ocr-pdf.html">OCR PDF</a> or <a href="/tools/pdf-to-text.html">PDF to Text</a> instead of exporting pages to images first — each conversion step loses a little quality, and the PDF tools work from the better original. If you want plain text rather than markup, <a href="/tools/image-to-text.html">Image to Text</a> skips the HTML.</p><p>Finally, treat the output as a draft. OCR gets you most of the way in seconds, and the remaining work is a careful read against the original. For a short notice that is a minute; for a dense page of figures it is longer, and the time saved against retyping is still substantial.</p></section>
+<div class="cta-box"><p class="cta-box__text">Open Image to HTML<small>In-browser OCR with clean paragraph markup — nothing uploaded.</small></p><a class="btn btn--accent" href="/tools/image-to-html.html">Open Image to HTML →</a></div>
+<section aria-labelledby="faq"><h2 id="faq">Frequently asked questions</h2>
+<h3>Will converting an image to HTML recreate the design?</h3><p>No. OCR extracts the text and outputs it as HTML paragraphs. Recreating a pixel-accurate layout from a screenshot is a different job and needs an AI design tool.</p>
+<h3>Can OCR read handwriting?</h3><p>Not reliably. OCR is trained on printed type. Neat block capitals sometimes work; ordinary cursive handwriting generally does not and is faster to type out.</p>
+<h3>Does it keep tables as HTML tables?</h3><p>No. A table in an image comes out as lines of text, because the output is paragraph markup. You rebuild the table structure yourself from the extracted content.</p></section>
+</div>
+<div class="author-card"><span class="avatar">P</span><div><strong>The PDFNest Team</strong><p>We build free PDF tools that process files in your browser. Our guides explain practical workflows and the limits of each tool.</p></div></div>
+<h2 class="center" style="margin-top:10px">Related guides</h2>
+<div class="related" style="margin-top:18px"><a href="/blog/extract-text-from-image/"><span class="dot" style="background:var(--c-pdf2txt)">P</span>How to Extract Text From an Image (Free OCR, No Upload)</a><a href="/blog/how-to-edit-html-online/"><span class="dot" style="background:var(--c-htmledit)">P</span>How to Edit HTML Online with a Live Preview</a><a href="/blog/"><span class="dot" style="background:var(--brand)">P</span>All PDF guides</a></div>
+</article>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/js/site.js?v=20260722"></script>
+</body>
+</html>
