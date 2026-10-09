@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Extract Pages From a PDF</title>
+<meta name="description" content="Pull specific pages out of a PDF into a new file. Use page ranges, control the order, keep the original intact and know when to split or delete instead.">
+<link rel="canonical" href="https://getpdfnest.com/blog/extract-pages-from-pdf/">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Extract Pages From a PDF">
+<meta property="og:description" content="Pull specific pages out of a PDF into a new file. Use page ranges, control the order, keep the original intact and know when to split or delete instead.">
+<meta property="og:url" content="https://getpdfnest.com/blog/extract-pages-from-pdf/">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<meta property="article:published_time" content="2026-10-09">
+<meta property="article:modified_time" content="2026-10-09">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Extract Pages From a PDF">
+<meta name="twitter:description" content="Pull specific pages out of a PDF into a new file. Use page ranges, control the order, keep the original intact and know when to split or delete instead.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260722">
+<style>
+.article h2[id] { scroll-margin-top: 90px; }
+.article__body table { width:100%; border-collapse:collapse; margin:16px 0 24px; text-align:left; }
+.article__body th, .article__body td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; }
+.article__body th { background:var(--bg-soft); color:var(--ink); }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Extract Pages From a PDF", "description": "Pull specific pages out of a PDF into a new file. Use page ranges, control the order, keep the original intact and know when to split or delete instead.", "datePublished": "2026-10-09", "dateModified": "2026-10-09", "author": {"@type": "Organization", "name": "PDFNest Team", "url": "https://getpdfnest.com/about.html"}, "publisher": {"@type": "Organization", "name": "PDFNest", "url": "https://getpdfnest.com/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://getpdfnest.com/blog/extract-pages-from-pdf/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getpdfnest.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getpdfnest.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How to Extract Pages From a PDF", "item": "https://getpdfnest.com/blog/extract-pages-from-pdf/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does extracting pages reduce the quality?", "acceptedAnswer": {"@type": "Answer", "text": "No. The pages are copied into the new PDF as they are, not re-rendered, so text stays selectable and images keep their original resolution."}}, {"@type": "Question", "name": "Can I extract pages in a different order?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Pages are output in the order you type them, so 5, 1-3 produces page 5 followed by pages 1 to 3. A range written backwards, such as 8-3, is still read in ascending order."}}, {"@type": "Question", "name": "Does extracting pages change the original file?", "acceptedAnswer": {"@type": "Answer", "text": "No. Extraction creates a new PDF and leaves the source untouched. Keep the original until you have checked the extracted file."}}]}</script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<div class="container"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span>How to Extract Pages From a PDF</nav></div>
+<article class="container article">
+<span class="article__cat">PDF Organization</span>
+<h1>How to Extract Pages From a PDF</h1>
+<div class="article__meta"><span class="avatar">P</span><span>By the <a href="/about.html"><strong>PDFNest Team</strong></a></span><span>·</span><time datetime="2026-10-09">October 9, 2026</time><span>·</span><span>5 min read</span></div>
+<p class="article__lead">Most of the time you do not need the whole PDF — you need pages 4 to 7 of a contract, the signed page of an agreement, or the one statement out of a year-long bundle. Extracting those pages into their own file is quick and lossless when it is done properly. The part people get wrong is identifying the right page numbers in the first place.</p>
+<nav class="toc" aria-label="In this guide"><strong>In this guide</strong><ol><li><a href="#section-1">Extract, split or delete — pick the right job</a></li><li><a href="#section-2">Find the page numbers you actually need</a></li><li><a href="#section-3">Extract pages in your browser</a></li><li><a href="#section-4">Pick scattered pages and control their order</a></li><li><a href="#section-5">Protected files and what comes across</a></li><li><a href="#section-6">Check the new file before you use it</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
+<div class="article__body">
+<section aria-labelledby="section-1"><h2 id="section-1">Extract, split or delete — pick the right job</h2>
+<p>Three operations look similar and produce different results. Extracting creates one new PDF containing only the pages you name. Splitting turns one PDF into several files, typically one per page or per section. Deleting removes pages and keeps everything else. Choosing the right one first saves you combining or cleaning up afterwards.</p>
+<table><thead><tr><th>You want</th><th>Operation</th><th>Result</th></tr></thead><tbody><tr><td>A few specific pages in one file</td><td>Extract</td><td>One new PDF with only those pages</td></tr><tr><td>Every page as its own file</td><td>Split every page</td><td>Many single-page PDFs</td></tr><tr><td>The whole document minus a few pages</td><td>Delete</td><td>The original, shorter</td></tr></tbody></table>
+<p>If what you are keeping is most of the document, deleting the few unwanted pages is often less typing than listing everything you want — the <a href="/blog/delete-pages-from-pdf/">delete-pages guide</a> covers that route. If you need each section as a separate file, the <a href="/blog/split-pdf-into-multiple-files/">guide to splitting a PDF</a> is the better fit.</p></section>
+<section aria-labelledby="section-2"><h2 id="section-2">Find the page numbers you actually need</h2>
+<p>Extraction tools count physical pages from the first page of the file, starting at 1. The number printed in the corner of a page is often different: a report with a cover, a contents page and roman-numbered front matter may show “page 1” on what is really the fifth page of the PDF. Using the printed number is the most common reason people extract the wrong pages.</p><p>Open the PDF in any viewer and use the page indicator in its toolbar, which shows the physical position — something like “5 of 42”. Jot down the physical numbers of the pages you want. If your viewer shows two numbers, one being a printed label, use the position in the file rather than the label.</p><p>Write your selection down in the order you want it to appear before you open any tool. A short note such as “cover, then 12–15, then 31” makes the extraction a single, deliberate step instead of a trial-and-error loop.</p></section>
+<section aria-labelledby="section-3"><h2 id="section-3">Extract pages in your browser</h2>
+<p>Open <a href="/tools/split-pdf.html">Split PDF</a>, add your file and choose Extract pages. In the pages box, type the pages you want using commas and hyphens — for example <code>1-3, 5, 8-10</code>. The tool builds a single new PDF containing those pages and offers it for download.</p><p>The extraction copies pages rather than re-rendering them, so nothing is lost in the process: text remains selectable and searchable, and images keep their original resolution. The file is handled in your browser and never uploaded, which matters when the bundle you are cutting from is a bank statement, a medical record or a signed contract.</p><p>Any number outside the document is silently ignored. If you type <code>40-45</code> into a 42-page file, you get pages 40 to 42 and no warning. That behaviour is convenient, but it means you should always compare the page count of the result with what you expected.</p></section>
+<section aria-labelledby="section-4"><h2 id="section-4">Pick scattered pages and control their order</h2>
+<p>Pages come out in the order you type them, which makes extraction a quick way to reorder as well. <code>5, 1-3</code> produces page 5 first, followed by pages 1, 2 and 3. That is useful when you want a summary page at the front, or the signature page immediately after the cover.</p><p>A range is always read upwards: writing <code>8-3</code> is treated as 3 to 8, not 8 down to 3. To reverse a run of pages, list them individually — <code>8, 7, 6, 5, 4, 3</code>. If you name a page twice, it appears twice, which is occasionally useful and occasionally a typo, so read your list back before running it.</p><p>For more complex rearranging — dragging pages around while seeing thumbnails — use <a href="/tools/organize-pdf.html">Organize PDF</a> instead. Extraction is the fast, precise route when you know the numbers; visual reordering is better when you need to see the pages to decide. The <a href="/blog/how-to-reorder-pdf-pages/">reordering guide</a> covers that workflow.</p></section>
+<section aria-labelledby="section-5"><h2 id="section-5">Protected files and what comes across</h2>
+<p>A password-protected PDF cannot be split until it is opened with the password. If the tool rejects your file as encrypted, remove the protection first — only for documents you are entitled to modify — using <a href="/tools/unlock-pdf.html">Unlock PDF</a>, then extract from the unlocked copy. Keep the protected original if you need it for your records.</p><p>The pages themselves come across intact, but document-level extras do not always make sense in a shorter file. A table of contents or bookmark that pointed at a page you left out now has nowhere useful to go, and a cross-reference such as “see page 30” no longer matches anything. Check that navigation is still sensible if the recipient will rely on it.</p><p>If the extract is going to someone outside your organisation, think about what else is on the pages you chose. A single statement page can still carry an account number in the header, and a contract page can carry the other party’s details. Extraction reduces what you share; it does not redact what is on the pages you keep.</p></section>
+<section aria-labelledby="section-6"><h2 id="section-6">Check the new file before you use it</h2>
+<p>Open the extracted PDF and confirm three things: the page count, the first page and the last page. Those three checks catch the usual mistakes — a printed page number used instead of the physical one, an off-by-one at the end of a range, or a number silently skipped because it was beyond the document.</p><p>Rename the file to describe what it now contains. <code>contract-signature-pages.pdf</code> is far more useful to the recipient — and to you in six months — than the original filename with a suffix. If you extracted several selections from the same source, a consistent naming pattern keeps them in order.</p><p>Keep the source document until the extract has done its job. If the recipient asks for one more page, you want to re-run the extraction from the complete original rather than trying to merge a missing page back into a file that has already been sent.</p></section>
+<div class="cta-box"><p class="cta-box__text">Open Split PDF<small>Choose Extract pages, type your ranges, download one new PDF.</small></p><a class="btn btn--accent" href="/tools/split-pdf.html">Open Split PDF →</a></div>
+<section aria-labelledby="faq"><h2 id="faq">Frequently asked questions</h2>
+<h3>Does extracting pages reduce the quality?</h3><p>No. The pages are copied into the new PDF as they are, not re-rendered, so text stays selectable and images keep their original resolution.</p>
+<h3>Can I extract pages in a different order?</h3><p>Yes. Pages are output in the order you type them, so 5, 1-3 produces page 5 followed by pages 1 to 3. A range written backwards, such as 8-3, is still read in ascending order.</p>
+<h3>Does extracting pages change the original file?</h3><p>No. Extraction creates a new PDF and leaves the source untouched. Keep the original until you have checked the extracted file.</p></section>
+</div>
+<div class="author-card"><span class="avatar">P</span><div><strong>The PDFNest Team</strong><p>We build free PDF tools that process files in your browser. Our guides explain practical workflows and the limits of each tool.</p></div></div>
+<h2 class="center" style="margin-top:10px">Related guides</h2>
+<div class="related" style="margin-top:18px"><a href="/blog/split-pdf-into-multiple-files/"><span class="dot" style="background:var(--c-split)">P</span>How to Split a PDF into Multiple Files (Free Online)</a><a href="/blog/delete-pages-from-pdf/"><span class="dot" style="background:var(--c-rmpages)">P</span>How to Delete Pages From a PDF (Free, Online)</a><a href="/blog/"><span class="dot" style="background:var(--brand)">P</span>All PDF guides</a></div>
+</article>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/js/site.js?v=20260722"></script>
+</body>
+</html>
