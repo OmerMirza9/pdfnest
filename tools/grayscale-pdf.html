@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF to Black and White — Grayscale PDF Free (No Upload)</title>
+<meta name="description" content="Convert a colour PDF to grayscale or high-contrast black and white free in your browser. Save colour ink and make scans easier to read. No upload, no watermark.">
+<link rel="canonical" href="https://getpdfnest.com/tools/grayscale-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PDF to Black and White — Grayscale PDF Free">
+<meta property="og:description" content="Turn a colour PDF grayscale or black and white in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/grayscale-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261118">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest PDF to Black and White","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/grayscale-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Convert PDF to grayscale","High-contrast black and white mode","Choose output quality","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to convert a PDF to black and white","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your PDF","text":"Open the PDF to Black and White tool and drop in your PDF. It is processed in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Choose grayscale or black and white","text":"Grayscale keeps shades of grey for photos and charts; black and white gives crisp, high-contrast text for scans."},
+{"@type":"HowToStep","name":"Download","text":"Click Convert and download the black and white PDF."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"PDF to Black and White","item":"https://getpdfnest.com/tools/grayscale-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I make a PDF black and white?","acceptedAnswer":{"@type":"Answer","text":"Drop the PDF into PDFNest's PDF to Black and White tool, choose grayscale or high-contrast black and white, and download. It runs in your browser, so nothing is uploaded."}},
+{"@type":"Question","name":"What is the difference between grayscale and black and white?","acceptedAnswer":{"@type":"Answer","text":"Grayscale keeps every shade of grey, so photos and charts stay readable. Black and white turns each pixel pure black or pure white, which makes faint scanned text crisp but flattens photos."}},
+{"@type":"Question","name":"Will the text still be selectable?","acceptedAnswer":{"@type":"Answer","text":"No. Each page is rebuilt as an image to remove the colour, so text becomes part of the picture. Run the result through OCR PDF if you need it searchable again."}},
+{"@type":"Question","name":"Is my file uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Pages are converted on your device in the browser and never sent to a server."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>PDF to Black and White</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#ececef;color:var(--c-gray)">● PDF to Black &amp; White</span>
+    <h1>PDF to Black and White</h1>
+    <p class="answer"><strong>To make a PDF black and white, drop it in below, choose grayscale or high-contrast black and white, and download. Free, in your browser, nothing uploaded.</strong></p>
+    <p>Save colour ink, meet a portal's "black and white only" rule, or make a faded scan crisp and easy to read.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Conversion options</h3>
+      <div class="field">
+        <label>Style</label>
+        <div class="radio-row">
+          <label class="radio-card active"><input type="radio" name="mode" value="gray" checked>Grayscale — keeps shades</label>
+          <label class="radio-card"><input type="radio" name="mode" value="bw">Black &amp; white — crisp text</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="quality">Quality</label>
+        <select id="quality">
+          <option value="2.08" selected>Standard — 150 DPI (smaller file)</option>
+          <option value="3">High — 216 DPI (sharper small print)</option>
+        </select>
+        <div class="hint">Pages are rebuilt as images, so text won't be selectable afterwards.</div>
+      </div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Convert to black &amp; white</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to convert a PDF to black and white</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your PDF</h3><p>Drop it in — it's processed on your device.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Pick a style</h3><p>Grayscale for photos and charts, black &amp; white for crisp scanned text.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Save the converted PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Grayscale or black and white?</h2>
+    <p><strong>Grayscale</strong> replaces every colour with a matching shade of grey. Photos, charts and diagrams stay readable, and the document looks the way it would on a mono printer. Choose it for reports, slides and anything with images.</p>
+    <p><strong>Black and white</strong> goes further and makes every pixel either pure black or pure white. Faint pencil, grey scanner backgrounds and yellowed paper disappear, leaving crisp, high-contrast text — ideal for scanned forms and receipts, and often a smaller file. Photos lose their detail in this mode.</p>
+    <h3>What to expect</h3>
+    <p>To remove colour reliably from every kind of content, each page is rebuilt as an image. The result looks right everywhere, but text is no longer selectable or searchable — run it through <a href="ocr-pdf.html">OCR PDF</a> if you need that back. The conversion happens entirely in your browser; for a smaller file afterwards, try <a href="compress-pdf.html">Compress PDF</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>PDF to Black and White — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I make a PDF black and white?</summary><p>Drop it in above, choose grayscale or black &amp; white, and download. Nothing is uploaded.</p></details>
+      <details><summary>Grayscale or black and white?</summary><p>Grayscale keeps shades for photos and charts; black &amp; white makes scanned text crisp but flattens photos.</p></details>
+      <details><summary>Will the text still be selectable?</summary><p>No — pages are rebuilt as images. Use OCR PDF afterwards if you need searchable text.</p></details>
+      <details><summary>Is my file uploaded?</summary><p>No. The conversion runs on your device in the browser.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+      <a href="ocr-pdf.html"><span class="dot" style="background:var(--c-pdf2txt)">OP</span>OCR PDF</a>
+      <a href="crop-pdf.html"><span class="dot" style="background:var(--c-crop)">CP</span>Crop PDF</a>
+      <a href="pdf-to-jpg.html"><span class="dot" style="background:var(--c-pdf2jpg)">P</span>PDF to JPG</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
+<script src="../assets/js/site.js?v=20261118"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar");
+  var currentBytes = null, originalSize = 0;
+
+  document.querySelectorAll('input[name=mode]').forEach(function (r) {
+    r.addEventListener("change", function () {
+      document.querySelectorAll('input[name=mode]').forEach(function (x) { x.closest(".radio-card").classList.toggle("active", x.checked); });
+    });
+  });
+
+  PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "application/pdf", multiple: false, color: "var(--c-gray)",
+    onChange: async function (files) {
+      result.classList.remove("show");
+      if (!files.length) { opts.classList.add("hidden"); go.disabled = true; currentBytes = null; return; }
+      PN.status(statusEl, "Reading…");
+      try {
+        currentBytes = await PN.readBytes(files[0]); originalSize = files[0].size;
+        var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+        if (PN.encryptedGuard(doc, statusEl)) { go.disabled = true; currentBytes = null; return; }
+        opts.classList.remove("hidden"); go.disabled = false; PN.status(statusEl, "");
+      } catch (e) { console.error(e); PN.status(statusEl, "Could not read that PDF.", true); go.disabled = true; }
+    }
+  });
+
+  go.addEventListener("click", async function () {
+    if (!currentBytes || !window.pdfjsLib) return;
+    var bw = document.querySelector('input[name=mode]:checked').value === "bw";
+    var scale = parseFloat(document.getElementById("quality").value) || 2.08;
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Converting…"); PN.progress(prog, bar, 5);
+    try {
+      var pdf = await pdfjsLib.getDocument({ data: currentBytes.slice(0) }).promise;
+      var out = await PDFLib.PDFDocument.create();
+      var n = pdf.numPages;
+      for (var p = 1; p <= n; p++) {
+        var page = await pdf.getPage(p);
+        var base = page.getViewport({ scale: 1 });
+        var vp = page.getViewport({ scale: scale });
+        var canvas = document.createElement("canvas");
+        canvas.width = Math.floor(vp.width); canvas.height = Math.floor(vp.height);
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+        await page.render({ canvasContext: ctx, viewport: vp }).promise;
+        var img = ctx.getImageData(0, 0, canvas.width, canvas.height), d = img.data;
+        for (var i = 0; i < d.length; i += 4) {
+          var y = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+          if (bw) y = y < 160 ? 0 : 255;
+          d[i] = d[i + 1] = d[i + 2] = y;
+        }
+        ctx.putImageData(img, 0, 0);
+        var blob = await new Promise(function (r) { canvas.toBlob(r, bw ? "image/png" : "image/jpeg", 0.85); });
+        var imgBytes = new Uint8Array(await blob.arrayBuffer());
+        var emb = bw ? await out.embedPng(imgBytes) : await out.embedJpg(imgBytes);
+        var newPage = out.addPage([base.width, base.height]);
+        newPage.drawImage(emb, { x: 0, y: 0, width: base.width, height: base.height });
+        canvas.width = canvas.height = 0;
+        PN.progress(prog, bar, 5 + (p / n) * 88);
+      }
+      var bytes = await out.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>' + (bw ? "Black &amp; white" : "Grayscale") + ' PDF ready</h3><p>' + n + ' page' + (n > 1 ? 's' : '') + ' • ' +
+        PN.formatBytes(originalSize) + ' → <strong>' + PN.formatBytes(bytes.length) + '</strong></p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(bytes, (bw ? "black-and-white" : "grayscale") + "-pdfnest.pdf", "application/pdf"); };
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong converting that PDF.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

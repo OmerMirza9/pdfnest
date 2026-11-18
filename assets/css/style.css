@@ -41,6 +41,10 @@
   --c-imgcrop:  #e17055;
   --c-zip:      #b33771;
   --c-unzip:    #227093;
+  --c-crop:   #0fb9b1;
+  --c-flatten: #4a69bd;
+  --c-gray:   #57606f;
+  --c-meta:   #8854d0;
 
   /* Neutrals */
   --ink:        #1a1a2e;

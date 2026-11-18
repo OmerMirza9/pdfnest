@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flatten PDF — Lock Form Fields Free Online (No Upload)</title>
+<meta name="description" content="Flatten a fillable PDF free in your browser. Turn form fields and the answers in them into fixed page content that can't be edited. No upload, no watermark.">
+<link rel="canonical" href="https://getpdfnest.com/tools/flatten-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flatten PDF — Lock Form Fields Free">
+<meta property="og:description" content="Flatten fillable PDF forms in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/flatten-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261118">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Flatten PDF","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/flatten-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Flatten fillable PDF forms","Keep typed answers, ticks and choices","Lists the form fields before flattening","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to flatten a PDF form","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add the filled-in PDF","text":"Open the Flatten PDF tool and drop in your completed form. It is read in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Check the fields","text":"PDFNest lists the form fields it found so you can confirm this is the right file."},
+{"@type":"HowToStep","name":"Flatten and download","text":"Click Flatten PDF and download a copy where the answers are part of the page."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Flatten PDF","item":"https://getpdfnest.com/tools/flatten-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What does flattening a PDF do?","acceptedAnswer":{"@type":"Answer","text":"It turns fillable form fields and the answers typed into them into ordinary page content. The values stay visible, but the fields can no longer be clicked or changed in a PDF reader."}},
+{"@type":"Question","name":"Will my answers stay after flattening?","acceptedAnswer":{"@type":"Answer","text":"Yes. Text, ticks and selected options are drawn onto the page as they appear in the form. Fill in and save the form first, then flatten the saved copy."}},
+{"@type":"Question","name":"Does flattening make a PDF secure?","acceptedAnswer":{"@type":"Answer","text":"It stops casual edits in a form reader, but anyone with PDF editing software can still change the page. To control who can open the file, add a password with Protect PDF."}},
+{"@type":"Question","name":"Does it flatten comments and annotations?","acceptedAnswer":{"@type":"Answer","text":"This tool flattens form fields. Comments, sticky notes and markup annotations are left as they are."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Flatten PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#e8edf8;color:var(--c-flatten)">● Flatten PDF</span>
+    <h1>Flatten PDF</h1>
+    <p class="answer"><strong>To flatten a PDF, drop your filled-in form below and click Flatten — the fields and your answers become fixed page content that can't be clicked or changed. Free, in your browser, nothing uploaded.</strong></p>
+    <p>Lock a completed application, tax form or contract before sending it, so it looks the same in every viewer and on paper.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Drop a fillable PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Form fields found</h3>
+      <p class="hint" id="fieldSummary"></p>
+      <ul id="fieldList" style="margin:6px 0 0 18px;max-height:220px;overflow:auto;font-size:.92rem"></ul>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Flatten PDF</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to flatten a PDF form</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add the filled-in PDF</h3><p>Fill and save the form first, then drop the saved copy in.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Check the fields</h3><p>PDFNest lists the fields it found so you know it's the right file.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Flatten & download</h3><p>Your answers become part of the page.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Lock a completed form before you send it</h2>
+    <p>A fillable PDF keeps its answers in interactive fields. That is convenient while you fill it in, but it means the recipient — or anyone the file is forwarded to — can click a box and change what you wrote, and some viewers and printers display fields differently or not at all. Flattening <strong>draws each field's current value onto the page</strong> and removes the field, so the form looks the same everywhere and can no longer be edited in a reader.</p>
+    <p>Text boxes, checkboxes, radio buttons and drop-down choices are all flattened as they appear. Everything happens in your browser, so personal details in the form are never uploaded.</p>
+    <h3>What flattening is — and isn't</h3>
+    <p>Flattening prevents casual edits, not determined ones: someone with PDF editing software can still change the page. To control who can open the document, add a password with <a href="protect-pdf.html">Protect PDF</a> after flattening. Flattening also cannot be undone, so keep your fillable copy. Need to fill the form first? <a href="edit-pdf.html">Edit PDF</a> adds text to forms that have no fields.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Flatten PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>What does flattening a PDF do?</summary><p>It turns form fields and your answers into ordinary page content, so they stay visible but can't be clicked or changed.</p></details>
+      <details><summary>Will my answers stay?</summary><p>Yes — text, ticks and selected options are drawn onto the page. Save the filled form first, then flatten that copy.</p></details>
+      <details><summary>Does flattening make a PDF secure?</summary><p>It stops casual edits, but editing software can still change the page. Use Protect PDF to control who can open it.</p></details>
+      <details><summary>Does it flatten comments?</summary><p>No — this tool flattens form fields. Comments, sticky notes and markup are left as they are.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="edit-pdf.html"><span class="dot" style="background:var(--c-water)">EP</span>Edit PDF</a>
+      <a href="sign-pdf.html"><span class="dot" style="background:var(--c-sign)">SG</span>Sign PDF</a>
+      <a href="protect-pdf.html"><span class="dot" style="background:var(--c-protect)">LK</span>Protect PDF</a>
+      <a href="merge-pdf.html"><span class="dot" style="background:var(--c-merge)">M</span>Merge PDF</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
+<script src="../assets/js/site.js?v=20261118"></script>
+<script>
+(function () {
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      summary = document.getElementById("fieldSummary"), listEl = document.getElementById("fieldList");
+  var currentBytes = null;
+
+  function kind(f) {
+    var L = window.PDFLib, map = [["PDFTextField", "text"], ["PDFCheckBox", "checkbox"], ["PDFRadioGroup", "radio buttons"],
+      ["PDFDropdown", "drop-down"], ["PDFOptionList", "list"], ["PDFSignature", "signature"], ["PDFButton", "button"]];
+    for (var i = 0; i < map.length; i++) if (L[map[i][0]] && f instanceof L[map[i][0]]) return map[i][1];
+    return "field";
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "application/pdf", multiple: false, color: "var(--c-flatten)",
+    onChange: async function (files) {
+      result.classList.remove("show"); listEl.innerHTML = ""; summary.textContent = "";
+      if (!files.length) { opts.classList.add("hidden"); go.disabled = true; currentBytes = null; return; }
+      PN.status(statusEl, "Reading…");
+      try {
+        currentBytes = await PN.readBytes(files[0]);
+        var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+        if (PN.encryptedGuard(doc, statusEl)) { go.disabled = true; currentBytes = null; return; }
+        var form = doc.getForm(), fields = form.getFields();
+        if (!fields.length) {
+          opts.classList.add("hidden"); go.disabled = true; currentBytes = null;
+          PN.status(statusEl, "This PDF has no fillable form fields, so there is nothing to flatten. It already behaves like a flat document.", true);
+          return;
+        }
+        summary.textContent = fields.length + " field" + (fields.length > 1 ? "s" : "") + " will be flattened on " + doc.getPageCount() + " page" + (doc.getPageCount() > 1 ? "s" : "") + ".";
+        listEl.innerHTML = fields.slice(0, 60).map(function (f) { return "<li>" + esc(f.getName()) + " <span class=\"hint\">(" + kind(f) + ")</span></li>"; }).join("") +
+          (fields.length > 60 ? "<li>…and " + (fields.length - 60) + " more</li>" : "");
+        opts.classList.remove("hidden"); go.disabled = false; PN.status(statusEl, "");
+      } catch (e) { console.error(e); PN.status(statusEl, "Could not read that PDF.", true); go.disabled = true; }
+    }
+  });
+
+  go.addEventListener("click", async function () {
+    if (!currentBytes) return;
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Flattening…"); PN.progress(prog, bar, 25);
+    try {
+      var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+      var form = doc.getForm();
+      if (form.hasXFA && form.hasXFA()) form.deleteXFA();
+      var n = form.getFields().length;
+      try { form.flatten({ updateFieldAppearances: true }); }
+      catch (e1) {
+        // Some forms use fonts pdf-lib can't regenerate appearances with; fall back to the form's own appearances
+        console.warn(e1);
+        doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true }); form = doc.getForm();
+        if (form.hasXFA && form.hasXFA()) form.deleteXFA();
+        form.flatten({ updateFieldAppearances: false });
+      }
+      var bytes = await doc.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Flattened PDF ready</h3><p>' + n + ' field' + (n > 1 ? 's' : '') + ' flattened • ' + PN.formatBytes(bytes.length) + '</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(bytes, "flattened-pdfnest.pdf", "application/pdf"); };
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong flattening that PDF.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

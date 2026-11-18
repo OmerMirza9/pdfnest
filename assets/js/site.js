@@ -86,7 +86,11 @@
     { slug: "resize-image",    name: "Resize Image",    color: "var(--c-imgresz)",  short: "Resize by pixels or percent",  tag: "RS" },
     { slug: "crop-image",      name: "Crop Image",      color: "var(--c-imgcrop)",  short: "Crop a photo or screenshot",   tag: "CR" },
     { slug: "zip-files",       name: "Create ZIP",      color: "var(--c-zip)",      short: "Zip files or a folder",        tag: "Z" },
-    { slug: "unzip-files",     name: "Unzip",           color: "var(--c-unzip)",    short: "Open a ZIP & extract files",   tag: "UZ" }
+    { slug: "unzip-files",     name: "Unzip",           color: "var(--c-unzip)",    short: "Open a ZIP & extract files",   tag: "UZ" },
+    { slug: "crop-pdf",         name: "Crop PDF",        color: "var(--c-crop)",     short: "Trim PDF page margins",        tag: "CP" },
+    { slug: "flatten-pdf",      name: "Flatten PDF",     color: "var(--c-flatten)",  short: "Lock form fields into the page",  tag: "FL" },
+    { slug: "grayscale-pdf",    name: "PDF to Black & White",  color: "var(--c-gray)",     short: "Grayscale or B&W PDF",         tag: "BW" },
+    { slug: "pdf-metadata",     name: "PDF Metadata",    color: "var(--c-meta)",     short: "View, edit or strip properties",  tag: "MT" }
   ];
   window.PDFNEST_TOOLS = TOOLS;
   window.PDFNEST_ROOT = ROOT;

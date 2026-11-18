@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crop PDF — Trim PDF Margins Free Online (No Upload)</title>
+<meta name="description" content="Crop PDF pages free in your browser. Trim margins with a live preview or detect white margins automatically, for all pages or just some. No upload, no watermark.">
+<link rel="canonical" href="https://getpdfnest.com/tools/crop-pdf.html">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crop PDF — Trim PDF Margins Free">
+<meta property="og:description" content="Crop PDF pages and trim white margins in your browser. Free, private, no upload.">
+<meta property="og:url" content="https://getpdfnest.com/tools/crop-pdf.html">
+<meta property="og:image" content="https://getpdfnest.com/assets/img/og-image.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261118">
+<style>
+.crop-preview { position:relative; display:inline-block; margin:6px auto 0; border:1px solid var(--line); background:#fff; line-height:0; }
+.crop-preview canvas { display:block; max-width:100%; height:auto; }
+.crop-preview #shade { position:absolute; left:0; top:0; width:100%; height:100%; }
+.crop-grid { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px; }
+@media (max-width:560px) { .crop-grid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDFNest Crop PDF","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","url":"https://getpdfnest.com/tools/crop-pdf.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Trim PDF margins","Live crop preview","Detect white margins automatically","Crop all pages or a page range","No upload — runs in your browser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to crop a PDF","totalTime":"PT1M","step":[
+{"@type":"HowToStep","name":"Add your PDF","text":"Open the Crop PDF tool and drop in your PDF. It is read in your browser and never uploaded."},
+{"@type":"HowToStep","name":"Set the margins","text":"Enter how much to trim from each side, or detect the white margins automatically, and check the live preview."},
+{"@type":"HowToStep","name":"Download","text":"Click Crop PDF and download the cropped file."}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getpdfnest.com/"},{"@type":"ListItem","position":2,"name":"Crop PDF","item":"https://getpdfnest.com/tools/crop-pdf.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I crop a PDF for free?","acceptedAnswer":{"@type":"Answer","text":"Drop your PDF into PDFNest's Crop PDF tool, set how much to trim from each side or detect the white margins automatically, check the preview, and download. It runs in your browser, so nothing is uploaded."}},
+{"@type":"Question","name":"Does cropping reduce the quality of the PDF?","acceptedAnswer":{"@type":"Answer","text":"No. Cropping changes the visible area of each page without re-rendering it, so text stays selectable and images keep their resolution."}},
+{"@type":"Question","name":"Does cropping delete the content outside the crop area?","acceptedAnswer":{"@type":"Answer","text":"No. The hidden area is still stored in the file and can be revealed by editing software. Never use cropping to hide confidential information."}},
+{"@type":"Question","name":"Can I crop only some pages?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enter a page range such as 1-3, 5 to crop just those pages, or leave it empty to crop every page."}}
+]}
+</script>
+</head>
+<body>
+<noscript><div class="noscript-warn">This tool runs in your browser and needs JavaScript enabled.</div></noscript>
+<div id="site-header"></div>
+
+<div class="container">
+  <nav class="breadcrumb"><a href="/">Home</a><span>›</span>Crop PDF</nav>
+</div>
+
+<section class="tool-hero" style="padding-top:18px">
+  <div class="container">
+    <span class="badge" style="background:#ddf6f4;color:var(--c-crop)">● Crop PDF</span>
+    <h1>Crop PDF</h1>
+    <p class="answer"><strong>To crop a PDF, drop it in below, set how much to trim from each side — or detect the white margins automatically — check the preview, and download. Free, in your browser, nothing uploaded.</strong></p>
+    <p>Remove wide white borders, cut a scan down to the document, or trim pages for easier reading on a phone.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="workspace">
+    <div class="dropzone" id="zone">
+      <div class="dropzone__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Drop a PDF here</h3><p>or click to choose a file</p>
+    </div>
+    <input type="file" id="input" accept="application/pdf" class="hidden">
+    <ul class="file-list" id="list"></ul>
+
+    <div class="options hidden" id="opts">
+      <h3>Crop margins (millimetres)</h3>
+      <div class="crop-grid">
+        <div class="field"><label for="mt">Top</label><input type="number" id="mt" value="0" min="0" step="1"></div>
+        <div class="field"><label for="mr">Right</label><input type="number" id="mr" value="0" min="0" step="1"></div>
+        <div class="field"><label for="mb">Bottom</label><input type="number" id="mb" value="0" min="0" step="1"></div>
+        <div class="field"><label for="ml">Left</label><input type="number" id="ml" value="0" min="0" step="1"></div>
+      </div>
+      <div class="field" style="margin-top:6px"><button class="btn btn--ghost" id="auto" type="button">Detect white margins on page 1</button>
+        <div class="hint">Finds where the content starts on the first page and sets the margins for you.</div></div>
+      <div class="field">
+        <label for="pages">Apply to pages</label>
+        <input type="text" id="pages" placeholder="Leave empty for all pages — e.g. 1-3, 5">
+        <div class="hint">Document has <strong id="pageCount">0</strong> pages. Margins are measured as the page appears on screen.</div>
+      </div>
+      <div class="center"><div class="crop-preview" id="previewWrap"><canvas id="preview"></canvas><canvas id="shade"></canvas></div>
+        <div class="hint" style="margin-top:6px">Preview of page 1 — the shaded area will be cropped away.</div></div>
+    </div>
+
+    <div class="action-bar"><button class="btn btn--accent btn--lg" id="go" disabled>Crop PDF</button></div>
+    <div class="progress" id="prog"><div class="progress__bar" id="bar"></div></div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+    <p class="center" style="margin-top:18px"><span class="privacy-note">🔒 Files never leave your device</span></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>How to crop a PDF</h2></div>
+    <div class="steps" style="margin-top:30px">
+      <div class="step"><div class="step__num">1</div><h3>Add your PDF</h3><p>Drop it in — it's read on your device, never uploaded.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Set the margins</h3><p>Type how much to trim from each side, or detect the white margins automatically.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Download</h3><p>Check the preview, then save the cropped PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container prose">
+    <h2>Trim PDF margins without losing quality</h2>
+    <p>Cropping changes the visible area of each page. PDFNest sets a new crop box on the pages you choose, so the content is <strong>not re-rendered</strong>: text stays sharp and selectable, and images keep their full resolution. Margins are measured as the page looks on screen, so rotated pages crop the way you expect.</p>
+    <p>Use <strong>Detect white margins</strong> to find where the content starts on the first page and trim the empty border around it — useful for scanned documents and slides exported with wide borders. Check the preview, adjust any side by hand, and apply the same crop to every page or just a range.</p>
+    <h3>Cropping is not redaction</h3>
+    <p>The area outside the crop box is hidden, not deleted — it is still in the file and can be revealed with editing software. If you need to remove confidential content, delete the pages with <a href="remove-pdf-pages.html">Remove Pages</a> or recreate the document without it. To shrink the file itself, use <a href="compress-pdf.html">Compress PDF</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><h2>Crop PDF — FAQ</h2></div>
+    <div class="faq" style="margin-top:24px">
+      <details open><summary>How do I crop a PDF for free?</summary><p>Drop it in above, set the margins or detect them automatically, check the preview, and download. Nothing is uploaded.</p></details>
+      <details><summary>Does cropping reduce quality?</summary><p>No. Pages aren't re-rendered, so text stays selectable and images keep their resolution.</p></details>
+      <details><summary>Is the cropped-away content deleted?</summary><p>No — it's hidden, not removed, and can be revealed with editing software. Don't use cropping to hide confidential information.</p></details>
+      <details><summary>Can I crop only some pages?</summary><p>Yes. Enter a range like 1-3, 5, or leave it empty to crop every page.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="center"><h2>Related tools</h2></div>
+    <div class="related" style="margin-top:24px">
+      <a href="rotate-pdf.html"><span class="dot" style="background:var(--c-rotate)">R</span>Rotate PDF</a>
+      <a href="organize-pdf.html"><span class="dot" style="background:var(--c-pages)">ORG</span>Organize PDF</a>
+      <a href="compress-pdf.html"><span class="dot" style="background:var(--c-compress)">C</span>Compress PDF</a>
+      <a href="crop-image.html"><span class="dot" style="background:var(--c-imgcrop)">CR</span>Crop Image</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="../assets/js/pdf-tools.js?v=20260712"></script>
+<script src="../assets/js/site.js?v=20261118"></script>
+<script>
+(function () {
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  var MM = 72 / 25.4;
+  var go = document.getElementById("go"), statusEl = document.getElementById("status"),
+      result = document.getElementById("result"), opts = document.getElementById("opts"),
+      prog = document.getElementById("prog"), bar = document.getElementById("bar"),
+      pageCountEl = document.getElementById("pageCount"),
+      preview = document.getElementById("preview"), shade = document.getElementById("shade");
+  var ids = ["mt", "mr", "mb", "ml"];
+  var currentBytes = null, totalPages = 0, pjsDoc = null, previewScale = 1, firstW = 0, firstH = 0;
+
+  function margins() {
+    var m = ids.map(function (id) { var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v * MM : 0; });
+    return { t: m[0], r: m[1], b: m[2], l: m[3] };
+  }
+
+  function drawShade() {
+    var ctx = shade.getContext("2d"); ctx.clearRect(0, 0, shade.width, shade.height);
+    if (!firstW) return;
+    var m = margins(), s = previewScale;
+    var x = m.l * s, y = m.t * s, w = shade.width - (m.l + m.r) * s, h = shade.height - (m.t + m.b) * s;
+    ctx.fillStyle = "rgba(15,23,42,0.45)";
+    ctx.fillRect(0, 0, shade.width, shade.height);
+    if (w > 0 && h > 0) {
+      ctx.clearRect(x, y, w, h);
+      ctx.strokeStyle = "#0fb9b1"; ctx.lineWidth = 2; ctx.setLineDash([6, 4]); ctx.strokeRect(x + 1, y + 1, w - 2, h - 2);
+    }
+  }
+
+  async function renderPreview() {
+    var page = await pjsDoc.getPage(1);
+    var base = page.getViewport({ scale: 1 });
+    firstW = base.width; firstH = base.height;
+    previewScale = Math.min(1.5, 360 / base.width);
+    var vp = page.getViewport({ scale: previewScale });
+    preview.width = shade.width = Math.floor(vp.width); preview.height = shade.height = Math.floor(vp.height);
+    var ctx = preview.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, preview.width, preview.height);
+    await page.render({ canvasContext: ctx, viewport: vp }).promise;
+    drawShade();
+  }
+
+  // Detect the content box on page 1 and turn the empty border into margins (3 mm breathing room)
+  async function detectMargins() {
+    var page = await pjsDoc.getPage(1);
+    var vp = page.getViewport({ scale: 1 });
+    var c = document.createElement("canvas"); c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+    var ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+    await page.render({ canvasContext: ctx, viewport: vp }).promise;
+    var d = ctx.getImageData(0, 0, c.width, c.height).data, W = c.width, H = c.height;
+    var minX = W, minY = H, maxX = -1, maxY = -1;
+    for (var y = 0; y < H; y++) for (var x = 0; x < W; x++) {
+      var i = (y * W + x) * 4;
+      if (d[i] < 235 || d[i + 1] < 235 || d[i + 2] < 235) { if (x < minX) minX = x; if (x > maxX) maxX = x; if (y < minY) minY = y; if (y > maxY) maxY = y; }
+    }
+    if (maxX < 0) return false;
+    var pad = 3 * MM;
+    var vals = [minY - pad, W - 1 - maxX - pad, H - 1 - maxY - pad, minX - pad].map(function (v) { return Math.max(0, Math.floor(v / MM)); });
+    ids.forEach(function (id, k) { document.getElementById(id).value = vals[k]; });
+    return true;
+  }
+
+  ids.forEach(function (id) { document.getElementById(id).addEventListener("input", drawShade); });
+
+  document.getElementById("auto").addEventListener("click", async function () {
+    if (!pjsDoc) return;
+    PN.status(statusEl, "Looking for the content area…");
+    try {
+      var ok = await detectMargins(); drawShade();
+      PN.status(statusEl, ok ? "Margins set from page 1 — adjust any side if needed." : "Page 1 looks blank, so no margins were detected.", !ok);
+    } catch (e) { console.error(e); PN.status(statusEl, "Could not analyse page 1.", true); }
+  });
+
+  PN.fileManager({
+    zone: document.getElementById("zone"), input: document.getElementById("input"),
+    list: document.getElementById("list"), accept: "application/pdf", multiple: false, color: "var(--c-crop)",
+    onChange: async function (files) {
+      result.classList.remove("show");
+      if (!files.length) { opts.classList.add("hidden"); go.disabled = true; currentBytes = null; pjsDoc = null; return; }
+      PN.status(statusEl, "Reading…");
+      try {
+        currentBytes = await PN.readBytes(files[0]);
+        var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+        if (PN.encryptedGuard(doc, statusEl)) { go.disabled = true; currentBytes = null; return; }
+        totalPages = doc.getPageCount(); pageCountEl.textContent = totalPages;
+        pjsDoc = await pdfjsLib.getDocument({ data: currentBytes.slice(0) }).promise;
+        opts.classList.remove("hidden"); go.disabled = false; PN.status(statusEl, "");
+        await renderPreview();
+      } catch (e) { console.error(e); PN.status(statusEl, "Could not read that PDF.", true); go.disabled = true; }
+    }
+  });
+
+  // Margins are given as the page appears on screen; map them onto the unrotated page box
+  function toPageSides(m, rot) {
+    if (rot === 90)  return { l: m.t, t: m.r, r: m.b, b: m.l };
+    if (rot === 180) return { l: m.r, r: m.l, t: m.b, b: m.t };
+    if (rot === 270) return { r: m.t, b: m.r, l: m.b, t: m.l };
+    return { l: m.l, r: m.r, t: m.t, b: m.b };
+  }
+
+  go.addEventListener("click", async function () {
+    if (!currentBytes) return;
+    var m = margins();
+    if (!m.t && !m.r && !m.b && !m.l) { PN.status(statusEl, "Set at least one margin first, or detect them automatically.", true); return; }
+    go.disabled = true; result.classList.remove("show"); PN.status(statusEl, "Cropping…"); PN.progress(prog, bar, 20);
+    try {
+      var doc = await PDFLib.PDFDocument.load(currentBytes, { ignoreEncryption: true });
+      var raw = document.getElementById("pages").value.trim();
+      var idx = raw ? PN.parseRanges(raw, totalPages) : doc.getPageIndices();
+      if (!idx.length) { PN.status(statusEl, "No valid pages in that range.", true); PN.progress(prog, bar, null); return; }
+      var pages = doc.getPages(), done = 0, skipped = 0;
+      idx.forEach(function (i) {
+        var p = pages[i]; if (!p) return;
+        var box = p.getCropBox();
+        var rot = (((p.getRotation().angle || 0) % 360) + 360) % 360;
+        var s = toPageSides(m, rot);
+        var w = box.width - s.l - s.r, h = box.height - s.t - s.b;
+        if (w < 20 || h < 20) { skipped++; return; }
+        p.setCropBox(box.x + s.l, box.y + s.b, w, h);
+        done++;
+      });
+      if (!done) { PN.status(statusEl, "Those margins would crop away the whole page. Use smaller values.", true); PN.progress(prog, bar, null); return; }
+      var bytes = await doc.save();
+      PN.progress(prog, bar, 100); PN.status(statusEl, "");
+      PN.showResult(result,
+        '<div class="result__check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h3>Cropped PDF ready</h3><p>' + done + ' page' + (done > 1 ? 's' : '') + ' cropped' +
+        (skipped ? ' • ' + skipped + ' skipped (margins larger than the page)' : '') + ' • ' + PN.formatBytes(bytes.length) + '</p>' +
+        '<button class="btn btn--accent btn--lg" id="dl">Download PDF</button>');
+      document.getElementById("dl").onclick = function () { PN.downloadBytes(bytes, "cropped-pdfnest.pdf", "application/pdf"); };
+      setTimeout(function () { PN.progress(prog, bar, null); }, 800);
+    } catch (e) {
+      console.error(e); PN.status(statusEl, "Something went wrong cropping that PDF.", true); PN.progress(prog, bar, null);
+    } finally { go.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
